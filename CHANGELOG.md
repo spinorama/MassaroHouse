@@ -4,6 +4,16 @@ All progressive Blender MCP construction milestones and WebXR updates are docume
 
 ---
 
+## [v0.4.0] — 2026-11-14 (Full Island Context: Boat Dock, 1951 Chahroudi Cottage & Woodland Canopy)
+### Added
+- **Lakeside Boat Dock, Covered Slip & Runabout Boat (`Context_Group`)**: Timber pile jetty pier extending into Lake Mahopac, cantilevered buff/mahogany boathouse canopy, moored V-hull white runabout with navy cockpit & windshield, terracotta lakeside seawall apron, stepped promenade linking dock to the main entry terrace, and sloped bluestone island walkway.
+- **1951 Frank Lloyd Wright Chahroudi Guest Cottage**: Full Wrightian butterfly/diamond cedar-shingle hipped roof with beveled eaves, dual Hudson masonry chimneys, horizontal mahogany dado, ribbon glass clerestories, and hexagonal terracotta lake-view terrace.
+- **NE Utility Compounds**: Pyramid-hipped utility shed (`635, 136`), woodland dark shed (`734, 114`), trailered white boat, and utility props seated cleanly on terrain pads.
+- **Procedural Island Forest (`Mat_Tree_VCol`)**: ~120 faceted 3-lobe deciduous trees batched into 4 WebXR-optimized meshes (`Ctx_Trees_Specimen_Grove`, `Ctx_Forest_North_Cove`, `Ctx_Forest_East_Woods`, `Ctx_Forest_SE_Woods`) preserving the exact open clearing & sightlines seen in the aerial extents (`2.12 MB` GLB).
+- **18 Verified Cameras**: Added North Prow Study, South Lake Terrace, Cove Boat Dock & Slip, 1951 Chahroudi Cottage, and Island Clearing & Woods.
+
+---
+
 ## [v0.3.0] — 2026-11-14 (Mahogany Glazing, Wrightian Interiors & Smooth Shoreline)
 ### Added
 - **Perimeter Mahogany Curtain Glazing & Mullions (`House_Group`)**: Floor-to-ceiling cantilevered lakeside glass walls (`NW_Living_Main`, cantilevered prows, `South_Balc_Door1/2`, `SW_Prow_Door`, `NE_Entry_Door`, and `East_Wing_N/S`), clerestory transoms, and mitered corner mullions.
