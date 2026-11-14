@@ -4,6 +4,19 @@ All progressive Blender MCP construction milestones and WebXR updates are docume
 
 ---
 
+## [v0.3.0] — 2026-11-14 (Mahogany Glazing, Wrightian Interiors & Smooth Shoreline)
+### Added
+- **Perimeter Mahogany Curtain Glazing & Mullions (`House_Group`)**: Floor-to-ceiling cantilevered lakeside glass walls (`NW_Living_Main`, cantilevered prows, `South_Balc_Door1/2`, `SW_Prow_Door`, `NE_Entry_Door`, and `East_Wing_N/S`), clerestory transoms, and mitered corner mullions.
+- **Bespoke Wrightian Interiors & Furnishings**:
+  - **Cantilevered Great Room & Prow**: Geometric Usonian area rug, lakeside built-in banquette seating with ochre/rust cushions, open-front barrel/origami armchairs, coffee table, glossy ebony baby grand piano with keys & bench, upright glowing Taliesin lamps, and SW outdoor deck loungers.
+  - **Atrium, Kitchen & Dining**: Integrated natural Tail-Rock kitchen island, range & cabinets, bar stools, hexagon mahogany dining table with 6 armchairs, and North Prow study desk & shelving.
+  - **East Wing Master Suite & Rock-Wall En-Suite Bath**: Master platform bed & rug, twin-sink mahogany vanity, soaking tub, frameless glass shower partition embracing an interior granite boulder.
+  - **Minimalist Blocky Cat Gallery (`m_cat_art_vcol`)**: Entry corridor Usonian cat reliefs, Master Suite horizon cat relief, and fireplace hearth tuxedo cat sculpture.
+- **Smooth Shoreline Vertex Blending (`Context_Group`)**: Replaced stepped discrete terrain zones with per-vertex `Col` blending (`Ctx_Island_Terrain`) plus sculpted granite coastal boulders.
+- **13 Verified Camera Views**: Added SW Prow Deck, Cantilever Great Room, Double Hearth Lounge, Whale Rock & Entry, Tail Rock Kitchen, Dining Alcove, East Master Suite, and Rock Wall En-Suite.
+
+---
+
 ## [v0.2.0] — 2026-11-14 (Structural Shell, Cantilevers, 27 Skylights & Helipad Roof)
 ### Added
 - **Cantilevered Living Wing & Split-Level Slabs (`House_Group`)**: Cherokee-red concrete floor slabs (`Z = 3.20 m` cantilevered SW living room + `Z = 3.80 m` split-level upper wing) linked by 4 broad atrium steps, deep post-tensioned under-deck concrete girders, shoreline masonry piers, SW Prow Balcony with glass/concrete parapet railings, and Recessed South Lake Terrace.

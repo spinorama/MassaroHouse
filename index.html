@@ -582,7 +582,7 @@
           <span id="status-dot" class="status-dot"></span>
           <div class="brand-text">
             <div class="brand-title">MASSARO HOUSE · PETRA ISLAND, MAHOPAC NY</div>
-            <div id="status-sub" class="brand-sub">DIN 1451 TECHNICAL SPEC · v0.2.0 SHELL, 27 SKYLIGHTS & HELIPAD</div>
+            <div id="status-sub" class="brand-sub">DIN 1451 TECHNICAL SPEC · v0.3.0 GLAZING, INTERIORS &amp; SMOOTH SHORELINE</div>
           </div>
         </div>
         <div class="quick-toggles">
@@ -590,7 +590,7 @@
           <button id="btn-toggle-context" class="btn btn-sm toggle-on" title="Toggle Context_Group">🌳 Context: ON</button>
           <button id="btn-toggle-lines" class="btn btn-sm" title="Toggle Subtle Hidden-Line CAD Render (Hotkey: L)">✏️ Lines: OFF</button>
           <button id="btn-toggle-style" class="btn btn-sm style-btn" title="Switch UI Style: German DIN 1451 vs Star Trek LCARS (Hotkey: T)">📐 Style: DIN</button>
-          <button id="btn-changelog" class="btn btn-sm" title="View Version Changelog">📋 v0.2</button>
+          <button id="btn-changelog" class="btn btn-sm" title="View Version Changelog">📋 v0.3</button>
           <button id="btn-exit-xr" class="btn btn-sm danger" style="display:none;">✕ Exit XR</button>
         </div>
       </div>
@@ -629,6 +629,14 @@
         </div>
         <div id="changelog-entries">
           <div class="changelog-entry">
+            <div class="changelog-ver">v0.3.0 · 2026-11-14 (Mahogany Glazing, Interiors &amp; Vertex-Blended Shoreline)</div>
+            <div class="changelog-desc">
+              • <strong>Continuous Mahogany Glazing</strong>: Floor-to-ceiling cantilevered curtain walls, mitered corner frames, clerestory transoms, and frameless glass balcony doors.<br>
+              • <strong>Wrightian Custom Interiors</strong>: Built-in lakeside banquettes, open barrel armchairs, ebony baby grand piano, Taliesin upright lamps, Tail-Rock kitchen island, circular 6-chair dining alcove, North Prow study, East Wing master platform suite, En-Suite rock-wall soaking bath, and subtle geometric cat gallery panels + hearth sculpture (`m_cat_art_vcol`).<br>
+              • <strong>Smooth Shoreline Blending</strong>: Replaced discrete terrain zones with per-vertex `Col` color blending plus coastal granite boulders, expanding camera navigation to 13 presets.
+            </div>
+          </div>
+          <div class="changelog-entry">
             <div class="changelog-ver">v0.2.0 · 2026-11-14 (Structural Shell, 27 Skylights & Helipad Roof)</div>
             <div class="changelog-desc">
               • <strong>Cantilevered Structural Slabs &amp; Piers (`House_Group`)</strong>: Stepped Cherokee-red floors (`Z = 3.20 m` / `3.80 m`), deep concrete cantilever girders over Lake Mahopac, SW Prow Balcony, South Terrace, and double-sided Hudson granite fireplace.<br>
@@ -656,7 +664,7 @@
     import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
     import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 
-    const BUILD_VERSION = 'v0.2.0';
+    const BUILD_VERSION = 'v0.3.0';
 
     // =========================================================================
     // 0. PROCEDURAL WEB AUDIO SYNTHESIZER (DIN Typewriter Click vs LCARS Chirp)
@@ -713,11 +721,19 @@
     }
 
     const ROOMS = [
-      makeRoom('Cam_01_Exterior_3Q',      '01 · Ext Three-Quarter',    [-40.0, -36.0, 11.5],  [-6.0, -5.0, 5.0],    0.50),
-      makeRoom('Cam_02_Cantilever_Water', '02 · Cantilever Over Lake', [-35.0, -27.0, 4.2],   [-20.0, -17.0, 4.6],  0.50),
-      makeRoom('Cam_03_Skylight_Atrium',  '03 · 27-Skylight Atrium',   [-7.5, -5.5, 5.0],     [-0.5, -0.5, 7.6],    3.80),
-      makeRoom('Cam_04_Helipad_Roof',     '04 · Helipad & Flag Roof',  [-25.0, -21.5, 10.2],  [-7.5, -2.5, 7.8],    8.06),
-      makeRoom('Cam_05_Aerial_Extents',   '05 · Aerial Extents',       [7.275, -40.0, 88.0],  [7.275, 7.125, 2.0],  0.50)
+      makeRoom('Cam_01_Exterior_3Q',       '01 · Ext Three-Quarter',    [-40.0, -36.0, 11.5],  [-6.0, -5.0, 5.0],    0.50),
+      makeRoom('Cam_02_Cantilever_Water',  '02 · Cantilever Over Lake', [-35.0, -27.0, 4.2],   [-20.0, -17.0, 4.6],  0.50),
+      makeRoom('Cam_03_SW_Prow_Deck',      '03 · SW Prow Deck',         [-31.2, -21.0, 4.8],   [-21.0, -12.0, 4.7],  3.18),
+      makeRoom('Cam_04_Living_Cantilever', '04 · Cantilever Great Rm',  [-23.25, -14.25, 4.75],[-9.0, -5.25, 4.4],  3.20),
+      makeRoom('Cam_05_Hearth_Lounge',     '05 · Double Hearth Lounge', [-12.3, -2.25, 4.85],  [-4.2, -7.5, 4.3],    3.20),
+      makeRoom('Cam_06_WhaleRock_Entry',   '06 · Whale Rock & Entry',   [12.75, 14.7, 6.65],   [1.5, 6.3, 4.95],     3.80),
+      makeRoom('Cam_07_Skylight_Atrium',   '07 · 27-Skylight Atrium',   [-4.8, -2.7, 5.2],     [2.25, 1.5, 7.6],     3.80),
+      makeRoom('Cam_08_Kitchen_TailRock',  '08 · Tail Rock Kitchen',    [-3.75, 2.7, 5.35],    [0.75, 0.3, 4.7],     3.80),
+      makeRoom('Cam_09_Dining_Alcove',     '09 · Atrium Dining Alcove', [5.25, -3.3, 5.35],    [0.0, -6.0, 4.8],     3.80),
+      makeRoom('Cam_10_Master_Suite',      '10 · East Master Suite',    [16.2, -12.3, 5.25],   [10.2, -10.2, 4.55],  3.80),
+      makeRoom('Cam_11_Rock_Ensuite',      '11 · Rock Wall En-Suite',   [8.4, -8.25, 5.3],     [5.4, -10.5, 4.45],   3.80),
+      makeRoom('Cam_12_Helipad_Roof',      '12 · Helipad & Flag Roof',  [-25.0, -21.5, 10.2],  [-7.5, -2.5, 7.8],    8.06),
+      makeRoom('Cam_13_Aerial_Extents',    '13 · Aerial Extents',       [7.275, -40.0, 88.0],  [7.275, 7.125, 2.0],  0.50)
     ];
 
     const IS_MOBILE = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
@@ -792,10 +808,11 @@
       pt.position.set(bx, bz, -by);
       worldRoot.add(pt);
     }
-    addInteriorPointLight(-5.0, -3.5, 6.2, 2.0, 14.0);  // Central Skylight Atrium
-    addInteriorPointLight(-16.0, -9.0, 5.8, 1.8, 13.0); // Cantilevered SW Living Room
-    addInteriorPointLight(3.0, -4.5, 5.8, 1.6, 11.0);   // Kitchen & Dining
-    addInteriorPointLight(13.0, -10.5, 5.5, 1.5, 10.0); // East Primary Suite
+    addInteriorPointLight(-5.0, -3.5, 6.2, 2.1, 15.0);  // Central Skylight Atrium
+    addInteriorPointLight(-16.0, -9.0, 5.8, 1.9, 14.0); // Cantilevered SW Living Room
+    addInteriorPointLight(3.0, -4.5, 5.8, 1.7, 12.0);   // Kitchen & Dining
+    addInteriorPointLight(11.5, -10.5, 5.6, 1.6, 11.0); // East Primary Suite & Bath
+    addInteriorPointLight(-4.0, 11.5, 5.8, 1.4, 10.0);  // North Prow Study & Entry Gallery
 
     // =========================================================================
     // 4. STATE, ORBIT PIVOT, FULL MODEL EXTENTS & HIDDEN-LINE RENDER STATE
