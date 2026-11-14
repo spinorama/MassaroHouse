@@ -582,7 +582,7 @@
           <span id="status-dot" class="status-dot"></span>
           <div class="brand-text">
             <div class="brand-title">MASSARO HOUSE · PETRA ISLAND, MAHOPAC NY</div>
-            <div id="status-sub" class="brand-sub">DIN 1451 TECHNICAL SPEC · v0.1.0 SITE EXTENTS & MASSING</div>
+            <div id="status-sub" class="brand-sub">DIN 1451 TECHNICAL SPEC · v0.2.0 SHELL, 27 SKYLIGHTS & HELIPAD</div>
           </div>
         </div>
         <div class="quick-toggles">
@@ -590,7 +590,7 @@
           <button id="btn-toggle-context" class="btn btn-sm toggle-on" title="Toggle Context_Group">🌳 Context: ON</button>
           <button id="btn-toggle-lines" class="btn btn-sm" title="Toggle Subtle Hidden-Line CAD Render (Hotkey: L)">✏️ Lines: OFF</button>
           <button id="btn-toggle-style" class="btn btn-sm style-btn" title="Switch UI Style: German DIN 1451 vs Star Trek LCARS (Hotkey: T)">📐 Style: DIN</button>
-          <button id="btn-changelog" class="btn btn-sm" title="View Version Changelog">📋 v0.1</button>
+          <button id="btn-changelog" class="btn btn-sm" title="View Version Changelog">📋 v0.2</button>
           <button id="btn-exit-xr" class="btn btn-sm danger" style="display:none;">✕ Exit XR</button>
         </div>
       </div>
@@ -629,6 +629,13 @@
         </div>
         <div id="changelog-entries">
           <div class="changelog-entry">
+            <div class="changelog-ver">v0.2.0 · 2026-11-14 (Structural Shell, 27 Skylights & Helipad Roof)</div>
+            <div class="changelog-desc">
+              • <strong>Cantilevered Structural Slabs &amp; Piers (`House_Group`)</strong>: Stepped Cherokee-red floors (`Z = 3.20 m` / `3.80 m`), deep concrete cantilever girders over Lake Mahopac, SW Prow Balcony, South Terrace, and double-sided Hudson granite fireplace.<br>
+              • <strong>Signature Roof (`Roof_Group`)</strong>: Cantilevered stucco fascia, mahogany soffits, 27 coffered triangular skylight pyramids, circular `H` Helipad, and SW Flag inlay.
+            </div>
+          </div>
+          <div class="changelog-entry">
             <div class="changelog-ver">v0.1.0 · 2026-11-14 (Site Extents, Petra Island Terrain & Massing)</div>
             <div class="changelog-desc">
               • <strong>Exact Aerial Extents (`134.55 m × 129.75 m`)</strong>: Calibrated Lake Mahopac water plane and sculpted Petra Island granite shoreline, lawn clearing, and eastern woodland floor.<br>
@@ -649,7 +656,7 @@
     import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
     import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 
-    const BUILD_VERSION = 'v0.1.0';
+    const BUILD_VERSION = 'v0.2.0';
 
     // =========================================================================
     // 0. PROCEDURAL WEB AUDIO SYNTHESIZER (DIN Typewriter Click vs LCARS Chirp)
@@ -706,8 +713,11 @@
     }
 
     const ROOMS = [
-      makeRoom('Cam_01_Exterior_3Q',    '01 · Ext Three-Quarter', [-42.0, -38.0, 13.0], [-4.0, -4.0, 4.5], 0.50),
-      makeRoom('Cam_02_Aerial_Extents', '02 · Aerial Extents',    [7.275, -45.0, 88.0], [7.275, 7.125, 2.0], 0.50)
+      makeRoom('Cam_01_Exterior_3Q',      '01 · Ext Three-Quarter',    [-40.0, -36.0, 11.5],  [-6.0, -5.0, 5.0],    0.50),
+      makeRoom('Cam_02_Cantilever_Water', '02 · Cantilever Over Lake', [-35.0, -27.0, 4.2],   [-20.0, -17.0, 4.6],  0.50),
+      makeRoom('Cam_03_Skylight_Atrium',  '03 · 27-Skylight Atrium',   [-7.5, -5.5, 5.0],     [-0.5, -0.5, 7.6],    3.80),
+      makeRoom('Cam_04_Helipad_Roof',     '04 · Helipad & Flag Roof',  [-25.0, -21.5, 10.2],  [-7.5, -2.5, 7.8],    8.06),
+      makeRoom('Cam_05_Aerial_Extents',   '05 · Aerial Extents',       [7.275, -40.0, 88.0],  [7.275, 7.125, 2.0],  0.50)
     ];
 
     const IS_MOBILE = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
