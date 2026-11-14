@@ -582,7 +582,7 @@
           <span id="status-dot" class="status-dot"></span>
           <div class="brand-text">
             <div class="brand-title">MASSARO HOUSE · PETRA ISLAND, MAHOPAC NY</div>
-            <div id="status-sub" class="brand-sub">DIN 1451 TECHNICAL SPEC · v0.4.0 DOCK, CHAHROUDI COTTAGE &amp; ISLAND WOODS</div>
+            <div id="status-sub" class="brand-sub">DIN 1451 TECHNICAL SPEC · v1.0.0 COMPLETE PETRA ISLAND WEBXR EDITION</div>
           </div>
         </div>
         <div class="quick-toggles">
@@ -590,7 +590,7 @@
           <button id="btn-toggle-context" class="btn btn-sm toggle-on" title="Toggle Context_Group">🌳 Context: ON</button>
           <button id="btn-toggle-lines" class="btn btn-sm" title="Toggle Subtle Hidden-Line CAD Render (Hotkey: L)">✏️ Lines: OFF</button>
           <button id="btn-toggle-style" class="btn btn-sm style-btn" title="Switch UI Style: German DIN 1451 vs Star Trek LCARS (Hotkey: T)">📐 Style: DIN</button>
-          <button id="btn-changelog" class="btn btn-sm" title="View Version Changelog">📋 v0.4</button>
+          <button id="btn-changelog" class="btn btn-sm" title="View Version Changelog">📋 v1.0</button>
           <button id="btn-exit-xr" class="btn btn-sm danger" style="display:none;">✕ Exit XR</button>
         </div>
       </div>
@@ -628,6 +628,13 @@
           <button id="btn-close-changelog" class="btn btn-sm">✕ Close</button>
         </div>
         <div id="changelog-entries">
+          <div class="changelog-entry">
+            <div class="changelog-ver">v1.0.0 · 2026-11-14 (Final Release: Waypoints, Chahroudi Interior &amp; WebXR QA)</div>
+            <div class="changelog-desc">
+              • <strong>Complete Scene Hierarchy (`Set_house`)</strong>: Verified 5 sub-hierarchies (`House_Group` 312 nodes, `Roof_Group` 232 nodes, `Context_Group` 81 nodes, `Waypoints_Group` 18 markers, `Cameras_Group` 18 presets) packaged in `massaro_house.glb` (`2.12 MB`).<br>
+              • <strong>1951 Chahroudi Cottage Interior &amp; Full Export</strong>: Added warm Cherokee-red floor, built-in banquette, mahogany coffee table, and glowing lamp visible through cottage glazing; integrated all 4 WebXR modes, `Roof_Group` / `Context_Group` toggles, Hidden-Line CAD `[L]`, and DIN 1451 / LCARS `[T]`.
+            </div>
+          </div>
           <div class="changelog-entry">
             <div class="changelog-ver">v0.4.0 · 2026-11-14 (Full Island Context: Dock, Chahroudi Cottage &amp; Forest Canopy)</div>
             <div class="changelog-desc">
@@ -672,7 +679,7 @@
     import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
     import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 
-    const BUILD_VERSION = 'v0.4.0';
+    const BUILD_VERSION = 'v1.0.0';
 
     // =========================================================================
     // 0. PROCEDURAL WEB AUDIO SYNTHESIZER (DIN Typewriter Click vs LCARS Chirp)

@@ -4,6 +4,14 @@ All progressive Blender MCP construction milestones and WebXR updates are docume
 
 ---
 
+## [v1.0.0] — 2026-11-14 (Final Release: Waypoints, Cottage Interior & Full QA)
+### Added
+- **Explicit `Waypoints_Group` Navigation Markers (`WP_01`–`WP_18`)**: Embedded 18 named Empty markers under `Set_house -> Waypoints_Group` synchronized 1:1 with the WebXR room switcher and VR teleport elevations.
+- **1951 Chahroudi Guest Cottage Interior Polish**: Added Cherokee-red interior floor cap, Wrightian banquette sofa, low mahogany table, and warm upright lamp glow visible through the perimeter glass ribbon.
+- **End-to-End Blender & glTF QA**: Verified clean glTF 2.0 export (`massaro_house.glb`, `2.12 MB`, `625` meshes across `House_Group`, `Roof_Group`, `Context_Group`, and `Waypoints_Group`), Blender visual camera/cutaway inspections, and `index.html` module script validation.
+
+---
+
 ## [v0.4.0] — 2026-11-14 (Full Island Context: Boat Dock, 1951 Chahroudi Cottage & Woodland Canopy)
 ### Added
 - **Lakeside Boat Dock, Covered Slip & Runabout Boat (`Context_Group`)**: Timber pile jetty pier extending into Lake Mahopac, cantilevered buff/mahogany boathouse canopy, moored V-hull white runabout with navy cockpit & windshield, terracotta lakeside seawall apron, stepped promenade linking dock to the main entry terrace, and sloped bluestone island walkway.
