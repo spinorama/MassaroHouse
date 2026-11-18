@@ -4,6 +4,23 @@ All progressive Blender MCP construction milestones and WebXR updates are docume
 
 ---
 
+## [v1.2.0] — 2026-11-17 (Photo-Accurate Massaro Interiors & 1951 Chahroudi Guest Cottage Overhaul)
+### Added & Rebuilt
+- **Archival Reference Library (`reference/` & `renders/`)**: Curated 21 architectural photography plates (`reference/00`–`20`) of the Massaro House and 1951 Chahroudi Guest Cottage plus 9 verified Blender verification renders (`renders/01`–`09`).
+- **1951 Frank Lloyd Wright Chahroudi Guest Cottage Complete Overhaul (`Cam_15` & `Cam_16`)**:
+  - **Exposed Hexagonal Timber Rafter Ceiling (`Roof_Cottage_Exposed_Rafters`)**: 30+ radiating redwood/mahogany ridge, hip, and common rafters beneath the shingled hipped roof (linked into `Roof_Group` so `🏠 Roof` reveals both houses in Dollhouse cutaway mode).
+  - **Monumental Battered Concrete Fireplace Hood**: Floor-to-ceiling desert-concrete chimney mass with the iconic diagonal gold/tan granite slab cast into the upper hood face, tall firebox, and black mesh fire screen.
+  - **Cottage Living, Dining, Bedroom Alcove & Galley Kitchen**: 2 X-frame cord-slung Wright chairs, polygonal cruciform-pedestal dining table, vertical board-and-batten mahogany partition wall with framed interior window, folding accordion doors opening to the bedroom alcove (clerestory ribbon windows, triangular corner desk, powder-blue bed), and NW galley kitchen with hexagonal geometric stained-glass window & vintage red stove.
+  - **Exterior Terrace & Desert-Rubble Wing**: Battered desert-rubble NW wing & south planter walls with 3D embedded fieldstones, 4 mahogany-framed glass French doors, glowing spherical globe eave pendant, 3-step Cherokee-red concrete terrace, triangular lakeside reflection pool, and 2 sculpted wood lounge chairs.
+- **Photo-Accurate Massaro House Interior & Exterior Overhaul (`Cam_02`–`Cam_12`)**:
+  - **Exterior Copper Fascia & Desert-Rubble Piers**: Patinaed standing-seam bronze/copper roof fascia (`Mat_Copper_Fascia`) over mahogany soffits, plus procedural 3D angular fieldstones (`Masonry_Desert_Rubble_Stones`) across piers, fireplace cores, and walls.
+  - **27-Skylight Atrium, Whale Rock & Crane Screen Mural (`Cam_07`)**: Stepped pale-granite `Rock_Whale_Main` strata, stepped concrete/mahogany skylight coffers, horizontal mahogany HVAC frieze, built-in banquette with 2 hexagonal side tables, cantilevered rock bar shelf, suspended bronze ceremonial gong, and 4.4 m vertex-colored **Japanese Pine & Crane Screen Mural (`Mural_Atrium_Cranes_Pines`)**.
+  - **Whale-Rock Kitchen (`Cam_08`)**: Scribed honed bluestone L-counter & peninsula around `Rock_Tail_Kitchen`, **5 bright red enameled Le Creuset Dutch ovens & skillets** on the rock ledge, terracotta-red mosaic tile backsplash, 4 flush-slab mahogany upper cabinets with top LED uplight cove, stainless pyramid hood, cooktop, wall oven, and microwave.
+  - **Dining Room (`Cam_09`) & Cantilevered Great Room (`Cam_04`)**: Boat-shaped mahogany dining table with **8 tall slatted-back FLW dining chairs**, buffet credenza, suspended chandelier, hexagonal Usonian geometric rugs, 14 m cream banquette with under-seat LED cove & triangular end tables, recessed triangular ceiling downlights, and prow easel painting.
+  - **Master Suite (`Cam_10`), Rock Shower En-Suite (`Cam_11`) & Study (`Cam_12`)**: Full-width mahogany headboard credenza with warm LED uplight washing the fieldstone wall, corner stone fireplace with iron screen, stepped diagonal mahogany tray ceiling, crimson silk bed, tall cutout-back Wright chair, stepped granite shower boulder cascade + 3 upper wall stones, and frosted FLW geometric chevron motif on the frameless glass shower door.
+
+---
+
 ## [v1.0.0] — 2026-11-14 (Final Release: Waypoints, Cottage Interior & Full QA)
 ### Added
 - **Explicit `Waypoints_Group` Navigation Markers (`WP_01`–`WP_18`)**: Embedded 18 named Empty markers under `Set_house -> Waypoints_Group` synchronized 1:1 with the WebXR room switcher and VR teleport elevations.
