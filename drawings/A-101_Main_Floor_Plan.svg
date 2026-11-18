@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1280" width="1920" height="1280">
+  <defs>
+    <pattern id="hatch-masonry" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#1e293b" stroke-width="1.2"/>
+    </pattern>
+    <pattern id="hatch-rock" width="12" height="12" patternTransform="rotate(-30 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="8" y2="0" stroke="#475569" stroke-width="1.0"/>
+      <line x1="0" y1="6" x2="12" y2="6" stroke="#64748b" stroke-width="0.8"/>
+    </pattern>
+    <pattern id="hatch-earth" width="10" height="10" patternTransform="rotate(60 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#64748b" stroke-width="0.9"/>
+    </pattern>
+    <pattern id="grid-flw" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="0.6"/>
+    </pattern>
+    <style>
+      text { font-family: 'DIN Alternate', 'Bahnschrift', 'Roboto Mono', 'Consolas', monospace; fill: #0f172a; }
+      .tb-h1 { font-size: 18px; font-weight: 700; letter-spacing: 1.5px; }
+      .tb-h2 { font-size: 13px; font-weight: 700; letter-spacing: 1px; fill: #1e293b; }
+      .tb-lbl { font-size: 9.5px; font-weight: 600; fill: #64748b; letter-spacing: 0.8px; }
+      .tb-val { font-size: 11.5px; font-weight: 700; fill: #0f172a; }
+      .sheet-num { font-size: 32px; font-weight: 800; fill: #0f172a; letter-spacing: 1px; }
+      .dim-txt { font-size: 10.5px; font-weight: 700; fill: #b91c1c; text-anchor: middle; }
+      .tag-txt { font-size: 10px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .sub-txt { font-size: 9px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .note-txt { font-size: 11px; fill: #1e293b; }
+      .hdr-txt { font-size: 14px; font-weight: 700; fill: #0f172a; letter-spacing: 1px; }
+    </style>
+  </defs>
+  <!-- Blueprint Crisp Archival Paper Background -->
+  <rect x="0" y="0" width="1920" height="1280" fill="#fcfaf5"/>
+  <!-- Fine Engineering Grid Background inside Drawing Area -->
+  <rect x="28" y="28" width="1602" height="1224" fill="url(#grid-flw)"/>
+  <!-- Outer Sheet Border & CAD Margin -->
+  <rect x="18" y="18" width="1884" height="1244" fill="none" stroke="#0f172a" stroke-width="3.0"/>
+  <rect x="28" y="28" width="1602" height="1224" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+
+  <!-- RIGHT-HAND ISO 19650 / AIA CONTRACTOR TITLE BLOCK (x = 1610..1902) -->
+  <g transform="translate(1610, 28)">
+    <rect x="0" y="0" width="282" height="1224" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+    <!-- Top Brand / Architect Block -->
+    <rect x="0" y="0" width="282" height="78" fill="#0f172a"/>
+    <text x="141" y="28" text-anchor="middle" style="font-size:15px;font-weight:800;fill:#f8fafc;letter-spacing:2px;">MASSARO HOUSE · PETRA ISLAND</text>
+    <text x="141" y="48" text-anchor="middle" style="font-size:10px;font-weight:600;fill:#94a3b8;letter-spacing:1.2px;">FRANK LLOYD WRIGHT (1950) · T. HEINZ AIA</text>
+    <text x="141" y="65" text-anchor="middle" style="font-size:9.5px;font-weight:700;fill:#38bdf8;letter-spacing:1px;">ISO 19650 / IFC4 BIM DELIVERABLE SET</text>
+
+    <!-- Project Metadata -->
+    <line x1="0" y1="165" x2="282" y2="165" stroke="#0f172a" stroke-width="1.2"/>
+    <text x="12" y="96" class="tb-lbl">PROJECT / SITE LOCATION</text>
+    <text x="12" y="112" class="tb-val">PETRA ISLAND, LAKE MAHOPAC, NY</text>
+    <text x="12" y="128" style="font-size:10px;fill:#334155;">41.3765° N, 73.7364° W · EXTENTS 134.55 × 129.75m</text>
+    <text x="12" y="146" class="tb-lbl">CLIENT / REPOSITORY</text>
+    <text x="12" y="159" style="font-size:10px;font-weight:700;fill:#0f172a;">github.com/spinorama/MassaroHouse</text>
+
+    <!-- ISO 19650 Information Container Box -->
+    <rect x="0" y="165" width="282" height="24" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.0"/>
+    <text x="141" y="181" text-anchor="middle" class="tb-h2">ISO 19650 METADATA REGISTER</text>
+    <text x="12" y="206" class="tb-lbl">INFORMATION CONTAINER ID (ISO 19650-2)</text>
+    <text x="12" y="222" style="font-size:12px;font-weight:800;fill:#0369a1;">MAS-THH-M1-L1-DR-A-0101</text>
+    <text x="12" y="242" class="tb-lbl">STATUS / SUITABILITY CODE</text>
+    <text x="12" y="256" class="tb-val">S4 — SUITABLE FOR STAGE APPROVAL</text>
+    <text x="12" y="276" class="tb-lbl">REVISION</text>
+    <text x="12" y="290" class="tb-val">P02.1 (2026-11-17)</text>
+    <text x="145" y="276" class="tb-lbl">IFC SCHEMA</text>
+    <text x="145" y="290" class="tb-val">IFC4 ADD2 TC1</text>
+    <text x="12" y="310" class="tb-lbl">DISCIPLINE</text>
+    <text x="12" y="324" class="tb-val">ARCHITECTURE</text>
+    <text x="145" y="310" class="tb-lbl">UNITS / DATUM</text>
+    <text x="145" y="324" class="tb-val">METRIC (m) / EL 0.00m</text>
+    <line x1="0" y1="336" x2="282" y2="336" stroke="#0f172a" stroke-width="1.2"/>
+
+    <!-- Revision History Table -->
+    <rect x="0" y="336" width="282" height="22" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.0"/>
+    <text x="141" y="351" text-anchor="middle" class="tb-h2">ISSUE &amp; REVISION SCHEDULE</text>
+    <text x="10" y="372" class="tb-lbl">REV</text>
+    <text x="50" y="372" class="tb-lbl">DATE</text>
+    <text x="125" y="372" class="tb-lbl">DESCRIPTION</text>
+    <line x1="0" y1="378" x2="282" y2="378" stroke="#94a3b8" stroke-width="0.8"/>
+    <text x="10" y="394" style="font-size:10px;font-weight:700;">P01.0</text>
+    <text x="50" y="394" style="font-size:10px;">2026-11-14</text>
+    <text x="125" y="394" style="font-size:10px;">INITIAL 3D / WEBXR ISSUE</text>
+    <text x="10" y="412" style="font-size:10px;font-weight:700;">P02.0</text>
+    <text x="50" y="412" style="font-size:10px;">2026-11-17</text>
+    <text x="125" y="412" style="font-size:10px;">INTERIOR &amp; COTTAGE OVERHAUL</text>
+    <text x="10" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">P02.1</text>
+    <text x="50" y="430" style="font-size:10px;fill:#b91c1c;">2026-11-17</text>
+    <text x="125" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">CONTRACTOR BIM &amp; CD SET</text>
+    <line x1="0" y1="444" x2="282" y2="444" stroke="#0f172a" stroke-width="1.2"/>
+
+    <!-- Key Plan / Mini Silhouette -->
+    <text x="141" y="464" text-anchor="middle" class="tb-lbl">KEY PLAN · PETRA ISLAND EXTENTS</text>
+    <rect x="26" y="474" width="230" height="170" fill="#e0f2fe" stroke="#0f172a" stroke-width="1.0"/>
+    <polygon points="115,474 256,474 256,644 140,644 102,590 95,540" fill="#dcfce7" stroke="#15803d" stroke-width="1.0"/>
+    <polygon points="116,550 148,578 88,602 108,562" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+    <polygon points="150,512 162,518 158,534 144,538 142,522" fill="#fde68a" stroke="#92400e" stroke-width="1.2"/>
+    <text x="40" y="634" style="font-size:9px;font-weight:700;fill:#0369a1;">LAKE MAHOPAC</text>
+
+    <!-- North Arrow & Scale Block -->
+    <line x1="0" y1="660" x2="282" y2="660" stroke="#0f172a" stroke-width="1.2"/>
+    <g transform="translate(235, 705)">
+      <circle cx="0" cy="0" r="22" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+      <polygon points="0,-20 -6,8 0,2 6,8" fill="#0f172a"/>
+      <text x="0" y="-25" text-anchor="middle" style="font-size:11px;font-weight:800;">N</text>
+    </g>
+    <text x="14" y="685" class="tb-lbl">DRAWING SCALE</text>
+    <text x="14" y="706" style="font-size:15px;font-weight:800;">1 : 150 (EL +3.20 / +3.80m)</text>
+    <text x="14" y="726" style="font-size:9.5px;fill:#475569;">30° / 60° FLW TRIANGULAR MODULE</text>
+
+    <!-- Sheet Title & Sheet Number Box -->
+    <line x1="0" y1="1040" x2="282" y2="1040" stroke="#0f172a" stroke-width="1.5"/>
+    <text x="14" y="1062" class="tb-lbl">SHEET TITLE</text>
+    <text x="14" y="1088" class="tb-h1">MAIN RESIDENCE FLOOR PLAN</text>
+    <line x1="0" y1="1130" x2="282" y2="1130" stroke="#0f172a" stroke-width="1.5"/>
+    <rect x="0" y="1130" width="282" height="94" fill="#f1f5f9"/>
+    <text x="14" y="1152" class="tb-lbl">SHEET NUMBER</text>
+    <text x="141" y="1198" text-anchor="middle" class="sheet-num">A-101</text>
+    <text x="268" y="1214" text-anchor="end" style="font-size:9.5px;font-weight:700;fill:#475569;">OF 10 SHEETS</text>
+  </g>
+
+<line x1="180.0" y1="80" x2="180.0" y2="1160" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="180.0" cy="62" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="180.0" y="66" class="tag-txt">1</text>
+<line x1="312.0" y1="80" x2="312.0" y2="1160" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="312.0" cy="62" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="312.0" y="66" class="tag-txt">2</text>
+<line x1="444.0" y1="80" x2="444.0" y2="1160" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="444.0" cy="62" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="444.0" y="66" class="tag-txt">3</text>
+<line x1="576.0" y1="80" x2="576.0" y2="1160" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="576.0" cy="62" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="576.0" y="66" class="tag-txt">4</text>
+<line x1="708.0" y1="80" x2="708.0" y2="1160" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="708.0" cy="62" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="708.0" y="66" class="tag-txt">5</text>
+<line x1="840.0" y1="80" x2="840.0" y2="1160" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="840.0" cy="62" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="840.0" y="66" class="tag-txt">6</text>
+<line x1="972.0" y1="80" x2="972.0" y2="1160" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="972.0" cy="62" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="972.0" y="66" class="tag-txt">7</text>
+<line x1="1104.0" y1="80" x2="1104.0" y2="1160" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="1104.0" cy="62" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="1104.0" y="66" class="tag-txt">8</text>
+<line x1="1236.0" y1="80" x2="1236.0" y2="1160" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="1236.0" cy="62" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="1236.0" y="66" class="tag-txt">9</text>
+<line x1="1368.0" y1="80" x2="1368.0" y2="1160" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="1368.0" cy="62" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="1368.0" y="66" class="tag-txt">10</text>
+<line x1="70" y1="1060.0" x2="1560" y2="1060.0" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="52" cy="1060.0" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="52" y="1064.0" class="tag-txt">A</text>
+<line x1="70" y1="928.0" x2="1560" y2="928.0" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="52" cy="928.0" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="52" y="932.0" class="tag-txt">B</text>
+<line x1="70" y1="796.0" x2="1560" y2="796.0" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="52" cy="796.0" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="52" y="800.0" class="tag-txt">C</text>
+<line x1="70" y1="664.0" x2="1560" y2="664.0" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="52" cy="664.0" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="52" y="668.0" class="tag-txt">D</text>
+<line x1="70" y1="532.0" x2="1560" y2="532.0" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="52" cy="532.0" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="52" y="536.0" class="tag-txt">E</text>
+<line x1="70" y1="400.0" x2="1560" y2="400.0" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="52" cy="400.0" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="52" y="404.0" class="tag-txt">F</text>
+<line x1="70" y1="268.0" x2="1560" y2="268.0" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="6,4"/>
+<circle cx="52" cy="268.0" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<text x="52" y="272.0" class="tag-txt">G</text>
+<polyline points="493.5,174.5 460.5,306.5 417.6,471.5 338.4,653.0 252.6,818.0 295.5,933.5 318.6,1088.6 460.5,1108.4 658.5,1098.5 823.5,1164.5" fill="none" stroke="#0284c7" stroke-width="3.0" stroke-dasharray="10,5"/>
+<polygon points="114.0,1049.0 186.6,1207.4 378.0,1088.6 364.8,1049.0 186.6,1042.4" fill="#fde8e8" stroke="#0f172a" stroke-width="2.0"/>
+<polygon points="595.8,481.4 675.0,636.5 658.5,818.0 618.9,900.5 569.4,834.5 490.2,900.5 364.8,1049.0 186.6,1042.4 546.3,537.5 516.6,521.0 569.4,468.2" fill="#fef2f2" stroke="#0f172a" stroke-width="2.8"/>
+<polygon points="747.6,257.0 787.2,257.0 958.8,540.8 981.9,468.2 1090.8,672.8 1021.5,752.0 1354.8,943.4 618.9,900.5 658.5,818.0 675.0,636.5 595.8,481.4" fill="#fff7ed" stroke="#0f172a" stroke-width="2.8"/>
+<polygon points="618.9,900.5 569.4,834.5 490.2,900.5 503.4,917.0 609.0,917.0" fill="#fde8e8" stroke="#0f172a" stroke-width="1.8"/>
+<polygon points="760.8,250.4 899.4,111.8 991.8,171.2 922.5,349.4 787.2,257.0" fill="#fde8e8" stroke="#0f172a" stroke-width="1.8"/>
+<line x1="602.4" y1="501.2" x2="661.8" y2="801.5" stroke="#0f172a" stroke-width="1.4"/>
+<line x1="611.6" y1="501.2" x2="671.0" y2="801.5" stroke="#0f172a" stroke-width="1.4"/>
+<line x1="620.9" y1="501.2" x2="680.3" y2="801.5" stroke="#0f172a" stroke-width="1.4"/>
+<line x1="630.1" y1="501.2" x2="689.5" y2="801.5" stroke="#0f172a" stroke-width="1.4"/>
+<polygon points="774.0,501.2 826.8,468.2 886.2,435.2 955.5,395.6 1044.6,382.4 1123.8,441.8 1038.0,494.6 879.6,514.4" fill="url(#hatch-rock)" stroke="#334155" stroke-width="2.2"/>
+<polygon points="787.2,560.6 879.6,554.0 886.2,600.2 787.2,603.5" fill="url(#hatch-rock)" stroke="#334155" stroke-width="2.0"/>
+<polygon points="958.8,811.4 991.8,814.7 995.1,844.4 958.8,841.1" fill="url(#hatch-rock)" stroke="#334155" stroke-width="1.8"/>
+<polygon points="710.2,811.4 780.6,813.6 787.2,760.8 719.0,754.2" fill="url(#hatch-masonry)" stroke="#0f172a" stroke-width="2.5"/>
+<line x1="747.6" y1="257.0" x2="681.6" y2="372.5" stroke="#0f172a" stroke-width="10" stroke-linecap="square"/>
+<line x1="787.2" y1="257.0" x2="879.6" y2="405.5" stroke="#0f172a" stroke-width="10" stroke-linecap="square"/>
+<line x1="939.0" y1="501.2" x2="1018.2" y2="679.4" stroke="#0f172a" stroke-width="9" stroke-linecap="square"/>
+<line x1="1011.6" y1="758.6" x2="925.8" y2="877.4" stroke="#0f172a" stroke-width="7" stroke-linecap="square"/>
+<line x1="1051.2" y1="798.2" x2="1024.8" y2="890.6" stroke="#0f172a" stroke-width="7" stroke-linecap="square"/>
+<line x1="859.8" y1="560.6" x2="873.0" y2="672.8" stroke="#0f172a" stroke-width="7" stroke-linecap="square"/>
+<line x1="925.8" y1="877.4" x2="1064.4" y2="903.8" stroke="#0f172a" stroke-width="7" stroke-linecap="square"/>
+<polygon points="229.5,989.6 526.5,567.2 552.9,587.0 255.9,1009.4" fill="#fed7aa" stroke="#7c2d12" stroke-width="1.4"/>
+<circle cx="430.8" cy="844.4" r="42" fill="none" stroke="#991b1b" stroke-width="1.2" stroke-dasharray="4,2"/>
+<rect x="845.6" y="736.0" width="68" height="32" transform="rotate(16 879.6 752.0)" fill="#fed7aa" stroke="#7c2d12" stroke-width="1.5"/>
+<rect x="1065.8" y="829.0" width="50" height="44" transform="rotate(10 1090.8 851.0)" fill="#fecdd3" stroke="#881337" stroke-width="1.5"/>
+<rect x="171.5" y="1090.4" width="116" height="34" rx="3" fill="#ffffff" fill-opacity="0.9" stroke="#0f172a" stroke-width="1.1"/>
+<text x="229.5" y="1103.4" class="tag-txt">RM-101 · SW PROW BALCONY</text>
+<text x="229.5" y="1117.4" class="sub-txt">EL +3.18m · 42 m²</text>
+<rect x="379.4" y="806.6" width="116" height="34" rx="3" fill="#ffffff" fill-opacity="0.9" stroke="#0f172a" stroke-width="1.1"/>
+<text x="437.4" y="819.6" class="tag-txt">RM-102 · CANTILEVER GREAT ROOM</text>
+<text x="437.4" y="833.6" class="sub-txt">EL +3.20m · 148 m²</text>
+<rect x="557.6" y="717.5" width="116" height="34" rx="3" fill="#ffffff" fill-opacity="0.9" stroke="#0f172a" stroke-width="1.1"/>
+<text x="615.6" y="730.5" class="tag-txt">RM-103 · DOUBLE HEARTH INGLENOOK</text>
+<text x="615.6" y="744.5" class="sub-txt">EL +3.20m · 38 m²</text>
+<rect x="841.4" y="437.0" width="116" height="34" rx="3" fill="#ffffff" fill-opacity="0.9" stroke="#0f172a" stroke-width="1.1"/>
+<text x="899.4" y="450.0" class="tag-txt">RM-104 · WHALE ROCK ENTRY FOYER</text>
+<text x="899.4" y="464.0" class="sub-txt">EL +3.80m · 46 m²</text>
+<rect x="864.5" y="595.4" width="116" height="34" rx="3" fill="#ffffff" fill-opacity="0.9" stroke="#0f172a" stroke-width="1.1"/>
+<text x="922.5" y="608.4" class="tag-txt">RM-105 · 27-SKYLIGHT ATRIUM GALLERY</text>
+<text x="922.5" y="622.4" class="sub-txt">EL +3.80m · 64 m²</text>
+<rect x="755.6" y="608.6" width="116" height="34" rx="3" fill="#ffffff" fill-opacity="0.9" stroke="#0f172a" stroke-width="1.1"/>
+<text x="813.6" y="621.6" class="tag-txt">RM-106 · WHALE-ROCK KITCHEN</text>
+<text x="813.6" y="635.6" class="sub-txt">EL +3.80m · 34 m²</text>
+<rect x="821.6" y="786.8" width="116" height="34" rx="3" fill="#ffffff" fill-opacity="0.9" stroke="#0f172a" stroke-width="1.1"/>
+<text x="879.6" y="799.8" class="tag-txt">RM-107 · DINING ALCOVE</text>
+<text x="879.6" y="813.8" class="sub-txt">EL +3.80m · 44 m²</text>
+<rect x="1085.6" y="852.8" width="116" height="34" rx="3" fill="#ffffff" fill-opacity="0.9" stroke="#0f172a" stroke-width="1.1"/>
+<text x="1143.6" y="865.8" class="tag-txt">RM-108 · EAST MASTER SUITE</text>
+<text x="1143.6" y="879.8" class="sub-txt">EL +3.80m · 68 m²</text>
+<rect x="933.8" y="826.4" width="116" height="34" rx="3" fill="#ffffff" fill-opacity="0.9" stroke="#0f172a" stroke-width="1.1"/>
+<text x="991.8" y="839.4" class="tag-txt">RM-109 · ROCK-WALL EN-SUITE BATH</text>
+<text x="991.8" y="853.4" class="sub-txt">EL +3.80m · 24 m²</text>
+<rect x="669.8" y="354.5" width="116" height="34" rx="3" fill="#ffffff" fill-opacity="0.9" stroke="#0f172a" stroke-width="1.1"/>
+<text x="727.8" y="367.5" class="tag-txt">RM-110 · NORTH PROW STUDY</text>
+<text x="727.8" y="381.5" class="sub-txt">EL +3.80m · 36 m²</text>
+<line x1="114.0" y1="1104.0" x2="1368.0" y2="928.0" stroke="#0369a1" stroke-width="1.6" stroke-dasharray="12,4,3,4"/>
+<circle cx="114.0" cy="1104.0" r="14" fill="#0369a1"/><text x="114.0" y="1108.0" style="font-size:10px;font-weight:800;fill:#fff;text-anchor:middle;">A-301</text>
+<line x1="114.0" y1="1125.0" x2="1364.7" y2="1125.0" stroke="#b91c1c" stroke-width="1.2"/>
+<line x1="110.0" y1="1129.0" x2="118.0" y2="1121.0" stroke="#b91c1c" stroke-width="1.6"/>
+<line x1="1360.7" y1="1129.0" x2="1368.7" y2="1121.0" stroke="#b91c1c" stroke-width="1.6"/>
+<rect x="685.3" y="1116.0" width="108" height="15" rx="2" fill="#fcfaf5" stroke="#b91c1c" stroke-width="0.6"/>
+<text x="739.3" y="1127.5" class="dim-txt">56.85m (186'-6")</text>
+<line x1="1510.0" y1="243.8" x2="1510.0" y2="1049.0" stroke="#b91c1c" stroke-width="1.2"/>
+<line x1="1506.0" y1="247.8" x2="1514.0" y2="239.8" stroke="#b91c1c" stroke-width="1.6"/>
+<line x1="1506.0" y1="1053.0" x2="1514.0" y2="1045.0" stroke="#b91c1c" stroke-width="1.6"/>
+<rect x="1456.0" y="637.4" width="108" height="15" rx="2" fill="#fcfaf5" stroke="#b91c1c" stroke-width="0.6"/>
+<text x="1510.0" y="648.9" class="dim-txt">43.80m (143'-8")</text>
+<line x1="114.0" y1="1094.0" x2="364.8" y2="1021.4" stroke="#b91c1c" stroke-width="1.2"/>
+<line x1="110.0" y1="1098.0" x2="118.0" y2="1090.0" stroke="#b91c1c" stroke-width="1.6"/>
+<line x1="360.8" y1="1025.4" x2="368.8" y2="1017.4" stroke="#b91c1c" stroke-width="1.6"/>
+<rect x="185.4" y="1048.7" width="108" height="15" rx="2" fill="#fcfaf5" stroke="#b91c1c" stroke-width="0.6"/>
+<text x="239.4" y="1060.2" class="dim-txt">8.53m (28'-0")</text>
+</svg>

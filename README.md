@@ -1,47 +1,60 @@
-# Massaro House (Petra Island, Lake Mahopac, NY) — 4-Mode WebXR Experience
+# Massaro House & 1951 Chahroudi Cottage (Petra Island, NY) — WebXR, ISO 19650 BIM & Architectural Drawing Set
 
-Interactive 3D, Virtual Reality (Meta Quest), 1:1 Augmented Reality, and Tabletop Dollhouse AR architectural experience of the **Massaro House** and the **1951 Frank Lloyd Wright Chahroudi Guest Cottage** on **Petra Island, Lake Mahopac, New York** (`41.3765° N, 73.7364° W`) — built natively via the **Blender MCP** (`v1.2.0`, calibrated to the exact `134.55 m × 129.75 m` aerial site extents at `0.15 m/px`).
-
-- **Live WebXR App:** [https://spinorama.github.io/MassaroHouse/](https://spinorama.github.io/MassaroHouse/)
-- **Source Scene & Asset:** [`massaro_house.blend`](./massaro_house.blend) (`0.99 MB`) · [`massaro_house.glb`](./massaro_house.glb) (`3.39 MB`)
-- **Archival Reference & Blender Renders:** [`reference/`](./reference/) (`21` plates) · [`renders/`](./renders/) (`9` verification renders)
-- **Version History:** [CHANGELOG.md](./CHANGELOG.md)
+Complete digital twin, **4-Mode Interactive WebXR Experience**, **ISO 19650 / IFC4 Contractor BIM Coordination Viewer**, and **10-Sheet Architectural Construction Drawing Set (`A-000` to `A-501`)** of the **Massaro House** and the **1951 Frank Lloyd Wright Chahroudi Guest Cottage** on **Petra Island, Lake Mahopac, New York** (`41.3765° N, 73.7364° W`) — built natively via the **Blender MCP** (`v2.0.0`, calibrated to the exact `134.55 m × 129.75 m` aerial site extents at `0.15 m/px`).
 
 ---
 
-## 🏛️ Architectural Scope (`Set_house` Hierarchy — 858 Objects)
+## 🚀 Live Interactive Deliverables
 
-- **`House_Group` (421 nodes):** Stepped Cherokee-red radiant slabs (`Z = 3.20 m` cantilevered SW living prow + `Z = 3.80 m` upper split-level wing), deep under-deck concrete girders, desert-rubble stone piers & walls with procedural 3D embedded angular fieldstones, monument double-sided fireplace, stepped pale-granite Whale Rock, Kitchen Boulder, Study Boulder & Bathroom Boulder Cascade, full-height African mahogany curtain walls & clerestories, and photo-accurate interiors:
-  - **Cantilevered Great Room:** Hexagonal Usonian geometric rugs, 14 m cream lakeside banquette with under-seat LED cove & triangular end tables, recessed triangular ceiling downlights, prow easel canvas, barrel armchairs, and baby grand piano.
-  - **27-Skylight Atrium & Entry:** Built-in banquette, hexagonal side tables, cantilevered Whale-Rock bar shelf, 4.4 m **Japanese Pine & Crane Screen Mural**, and suspended bronze ceremonial gong.
-  - **Whale-Rock Kitchen & Dining:** Scribed bluestone counters, **5 red Le Creuset Dutch ovens & skillets** on the rock shelf, red mosaic tile backsplash, flush mahogany cabinets, boat-shaped dining table with **8 tall slatted-back FLW chairs**, buffet credenza, and Wrightian chandelier.
-  - **Master Suite, Rock Shower Bath & Study:** Full-width mahogany headboard credenza with warm LED uplight over stacked fieldstone, corner stone hearth, diagonal mahogany tray ceiling, crimson silk bed, tall cutout-back Wright chair, and frameless glass shower with frosted FLW chevron motif.
-- **`Roof_Group` (252 nodes):** Patinaed standing-seam bronze/copper roof fascia (`Mat_Copper_Fascia`), cantilevered roof ring (`Z = 7.48–8.05 m`), mahogany interior soffits, 27 stepped concrete & mahogany coffered skylight pyramids, circular `H` Helipad, US Flag deck inlay, plus the **Chahroudi Guest Cottage hipped shingle roof & 30+ exposed hexagonal timber rafters** — all cleanly toggleable via `🏠 Roof` for a dual-house Dollhouse cutaway.
-- **`Context_Group` (161 nodes):**
-  - **1951 FLW Chahroudi Guest Cottage (Exterior & Full Interior):** Battered desert-rubble wing & planter walls with 3D fieldstones, 4 mahogany French doors, glowing spherical globe eave pendant, 3-step Cherokee-red terrace with triangular reflection pool & sculpted wood lounge chairs; interior with monumental battered concrete fireplace hood & embedded gold granite slab, 2 X-frame cord-slung Wright chairs, polygonal dining table, board-and-batten partition with framed window, folding accordion doors to the bedroom alcove, and galley kitchen with hexagonal stained-glass window & vintage red stove.
-  - **Petra Island & Lake Mahopac:** Vertex-blended granite shoreline & emerald lawn clearing, coastal boulders, timber pile pier, covered boathouse slip & moored V-hull runabout boat, stepped arrival promenade, bluestone walkway, NE outbuildings & trailered boat, and ~120 faceted woodland trees batched into 4 WebXR-fast groves — cleanly toggleable via `🌳 Context`.
-- **`Waypoints_Group` & `Cameras_Group` (18 presets):** Full tour spanning `01 · Ext Three-Quarter` through `18 · Aerial Extents` (including dedicated `15 · 1951 Chahroudi Ext` and `16 · 1951 Chahroudi Int` viewpoints).
+| Deliverable | URL / Path | Standards & Capabilities |
+| :--- | :--- | :--- |
+| **1. 4-Mode WebXR Experience** | [**`index.html`**](https://spinorama.github.io/MassaroHouse/) | `3D View`, `Quest VR`, `1:1 AR Walk`, `Tabletop AR`, `Roof/Context` cutaways, `DIN 1451 / LCARS` telemetry |
+| **2. Contractor BIM Coordination Viewer** | [**`bim.html`**](https://spinorama.github.io/MassaroHouse/bim.html) | `ISO 19650-2 (S4 · Rev P02.1)` · `IFC4 ADD2 TC1` · `834` federated elements · CSI MasterFormat 2020 trade filters · 6-plane Section Box · Laser Tape Measure · `.IFC` & `.CSV` BOQ export |
+| **3. Architectural Construction Drawing Set** | [**`drawings/index.html`**](https://spinorama.github.io/MassaroHouse/drawings/index.html) | 10 contractor-grade Vector SVG CAD sheets (`A-000` through `A-501`) with pan/zoom blueprint binder, 30°/60° FLW grids, sections, details & QTO schedules |
+| **4. Federated BIM Metadata & Assets** | [`massaro_bim_metadata.json`](./massaro_bim_metadata.json) · [`massaro_house.glb`](./massaro_house.glb) · [`massaro_house.blend`](./massaro_house.blend) | `834` mesh elements (`858` total scene nodes including `18` cameras & `18` waypoints) |
+| **5. Verification Renders & Archival Plates** | [`renders/`](./renders/) (`9` renders) · [`reference/`](./reference/) (`21` plates) | Cycles/EEVEE verification renders (`01`–`09`) & historical reference photography (`00`–`20`) |
 
 ---
 
-## ✨ Features & 4 Viewing Modes
+## 🏗️ ISO 19650 / IFC4 Contractor BIM Viewer (`bim.html`)
 
-1. **🖥️ Mode 1 · 3D View (Desktop & Phone Browser)**
-   - **Phone / Touch:** **1-finger drag** orbits 360° around the current space's focal target, **2-finger pinch** zooms smoothly in and out, and **2-finger drag** pans.
-   - **Desktop:** Left-drag look, right-drag (or `Shift`+drag) pan, scroll wheel zoom, and `WASD` / Arrow keys + `E`/`Q` vertical fly.
-2. **🥽 Mode 2 · Quest VR (`immersive-vr`)**
-   - Aim controller laser at any floor, deck, terrace, dock, or terrain surface to reveal the cyan teleport reticle and pull Trigger/Grip to teleport, or walk with the left thumbstick and snap-turn with the right thumbstick.
-3. **📱 Mode 3 · 1:1 AR Walk (`immersive-ar`)**
-   - Full-scale 1:1 architectural walkthrough in your physical space. Tap any room pill to re-anchor yourself inside that space at 1:1 scale.
-4. **🏡 Mode 4 · Tabletop AR (`immersive-ar` Dollhouse)**
-   - Scales the entire Petra Island estate (`135 m × 130 m` extents including Lake Mahopac shoreline, main cantilevered residence, dock, and 1951 Chahroudi Guest Cottage) to fit your table or screen. Use **2-finger pinch** to smoothly change scale and **1-finger drag** to rotate.
+Designed as a Common Data Environment (CDE) deliverable (`MAS-THH-ZZ-ZZ-M3-A-0001`, Suitability `S4 — For Construction Coordination`, Revision `P02.1`):
+
+- **IFC4 Spatial Hierarchy (`IfcProject -> IfcSite -> IfcBuilding -> IfcBuildingStorey`):**
+  - `BLDG-01` — Massaro Main Residence (FLW 1949 / Thomas A. Heinz, AIA 2003–2007)
+  - `BLDG-02` — 1951 Frank Lloyd Wright Chahroudi Guest Cottage
+  - `BLDG-03` — Helipad, Timber Boat Dock & Island Outbuildings
+  - `SITE-01` — Petra Island Granite Bedrock, Lake Mahopac & Deciduous Forest
+  - Storeys `L00` (`-4.0m..+1.5m`), `L01` (`+1.5m..+3.1m`), `L02` (`+3.1m..+4.5m`), `L03` (`+4.5m..+6.8m`), `L04` (`+6.8m..+9.0m`)
+- **18 IFC4 Entity Classes:** `IfcWall`, `IfcSlab`, `IfcRoof`, `IfcBeam`, `IfcFooting`, `IfcCurtainWall`, `IfcWindow`, `IfcDoor`, `IfcMember`, `IfcChimney`, `IfcStairFlight`, `IfcRailing`, `IfcFurnishingElement`, `IfcSanitaryTerminal`, `IfcElectricAppliance`, `IfcLightFixture`, `IfcCivilElement`, `IfcGeographicElement`.
+- **CSI MasterFormat 2020 Subcontractor Trade Packages:** One-click isolation and quantity rollups for `Div 03` Concrete, `Div 04` Desert Rubblestone Masonry, `Div 05` Structural Steel, `Div 06` Rough Carpentry & Custom Mahogany/Cherry Architectural Woodwork, `Div 07` Patinated Copper Roofing & 26 Skylights, `Div 08` Mahogany Curtain Wall Glazing, `Div 11` Appliances, `Div 12` Built-in Wrightian Furnishings, `Div 22` Plumbing, `Div 26` Lighting, `Div 31` Granite Bedrock Integration, and `Div 32/35` Marine Docks.
+- **6 Federation Color Modes:** `PBR Realistic`, `By IFC4 Class`, `By CSI Trade`, `By Storey`, `By ISO 19650 Discipline`, and `CAD Wireframe`.
+- **Interactive 6-Plane 3D Section Box & Laser Tape Measure `[M]`:** Live X/Y/Z clipping planes with architectural cut presets (`Plan Cut L02 +4.3m`, `Plan Cut L01 +2.8m`, `Section A-A`, `Section B-B`, `Cottage Cutaway`) and point-to-point 3D laser measurement ($\Delta X, \Delta Y, \Delta Z$ in metric & `ft'-in"`).
+- **Right-Docked IFC4 Property Inspector & Bottom Live BOQ Schedule:** Inspect `Pset_ISO19650_Identification`, `Pset_Classification` (`CSI`, `Uniformat II`, `Uniclass 2015`), and `Qto_ElementBaseQuantities`, and export `.IFC` (ISO 10303-21 STEP) or `.CSV` (Excel BOQ) directly from the browser.
 
 ---
 
-## 🎛️ Architectural Controls
+## 📐 Full Architectural Construction Drawing Set (`drawings/`)
 
-- **🏠 Roof (`Roof_Group`):** Toggle the cantilevered roof fascia, 27 triangular skylight coffers, helipad, and interior ceilings on/off for a Dollhouse cutaway view.
-- **🌳 Context (`Context_Group`):** Toggle Lake Mahopac water, Petra Island outer terrain, boat dock, 1951 Chahroudi Guest Cottage, outbuildings, and woodland canopy on/off.
-- **✏️ Lines (`[L]` Hotkey):** Toggle subtle **Hidden-Line CAD rendering** (`EdgesGeometry` architectural linework over warm paper-tinted surfaces).
-- **📐 Style (`[T]` Hotkey):** Switch between **German DIN 1451 E-Ink Technical Specification** (default) and **Star Trek LCARS Telemetry** with procedural Web Audio sound effects.
-- **📋 Changelog Modal:** Inspect progressive Blender MCP construction milestones live in-app.
+Interactive blueprint sheet binder ([`drawings/index.html`](./drawings/index.html)) containing 10 vector SVG sheets generated directly from the calibrated Blender BIM geometry:
+
+1. **[`A-000_Cover_Index.svg`](./drawings/A-000_Cover_Index.svg)** — Cover Sheet, Drawing Index, ISO 19650 Metadata Matrix, Symbols Legend & CSI Summary
+2. **[`A-100_Master_Site_Plan.svg`](./drawings/A-100_Master_Site_Plan.svg)** — Petra Island Master Site & Roof Plan (`1:500`, `134.55m × 129.75m` extents, grid, contours, Main House, 1951 Cottage, Helipad & Docks)
+3. **[`A-101_Main_Floor_Plan.svg`](./drawings/A-101_Main_Floor_Plan.svg)** — Main Residence Level `L01/L02` Architectural Floor Plan (`1:100`, 30°/60° triangular grid, Whale Rock & Entry Boulder penetrations, 6 stone piers, room schedule & dimensions)
+4. **[`A-102_Roof_Skylight_Plan.svg`](./drawings/A-102_Roof_Skylight_Plan.svg)** — Main Residence Roof Framing, Patinated Copper Fascia & 26-Skylight Matrix Plan (`1:100`)
+5. **[`A-103_Reflected_Ceiling_Plan.svg`](./drawings/A-103_Reflected_Ceiling_Plan.svg)** — Main Residence Reflected Ceiling & Lighting Plan (`1:100`, mahogany soffits, recessed coves & 6 triangular chandeliers)
+6. **[`A-104_Chahroudi_Cottage_Plans.svg`](./drawings/A-104_Chahroudi_Cottage_Plans.svg)** — 1951 FLW Chahroudi Guest Cottage Floor Plan, Cathedral Rafter Framing Plan & Exterior Elevations (`1:50`)
+7. **[`A-201_Exterior_Elevations.svg`](./drawings/A-201_Exterior_Elevations.svg)** — Exterior Building Elevations: South Lakefront, West Prow Cantilever, North Arrival & East Elevation (`1:125`)
+8. **[`A-301_Building_Sections.svg`](./drawings/A-301_Building_Sections.svg)** — Longitudinal Section `A-A` (8.5m SW Cantilever Prow) & Transverse Section `B-B` (Entry Rock Steps & Skylight Wells) (`1:100`)
+9. **[`A-401_Interior_Elevations_Details.svg`](./drawings/A-401_Interior_Elevations_Details.svg)** — Enlarged Interior Architectural Details: Entry Foyer Rock Steps, Great Room Inglenook & Chandeliers, Curved Cherry Kitchen Island, Primary Bath Copper Tub & Bedrock Wall (`1:25`)
+10. **[`A-501_BIM_Schedules_QTO.svg`](./drawings/A-501_BIM_Schedules_QTO.svg)** — ISO 19650 / IFC4 Element Schedules, CSI Division Take-Off & Storey Quantities (`N.T.S.`)
+
+---
+
+## 🥽 4-Mode Interactive WebXR Experience (`index.html`)
+
+- **🖥️ Mode 1 · 3D View (Desktop & Phone Browser):** Orbit, pan, zoom, and fly (`WASD` + `E/Q`) across 18 curated architectural camera stations.
+- **🥽 Mode 2 · Quest VR (`immersive-vr`):** Controller laser teleportation across all interior decks, roof terraces, and island trails.
+- **📱 Mode 3 · 1:1 AR Walk (`immersive-ar`):** Full-scale 1:1 walkthrough anchored to your physical space.
+- **🏡 Mode 4 · Tabletop AR (`immersive-ar` Dollhouse):** Interactive tabletop scale model of Petra Island with pinch-to-scale and 1-finger rotation.
+- **🎛️ Architectural Toggles:** `🏠 Roof` (`Roof_Group`), `🌳 Context` (`Context_Group`), `✏️ Lines [L]` (Hidden-Line CAD), and `📐 Style [T]` (`DIN 1451` vs `Star Trek LCARS`).

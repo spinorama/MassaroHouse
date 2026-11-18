@@ -4,6 +4,20 @@ All progressive Blender MCP construction milestones and WebXR updates are docume
 
 ---
 
+## [v2.0.0] — 2026-11-18 (ISO 19650 / IFC4 Contractor BIM Coordination Viewer & 10-Sheet Construction Drawing Set)
+### Added
+- **Dedicated Contractor BIM Coordination & Federation Viewer (`bim.html` + `massaro_bim_metadata.json`)**:
+  - **ISO 19650-2 Information Container (`MAS-THH-ZZ-ZZ-M3-A-0001`)**: Suitability `S4 — For Construction Coordination`, Revision `P02.1`, Schema `IFC4 ADD2 TC1`.
+  - **1:1 Federated BIM Metadata (`massaro_bim_metadata.json`)**: Extracted exact world-space bounding boxes, dimensions, datum elevations, surface areas (`m²`/`sq ft`), volumes (`m³`/`cu ft`), deterministic IFC4 `GlobalId`s, `IfcClass`, `PredefinedType`, CSI MasterFormat 2020 codes, Uniformat II, Uniclass 2015, and contractor specification notes for all `834` mesh elements (`858` total Blender scene nodes).
+  - **Spatial Hierarchy & Trade Filtering**: Filter, hide, or 1-click isolate by `IfcBuilding` (`BLDG-01` Main Residence, `BLDG-02` 1951 Chahroudi Cottage, `BLDG-03` Marine/Outbuildings, `SITE-01` Petra Island), `IfcBuildingStorey` (`L00`–`L04`), 18 `IFC4` Entity Classes, and CSI MasterFormat subcontractor trade packages (`Div 03` through `Div 35`).
+  - **6 Federation Color Modes**: `PBR Realistic`, `By IFC4 Class`, `By CSI Trade`, `By Storey`, `By ISO 19650 Discipline`, and `CAD Wireframe`.
+  - **Interactive 6-Plane 3D Section Box & Laser Tape Measure `[M]`**: Live X/Y/Z clipping planes with architectural cut presets (`Plan Cut L02 +4.3m`, `Plan Cut L01 +2.8m`, `Section A-A`, `Section B-B`, `Cottage Cutaway`), Perspective/Orthographic camera toggle `[O]`, and point-to-point 3D laser measurement ($\Delta X, \Delta Y, \Delta Z$, Metric & Imperial).
+  - **Right-Docked IFC4 Property Inspector & Live BOQ Spreadsheet**: Inspect `Pset_ISO19650_Identification`, `Pset_Classification`, and `Qto_ElementBaseQuantities`, plus in-browser `.IFC` (ISO 10303-21 STEP) and `.CSV` (Excel BOQ) exports.
+- **Full 10-Sheet Architectural Construction Drawing Set (`drawings/index.html` & `A-000`–`A-501`)**:
+  - Generated 10 contractor-grade Vector SVG architectural sheets (`A-000_Cover_Index.svg`, `A-100_Master_Site_Plan.svg`, `A-101_Main_Floor_Plan.svg`, `A-102_Roof_Skylight_Plan.svg`, `A-103_Reflected_Ceiling_Plan.svg`, `A-104_Chahroudi_Cottage_Plans.svg`, `A-201_Exterior_Elevations.svg`, `A-301_Building_Sections.svg`, `A-401_Interior_Elevations_Details.svg`, `A-501_BIM_Schedules_QTO.svg`) and an interactive pan/zoom blueprint binder (`drawings/index.html`).
+
+---
+
 ## [v1.2.0] — 2026-11-17 (Photo-Accurate Massaro Interiors & 1951 Chahroudi Guest Cottage Overhaul)
 ### Added & Rebuilt
 - **Archival Reference Library (`reference/` & `renders/`)**: Curated 21 architectural photography plates (`reference/00`–`20`) of the Massaro House and 1951 Chahroudi Guest Cottage plus 9 verified Blender verification renders (`renders/01`–`09`).

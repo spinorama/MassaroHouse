@@ -1,0 +1,2325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Massaro House — ISO 19650 / IFC4 BIM Coordination &amp; Federation Viewer</title>
+  <style>
+    :root {
+      --bg-dark: #060b13;
+      --bg-panel: #0b1322;
+      --bg-card: #111d33;
+      --bg-hover: #182947;
+      --border: #1f3458;
+      --border-light: #2c4a7c;
+      --accent: #38bdf8;
+      --accent-gold: #f59e0b;
+      --accent-green: #10b981;
+      --accent-purple: #a855f7;
+      --accent-red: #ef4444;
+      --text-main: #e2e8f0;
+      --text-muted: #94a3b8;
+      --font-mono: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+
+    /* Top ISO 19650 CDE Header */
+    header.cde-header {
+      height: 52px;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      flex-shrink: 0;
+      z-index: 30;
+    }
+
+    .cde-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+    }
+
+    .badge-iso {
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .badge-s4 {
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid var(--accent-green);
+      color: var(--accent-green);
+    }
+
+    .badge-ifc {
+      background: rgba(168, 85, 247, 0.14);
+      border: 1px solid var(--accent-purple);
+      color: #c084fc;
+    }
+
+    .project-title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-title h1 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: 0.2px;
+    }
+
+    .project-title span {
+      font-size: 10.5px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    .cde-kpis {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 5px;
+    }
+
+    .kpi-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .kpi-label {
+      font-size: 9px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .kpi-val {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .cde-actions {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .btn {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.14s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: var(--bg-hover);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn.active {
+      background: rgba(56, 189, 248, 0.22);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-gold {
+      background: rgba(245, 158, 11, 0.16);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    .btn-gold:hover {
+      background: var(--accent-gold);
+      color: #060b13;
+    }
+
+    .btn-green {
+      background: rgba(16, 185, 129, 0.16);
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+    }
+
+    .btn-green:hover {
+      background: var(--accent-green);
+      color: #060b13;
+    }
+
+    .btn-primary {
+      background: rgba(56, 189, 248, 0.16);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      color: #060b13;
+    }
+
+    /* Upper Split: Left Explorer + Center 3D Viewport + Right Inspector */
+    .main-split {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      min-height: 0;
+    }
+
+    /* Left BIM Federation Explorer */
+    aside.left-explorer {
+      width: 340px;
+      background: var(--bg-panel);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      min-height: 0;
+    }
+
+    .tab-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-dark);
+      flex-shrink: 0;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      padding: 9px 4px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .tab-pane {
+      display: none;
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tab-pane.active {
+      display: flex;
+    }
+
+    .panel-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .section-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--accent);
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .quick-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .chip-btn {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 10.5px;
+      padding: 4px 7px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+    }
+
+    .chip-btn:hover, .chip-btn.active {
+      border-color: var(--accent);
+      color: #fff;
+      background: rgba(56, 189, 248, 0.16);
+    }
+
+    /* Tree / Filter Rows */
+    .filter-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .filter-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 6px;
+      border-radius: 4px;
+      background: rgba(6, 11, 19, 0.55);
+      border: 1px solid transparent;
+      font-size: 11.5px;
+      transition: background 0.12s;
+    }
+
+    .filter-row:hover {
+      background: var(--bg-hover);
+      border-color: var(--border);
+    }
+
+    .filter-left {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 0;
+      flex: 1;
+      cursor: pointer;
+    }
+
+    .swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .filter-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #f1f5f9;
+    }
+
+    .filter-right {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .count-pill {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      background: var(--bg-dark);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    .mini-btn {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 10px;
+      padding: 2px 5px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+    }
+
+    .mini-btn:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    /* Sliders for Section Box */
+    .slider-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .slider-top {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--text-muted);
+    }
+
+    .slider-top strong {
+      color: var(--accent-gold);
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    /* Center 3D Viewport */
+    main.viewport-center {
+      flex: 1;
+      position: relative;
+      background: radial-gradient(circle at center, #0f1b2e 0%, #050911 100%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #bim-canvas-container {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    /* Top Floating Viewport Toolbar */
+    .viewport-toolbar {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 15;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-group {
+      pointer-events: auto;
+      background: rgba(11, 19, 34, 0.9);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      padding: 4px 6px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .cad-select {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      cursor: pointer;
+    }
+
+    /* Federation Legend Overlay */
+    .legend-overlay {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(11, 19, 34, 0.9);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      max-width: 280px;
+      max-height: 220px;
+      overflow-y: auto;
+      z-index: 12;
+      pointer-events: auto;
+    }
+
+    .legend-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .legend-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 10px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Laser Tape Readout Banner */
+    .measure-banner {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(11, 19, 34, 0.94);
+      border: 1px solid var(--accent-gold);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-main);
+      z-index: 12;
+      display: none;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    }
+
+    .measure-banner.active {
+      display: block;
+    }
+
+    /* Loading Overlay */
+    #loading-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(6, 11, 19, 0.92);
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Right Docked IFC4 Property Inspector */
+    aside.right-inspector {
+      width: 350px;
+      background: var(--bg-panel);
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      min-height: 0;
+    }
+
+    .inspector-header {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .inspector-header h2 {
+      font-size: 11.5px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+    }
+
+    .inspector-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pset-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .pset-title {
+      background: rgba(56, 189, 248, 0.1);
+      padding: 6px 10px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .pset-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+
+    .pset-table tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .pset-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .pset-table td {
+      padding: 5px 8px;
+      vertical-align: top;
+    }
+
+    .pset-key {
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      width: 42%;
+    }
+
+    .pset-val {
+      color: #f8fafc;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      word-break: break-word;
+    }
+
+    /* Bottom Collapsible BOQ Schedule Table */
+    section.boq-drawer {
+      height: 215px;
+      background: var(--bg-panel);
+      border-top: 2px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      transition: height 0.2s ease;
+      z-index: 25;
+    }
+
+    section.boq-drawer.collapsed {
+      height: 36px;
+    }
+
+    section.boq-drawer.expanded {
+      height: 430px;
+    }
+
+    .boq-bar {
+      height: 36px;
+      background: var(--bg-dark);
+      border-bottom: 1px solid var(--border);
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .boq-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .boq-title {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .boq-search {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      width: 260px;
+      font-family: var(--font-mono);
+    }
+
+    .boq-table-wrap {
+      flex: 1;
+      overflow: auto;
+    }
+
+    table.boq-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    table.boq-table thead th {
+      position: sticky;
+      top: 0;
+      background: #0e192d;
+      color: var(--accent);
+      text-align: left;
+      padding: 6px 8px;
+      font-size: 10px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      white-space: nowrap;
+      z-index: 5;
+    }
+
+    table.boq-table tbody tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      cursor: pointer;
+    }
+
+    table.boq-table tbody tr:hover {
+      background: var(--bg-hover);
+    }
+
+    table.boq-table tbody tr.selected {
+      background: rgba(56, 189, 248, 0.22);
+      color: #fff;
+    }
+
+    table.boq-table td {
+      padding: 4px 8px;
+      white-space: nowrap;
+    }
+
+    /* 2D Sheet Quick Preview Modal */
+    .sheet-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.84);
+      backdrop-filter: blur(4px);
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .sheet-modal-backdrop.open {
+      display: flex;
+    }
+
+    .sheet-modal {
+      width: 95vw;
+      height: 90vh;
+      background: var(--bg-panel);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .sheet-modal-hdr {
+      height: 46px;
+      background: var(--bg-dark);
+      border-bottom: 1px solid var(--border);
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sheet-modal-body {
+      flex: 1;
+      overflow: auto;
+      background: #050911;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    .sheet-modal-body img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border: 1px solid var(--border);
+    }
+  </style>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- Top ISO 19650 CDE Header -->
+  <header class="cde-header">
+    <div class="cde-left">
+      <span class="badge badge-iso" title="ISO 19650-2 Information Container ID">MAS-THH-ZZ-ZZ-M3-A-0001</span>
+      <span class="badge badge-s4" title="ISO 19650 Suitability Code S4: Suitable for Stage Approval & Construction Coordination">S4 · REV P02.1</span>
+      <span class="badge badge-ifc" title="buildingSMART Industry Foundation Classes Schema">IFC4 ADD2 TC1</span>
+      <div class="project-title">
+        <h1>MASSARO HOUSE &amp; 1951 CHAHROUDI COTTAGE — BIM FEDERATION VIEWER</h1>
+        <span>Petra Island, Lake Mahopac, NY · Calibrated 134.55m × 129.75m Site · FLW / Heinz</span>
+      </div>
+    </div>
+
+    <div class="cde-kpis">
+      <div class="kpi-item">
+        <span class="kpi-label">Visible Elements</span>
+        <span class="kpi-val" id="kpi-elements">834 / 834</span>
+      </div>
+      <div class="kpi-item">
+        <span class="kpi-label">Filtered Surface Area</span>
+        <span class="kpi-val" id="kpi-area">0 m²</span>
+      </div>
+      <div class="kpi-item">
+        <span class="kpi-label">Filtered Net Volume</span>
+        <span class="kpi-val" id="kpi-volume">0 m³</span>
+      </div>
+    </div>
+
+    <div class="cde-actions">
+      <a class="btn btn-gold" href="./drawings/index.html" title="Open Full 10-Sheet Architectural Construction Drawing Binder (A-000 to A-501)">
+        📐 Drawing Set (10 Sheets)
+      </a>
+      <button class="btn btn-green" id="btn-export-ifc" title="Download ISO 10303-21 STEP IFC4 Model File (.ifc)">
+        📥 Export IFC4 (.ifc)
+      </button>
+      <button class="btn btn-primary" id="btn-export-csv" title="Download Contractor Bill of Quantities Spreadsheet (.csv)">
+        📊 Export BOQ (.csv)
+      </button>
+      <a class="btn" href="./index.html" title="Open Original 4-Mode Interactive WebXR Experience">
+        🥽 WebXR Viewer
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Workspace Split -->
+  <div class="main-split">
+    <!-- Left Docked BIM Federation Explorer -->
+    <aside class="left-explorer">
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="tab-ifc">🏛️ IFC4 Tree</button>
+        <button class="tab-btn" data-tab="tab-csi">👷 CSI Trades</button>
+        <button class="tab-btn" data-tab="tab-section">✂️ Cut &amp; Tape</button>
+        <button class="tab-btn" data-tab="tab-sheets">📐 2D Sheets</button>
+      </div>
+
+      <!-- TAB 1: IFC4 Spatial Tree, Color Federation & Entity Classes -->
+      <div class="tab-pane active" id="tab-ifc">
+        <div class="panel-section">
+          <div class="section-hdr">
+            <span>🎨 3D Federation Color Mode</span>
+          </div>
+          <div class="quick-chip-row" id="color-mode-chips">
+            <button class="chip-btn" data-colormode="pbr">PBR Realistic</button>
+            <button class="chip-btn active" data-colormode="ifc">By IFC4 Class</button>
+            <button class="chip-btn" data-colormode="csi">By CSI Trade</button>
+            <button class="chip-btn" data-colormode="storey">By Storey</button>
+            <button class="chip-btn" data-colormode="discipline">By Discipline</button>
+            <button class="chip-btn" data-colormode="wireframe">CAD Wireframe</button>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <div class="section-hdr">
+            <span>⚡ Quick Discipline Presets</span>
+          </div>
+          <div class="quick-chip-row">
+            <button class="chip-btn" id="preset-all">Show All (834)</button>
+            <button class="chip-btn" id="preset-no-roof">Interior Cutaway (No Roof)</button>
+            <button class="chip-btn" id="preset-struct">Structural Shell &amp; Bedrock</button>
+            <button class="chip-btn" id="preset-envelope">Copper Roof &amp; Glazing</button>
+            <button class="chip-btn" id="preset-interior">Millwork, Furniture &amp; MEP</button>
+            <button class="chip-btn" id="preset-cottage">1951 Chahroudi Cottage Only</button>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <div class="section-hdr">
+            <span>🏢 IfcBuilding Spatial Breakdown</span>
+          </div>
+          <div class="filter-list" id="building-filter-list"></div>
+        </div>
+
+        <div class="panel-section">
+          <div class="section-hdr">
+            <span>📑 IfcBuildingStorey Levels (L00–L04)</span>
+          </div>
+          <div class="filter-list" id="storey-filter-list"></div>
+        </div>
+
+        <div class="panel-section">
+          <div class="section-hdr">
+            <span>🧱 IFC4 Entity Classes (18)</span>
+            <button class="mini-btn" id="btn-all-ifc-on">All On</button>
+          </div>
+          <div class="filter-list" id="ifc-class-list"></div>
+        </div>
+      </div>
+
+      <!-- TAB 2: CSI MasterFormat Contractor Trade Packages -->
+      <div class="tab-pane" id="tab-csi">
+        <div class="panel-section">
+          <div class="section-hdr">
+            <span>👷 CSI MasterFormat 2020 Trade Scopes</span>
+            <button class="mini-btn" id="btn-all-csi-on">All Trades</button>
+          </div>
+          <p style="font-size: 11px; color: var(--text-muted); line-height: 1.4;">
+            Toggle or isolate individual subcontractor bid packages (`Div 03` Concrete through `Div 35` Marine Docks).
+          </p>
+          <div class="filter-list" id="csi-filter-list"></div>
+        </div>
+      </div>
+
+      <!-- TAB 3: 6-Plane Section Box & Point-to-Point Laser Tape Measure -->
+      <div class="tab-pane" id="tab-section">
+        <div class="panel-section">
+          <div class="section-hdr">
+            <span>✂️ 6-Plane 3D Section Box Slicer</span>
+            <button class="mini-btn" id="btn-reset-section">Reset Box</button>
+          </div>
+          <div class="quick-chip-row">
+            <button class="chip-btn" data-cut="none">Full Uncut</button>
+            <button class="chip-btn" data-cut="plan-l02">Plan Cut L02 (+4.3m)</button>
+            <button class="chip-btn" data-cut="plan-l01">Plan Cut L01 (+2.8m)</button>
+            <button class="chip-btn" data-cut="sec-aa">Section A-A (SW Prow)</button>
+            <button class="chip-btn" data-cut="sec-bb">Section B-B (Entry Rock)</button>
+            <button class="chip-btn" data-cut="cottage-cut">Cottage Cutaway</button>
+          </div>
+
+          <div class="slider-row">
+            <div class="slider-top"><span>Elevation Cut Top (Z-Up / EL m)</span><strong id="val-ymax">+22.0m</strong></div>
+            <input type="range" id="clip-ymax" min="-2" max="22" step="0.1" value="22" />
+          </div>
+          <div class="slider-row">
+            <div class="slider-top"><span>Elevation Cut Bottom (EL m)</span><strong id="val-ymin">-5.0m</strong></div>
+            <input type="range" id="clip-ymin" min="-5" max="15" step="0.1" value="-5" />
+          </div>
+          <div class="slider-row">
+            <div class="slider-top"><span>East-West Cut West (X Min)</span><strong id="val-xmin">-80.0m</strong></div>
+            <input type="range" id="clip-xmin" min="-80" max="60" step="0.5" value="-80" />
+          </div>
+          <div class="slider-row">
+            <div class="slider-top"><span>East-West Cut East (X Max)</span><strong id="val-xmax">+80.0m</strong></div>
+            <input type="range" id="clip-xmax" min="-60" max="80" step="0.5" value="80" />
+          </div>
+          <div class="slider-row">
+            <div class="slider-top"><span>North-South Cut North (Z Min)</span><strong id="val-zmin">-80.0m</strong></div>
+            <input type="range" id="clip-zmin" min="-80" max="60" step="0.5" value="-80" />
+          </div>
+          <div class="slider-row">
+            <div class="slider-top"><span>North-South Cut South (Z Max)</span><strong id="val-zmax">+80.0m</strong></div>
+            <input type="range" id="clip-zmax" min="-60" max="80" step="0.5" value="80" />
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <div class="section-hdr">
+            <span>📏 3D Laser Tape Measure [M]</span>
+            <button class="mini-btn" id="btn-clear-measures">Clear</button>
+          </div>
+          <p style="font-size: 11px; color: var(--text-muted); line-height: 1.4;">
+            Activate Laser Measure and click any two surfaces in the 3D BIM model to verify contractor dimensions ($\Delta X, \Delta Y, \Delta Z$, Metric &amp; Imperial).
+          </p>
+          <button class="btn" id="btn-toggle-measure-side" style="justify-content: center;">📏 Toggle Laser Tape Measure [M]</button>
+          <div id="measure-history-list" style="display: flex; flex-direction: column; gap: 5px; margin-top: 4px;"></div>
+        </div>
+      </div>
+
+      <!-- TAB 4: 2D Architectural Construction Sheets (A-000 to A-501) -->
+      <div class="tab-pane" id="tab-sheets">
+        <div class="panel-section">
+          <div class="section-hdr">
+            <span>📐 Linked 2D Construction Sheets</span>
+            <a class="mini-btn" href="./drawings/index.html" style="text-decoration:none;">Full Binder ↗</a>
+          </div>
+          <p style="font-size: 11px; color: var(--text-muted); line-height: 1.4;">
+            Click any sheet below to open an instant 2D CAD overlay or open the full interactive sheet binder.
+          </p>
+          <div class="filter-list" id="linked-sheets-list"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Center 3D CAD Viewport -->
+    <main class="viewport-center">
+      <!-- Top Viewport Controls -->
+      <div class="viewport-toolbar">
+        <div class="toolbar-group">
+          <button class="btn" id="btn-cam-ortho" title="Toggle Perspective / True Orthographic CAD Projection [O]">📐 Ortho [O]</button>
+          <button class="btn" data-view="TOP">TOP</button>
+          <button class="btn" data-view="SOUTH">SOUTH</button>
+          <button class="btn" data-view="WEST">WEST</button>
+          <button class="btn" data-view="NORTH">NORTH</button>
+          <button class="btn" data-view="EAST">EAST</button>
+          <button class="btn" data-view="ISO_SW">ISO SW</button>
+          <button class="btn" data-view="COTTAGE">1951 COTTAGE</button>
+        </div>
+
+        <div class="toolbar-group">
+          <select class="cad-select" id="station-jump-select" title="Jump to Pre-Calibrated Architectural Inspection Station">
+            <option value="">📍 Jump to Inspection Station (18)...</option>
+            <option value="SW_PROW">01 · Great Room SW Cantilever Prow</option>
+            <option value="INGLENOOK">02 · Great Room Fireplace Inglenook</option>
+            <option value="FOYER">03 · Entry Foyer Rock Steps &amp; Skylights</option>
+            <option value="DINING">04 · Dining Deck &amp; Stone Piers</option>
+            <option value="KITCHEN">05 · Kitchen Curved Cherry Island</option>
+            <option value="STUDY">06 · Study Glass Meeting Granite Outcrop</option>
+            <option value="PRIMARY_BED">07 · Primary Bedroom &amp; Triangular Bed</option>
+            <option value="PRIMARY_BATH">08 · Primary Bath Copper Tub &amp; Bedrock Wall</option>
+            <option value="ROOF_DECK">09 · Upper Roof Observation Deck &amp; 26 Skylights</option>
+            <option value="COTTAGE_EXT">10 · 1951 FLW Chahroudi Guest Cottage Exterior</option>
+            <option value="COTTAGE_INT">11 · 1951 Chahroudi Cottage Interior &amp; Hearth</option>
+            <option value="HELIPAD">12 · SW Helipad &amp; Boat Dock</option>
+          </select>
+        </div>
+
+        <div class="toolbar-group">
+          <button class="btn" id="btn-isolate-sel" title="Isolate Selected Element [I]">🎯 Isolate [I]</button>
+          <button class="btn" id="btn-hide-sel" title="Hide Selected Element [H]">🙈 Hide [H]</button>
+          <button class="btn" id="btn-xray-toggle" title="Ghost / X-Ray Unselected Context [X]">👻 X-Ray [X]</button>
+          <button class="btn" id="btn-measure-tool" title="Point-to-Point Laser Tape Measure [M]">📏 Measure [M]</button>
+          <button class="btn" id="btn-reset-all" title="Show All Elements & Reset Filters [R]">🔄 Reset [R]</button>
+        </div>
+      </div>
+
+      <div id="bim-canvas-container">
+        <div id="loading-overlay">
+          <div class="spinner"></div>
+          <div style="font-family: var(--font-mono); font-size: 13px; color: var(--accent);">
+            LOADING ISO 19650 / IFC4 FEDERATED BIM MODEL (834 ELEMENTS)...
+          </div>
+          <div id="loading-sub" style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
+            Parsing massaro_house.glb &amp; massaro_bim_metadata.json
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Color Legend Overlay -->
+      <div class="legend-overlay" id="legend-overlay">
+        <div class="legend-title" id="legend-title">IFC4 Entity Class Legend</div>
+        <div class="legend-grid" id="legend-grid"></div>
+      </div>
+
+      <!-- Laser Tape Measure Active Readout -->
+      <div class="measure-banner" id="measure-banner">
+        <div style="color: var(--accent-gold); font-weight: 700; margin-bottom: 3px;">📏 LASER TAPE MEASURE ACTIVE</div>
+        <div id="measure-status-text">Click Point A on any 3D BIM element...</div>
+      </div>
+    </main>
+
+    <!-- Right Docked IFC4 Property Inspector -->
+    <aside class="right-inspector">
+      <div class="inspector-header">
+        <h2>🔍 IFC4 Property Inspector</h2>
+        <span class="badge badge-ifc" id="insp-class-badge">No Selection</span>
+      </div>
+
+      <div class="inspector-body" id="inspector-body">
+        <div class="pset-card">
+          <div class="pset-title">
+            <span>Pset_ISO19650_Identification</span>
+            <span>CDE S4</span>
+          </div>
+          <table class="pset-table">
+            <tr><td class="pset-key">Element Name</td><td class="pset-val" id="prop-name">Click any 3D element or table row</td></tr>
+            <tr><td class="pset-key">IFC GlobalId</td><td class="pset-val" id="prop-guid">—</td></tr>
+            <tr><td class="pset-key">ISO Container</td><td class="pset-val" id="prop-container">MAS-THH-ZZ-ZZ-M3-A-0001</td></tr>
+            <tr><td class="pset-key">Building ID</td><td class="pset-val" id="prop-bldg">—</td></tr>
+            <tr><td class="pset-key">Storey Level</td><td class="pset-val" id="prop-storey">—</td></tr>
+            <tr><td class="pset-key">Discipline</td><td class="pset-val" id="prop-disc">—</td></tr>
+          </table>
+        </div>
+
+        <div class="pset-card">
+          <div class="pset-title">
+            <span>Pset_Classification &amp; Trade</span>
+            <span>CSI / Uniclass</span>
+          </div>
+          <table class="pset-table">
+            <tr><td class="pset-key">IFC4 Entity</td><td class="pset-val" id="prop-ifc">—</td></tr>
+            <tr><td class="pset-key">PredefinedType</td><td class="pset-val" id="prop-predef">—</td></tr>
+            <tr><td class="pset-key">CSI MasterFormat</td><td class="pset-val" id="prop-csi">—</td></tr>
+            <tr><td class="pset-key">Uniformat II</td><td class="pset-val" id="prop-uniformat">—</td></tr>
+            <tr><td class="pset-key">Uniclass 2015</td><td class="pset-val" id="prop-uniclass">—</td></tr>
+            <tr><td class="pset-key">PBR Material</td><td class="pset-val" id="prop-mat">—</td></tr>
+          </table>
+        </div>
+
+        <div class="pset-card">
+          <div class="pset-title">
+            <span>Qto_ElementBaseQuantities</span>
+            <span>Metric / Imperial</span>
+          </div>
+          <table class="pset-table">
+            <tr><td class="pset-key">Overall L × W × H</td><td class="pset-val" id="prop-dims">—</td></tr>
+            <tr><td class="pset-key">Imperial Dims</td><td class="pset-val" id="prop-dims-imp">—</td></tr>
+            <tr><td class="pset-key">Datum Elevation</td><td class="pset-val" id="prop-elev">—</td></tr>
+            <tr><td class="pset-key">GrossSurfaceArea</td><td class="pset-val" id="prop-area">—</td></tr>
+            <tr><td class="pset-key">NetVolume</td><td class="pset-val" id="prop-vol">—</td></tr>
+            <tr><td class="pset-key">Topology</td><td class="pset-val" id="prop-topo">—</td></tr>
+          </table>
+        </div>
+
+        <div class="pset-card">
+          <div class="pset-title">
+            <span>Pset_SpecificationNotes</span>
+            <span>A-501 Spec</span>
+          </div>
+          <div style="padding: 8px; font-size: 11px; color: var(--text-main); line-height: 1.45; font-family: var(--font-sans);" id="prop-notes">
+            Select any structural pier, copper fascia, skylight dome, mahogany millwork, granite boulder, or 1951 Chahroudi Cottage component to inspect full contractor specifications.
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+          <button class="btn" id="btn-insp-zoom">🔍 Zoom to Element</button>
+          <button class="btn" id="btn-insp-iso-class">🏛️ Isolate IFC Class</button>
+          <button class="btn" id="btn-insp-iso-csi">👷 Isolate CSI Trade</button>
+          <button class="btn" id="btn-insp-iso-storey">📑 Isolate Storey</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Bottom Collapsible BOQ Schedule Spreadsheet -->
+  <section class="boq-drawer" id="boq-drawer">
+    <div class="boq-bar">
+      <div class="boq-bar-left">
+        <span class="boq-title">📊 LIVE BIM QUANTITY TAKE-OFF (BOQ) SCHEDULE</span>
+        <input type="text" class="boq-search" id="boq-search" placeholder="Search 834 elements (e.g. Skylight, Chahroudi, Pier, Copper, Tub)..." />
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);" id="boq-count-label">834 rows</span>
+      </div>
+      <div style="display: flex; gap: 6px;">
+        <button class="mini-btn" id="btn-boq-collapse">▼ Collapse</button>
+        <button class="mini-btn" id="btn-boq-normal">▬ Standard</button>
+        <button class="mini-btn" id="btn-boq-expand">▲ Expand</button>
+      </div>
+    </div>
+    <div class="boq-table-wrap">
+      <table class="boq-table">
+        <thead>
+          <tr>
+            <th data-sort="name">Element Name</th>
+            <th data-sort="globalId">IFC4 GlobalId</th>
+            <th data-sort="ifcClass">IFC4 Entity</th>
+            <th data-sort="buildingId">Building</th>
+            <th data-sort="storeyId">Storey</th>
+            <th data-sort="csiCode">CSI Code</th>
+            <th data-sort="csiTitle">CSI Trade Package</th>
+            <th data-sort="material">Material</th>
+            <th data-sort="areaM2">Area (m²)</th>
+            <th data-sort="volumeM3">Vol (m³)</th>
+            <th data-sort="elev">Top EL (m)</th>
+          </tr>
+        </thead>
+        <tbody id="boq-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 2D Sheet Quick Preview Modal -->
+  <div class="sheet-modal-backdrop" id="sheet-modal">
+    <div class="sheet-modal">
+      <div class="sheet-modal-hdr">
+        <div style="font-family: var(--font-mono); font-size: 13px; color: var(--accent); font-weight: 700;" id="modal-sheet-title">
+          A-101 — MAIN RESIDENCE FLOOR PLAN
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <a class="btn btn-gold" id="modal-open-binder" href="./drawings/index.html">📐 Open in Full Drawing Binder</a>
+          <button class="btn" id="btn-close-sheet-modal">✕ Close Preview</button>
+        </div>
+      </div>
+      <div class="sheet-modal-body">
+        <img id="modal-sheet-img" src="./drawings/A-101_Main_Floor_Plan.svg" alt="CAD Sheet Preview" />
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    // Color Palettes for Federation Modes
+    const IFC_COLORS = {
+      IfcWall: 0xd97706,
+      IfcSlab: 0x64748b,
+      IfcRoof: 0x10b981,
+      IfcBeam: 0xf59e0b,
+      IfcFooting: 0x78716c,
+      IfcCurtainWall: 0x38bdf8,
+      IfcWindow: 0x7dd3fc,
+      IfcDoor: 0xfb923c,
+      IfcMember: 0xeab308,
+      IfcChimney: 0xb45309,
+      IfcStairFlight: 0xa8a29e,
+      IfcRailing: 0x2dd4bf,
+      IfcFurnishingElement: 0xa855f7,
+      IfcSanitaryTerminal: 0xec4899,
+      IfcElectricAppliance: 0x6366f1,
+      IfcLightFixture: 0xfacc15,
+      IfcCivilElement: 0x94a3b8,
+      IfcGeographicElement: 0x22c55e
+    };
+
+    const STOREY_COLORS = {
+      L00: 0x475569,
+      L01: 0x0ea5e9,
+      L02: 0xf59e0b,
+      L03: 0x10b981,
+      L04: 0xa855f7
+    };
+
+    const DISC_COLORS = {
+      ARC: 0x38bdf8,
+      STR: 0xf59e0b,
+      MEP: 0xfacc15,
+      CIV: 0x94a3b8,
+      GEO: 0x22c55e
+    };
+
+    const CSI_PALETTE = [
+      0x38bdf8, 0xf59e0b, 0x10b981, 0xa855f7, 0xec4899,
+      0xeab308, 0x6366f1, 0x14b8a6, 0xf97316, 0x84cc16,
+      0x06b6d4, 0xf43f5e, 0x8b5cf6, 0x22c55e
+    ];
+
+    const SHEETS = [
+      { id: 'A-000', file: 'A-000_Cover_Index.svg', title: 'Cover Sheet & ISO 19650 Index' },
+      { id: 'A-100', file: 'A-100_Master_Site_Plan.svg', title: 'Petra Island Master Site Plan (1:500)' },
+      { id: 'A-101', file: 'A-101_Main_Floor_Plan.svg', title: 'Main Residence Floor Plan (1:100)' },
+      { id: 'A-102', file: 'A-102_Roof_Skylight_Plan.svg', title: 'Roof & 26-Skylight Framing Plan (1:100)' },
+      { id: 'A-103', file: 'A-103_Reflected_Ceiling_Plan.svg', title: 'Reflected Ceiling & Lighting Plan (1:100)' },
+      { id: 'A-104', file: 'A-104_Chahroudi_Cottage_Plans.svg', title: '1951 FLW Chahroudi Guest Cottage (1:50)' },
+      { id: 'A-201', file: 'A-201_Exterior_Elevations.svg', title: 'Exterior Building Elevations (S/W/N/E)' },
+      { id: 'A-301', file: 'A-301_Building_Sections.svg', title: 'Building Sections A-A & B-B (1:100)' },
+      { id: 'A-401', file: 'A-401_Interior_Elevations_Details.svg', title: 'Enlarged Interior Millwork Details (1:25)' },
+      { id: 'A-501', file: 'A-501_BIM_Schedules_QTO.svg', title: 'BIM Schedules & Quantity Take-Off (BOQ)' }
+    ];
+
+    const BUILDING_NAMES = {
+      'BLDG-01': 'BLDG-01 · Massaro Main House',
+      'BLDG-02': 'BLDG-02 · 1951 Chahroudi Cottage',
+      'BLDG-03': 'BLDG-03 · Helipad, Dock & Outbldg',
+      'SITE-01': 'SITE-01 · Petra Island & Lake'
+    };
+
+    const STOREY_NAMES = {
+      'L00': 'L00 · Lake & Bedrock (-4.0m..+1.5m)',
+      'L01': 'L01 · Lower Entry & Dock (+1.5m..+3.1m)',
+      'L02': 'L02 · Main Living Deck (+3.1m..+4.5m)',
+      'L03': 'L03 · Clerestory & Roof (+4.5m..+6.8m)',
+      'L04': 'L04 · Skylight Dome (+6.8m..+9.0m)'
+    };
+
+    // Scene Setup
+    const container = document.getElementById('bim-canvas-container');
+    const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
+    renderer.localClippingEnabled = true;
+    container.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x070d17);
+
+    // CAD Datum Grid Helper at EL +0.00m (Lake Level)
+    const cadGrid = new THREE.GridHelper(160, 80, 0x38bdf8, 0x16263f);
+    cadGrid.position.y = 0.02;
+    cadGrid.material.opacity = 0.32;
+    cadGrid.material.transparent = true;
+    scene.add(cadGrid);
+
+    // Cameras: Perspective & Orthographic
+    const aspect = container.clientWidth / container.clientHeight;
+    const perspCam = new THREE.PerspectiveCamera(48, aspect, 0.2, 600);
+    perspCam.position.set(-48, 28, 52);
+
+    const orthoSize = 45;
+    const orthoCam = new THREE.OrthographicCamera(
+      -orthoSize * aspect, orthoSize * aspect, orthoSize, -orthoSize, -200, 500
+    );
+    orthoCam.position.copy(perspCam.position);
+
+    let activeCam = perspCam;
+    let isOrtho = false;
+
+    const controls = new OrbitControls(activeCam, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.06;
+    controls.target.set(-14, 4.0, 22);
+    controls.update();
+
+    // Lighting for Engineering Clarity
+    const hemiLight = new THREE.HemisphereLight(0xdbeafe, 0x334155, 1.35);
+    scene.add(hemiLight);
+
+    const dirLight = new THREE.DirectionalLight(0xfffbeb, 2.1);
+    dirLight.position.set(-55, 75, 60);
+    dirLight.castShadow = true;
+    dirLight.shadow.mapSize.set(2048, 2048);
+    dirLight.shadow.camera.left = -75;
+    dirLight.shadow.camera.right = 75;
+    dirLight.shadow.camera.top = 75;
+    dirLight.shadow.camera.bottom = -75;
+    scene.add(dirLight);
+
+    const fillLight = new THREE.DirectionalLight(0x93c5fd, 0.75);
+    fillLight.position.set(60, 40, -50);
+    scene.add(fillLight);
+
+    // 6-Plane Clipping Box (Three.js Y-up: X = East/West, Y = Elevation, Z = South/North)
+    const clipPlanes = [
+      new THREE.Plane(new THREE.Vector3(0, -1, 0), 22.0),  // Y Max (Top Elevation)
+      new THREE.Plane(new THREE.Vector3(0, 1, 0), 5.0),    // Y Min (Bottom Elevation)
+      new THREE.Plane(new THREE.Vector3(1, 0, 0), 80.0),   // X Min (West)
+      new THREE.Plane(new THREE.Vector3(-1, 0, 0), 80.0),  // X Max (East)
+      new THREE.Plane(new THREE.Vector3(0, 0, 1), 80.0),   // Z Min (North)
+      new THREE.Plane(new THREE.Vector3(0, 0, -1), 80.0)   // Z Max (South)
+    ];
+
+    // State
+    let bimData = null;
+    let elements = [];
+    const metaByName = new Map();
+    const allMeshes = [];
+    let colorMode = 'ifc';
+    let xrayMode = false;
+    let selectedElement = null;
+    let selectionBoxHelper = null;
+
+    // Active Filters
+    const visibleBuildings = new Set(['BLDG-01', 'BLDG-02', 'BLDG-03', 'SITE-01']);
+    const visibleStoreys = new Set(['L00', 'L01', 'L02', 'L03', 'L04']);
+    const visibleIfcClasses = new Set();
+    const visibleCsiCodes = new Set();
+    const manuallyHiddenNames = new Set();
+    let isolatedNames = null; // null or Set
+
+    // CSI color map
+    const csiColorMap = new Map();
+
+    // Laser Measure State
+    let measureActive = false;
+    let measurePtA = null;
+    const measureGroup = new THREE.Group();
+    scene.add(measureGroup);
+
+    // Format meters to feet-inches
+    function mToFtIn(m) {
+      const totalIn = Math.abs(m) * 39.3700787;
+      const ft = Math.floor(totalIn / 12);
+      const inches = Math.round(totalIn % 12);
+      if (inches === 12) return `${ft + 1}'-0"`;
+      return `${ft}'-${inches}"`;
+    }
+
+    // Load Metadata & GLB
+    async function initBIM() {
+      const res = await fetch('./massaro_bim_metadata.json');
+      bimData = await res.json();
+      elements = bimData.elements;
+
+      elements.forEach((el) => {
+        metaByName.set(el.name, el);
+        el.meshes = [];
+        visibleIfcClasses.add(el.ifcClass);
+        visibleCsiCodes.add(el.csiCode);
+      });
+
+      Array.from(visibleCsiCodes).sort().forEach((code, idx) => {
+        csiColorMap.set(code, CSI_PALETTE[idx % CSI_PALETTE.length]);
+      });
+
+      const loader = new GLTFLoader();
+      loader.load('./massaro_house.glb', (gltf) => {
+        const root = gltf.scene;
+        scene.add(root);
+
+        root.traverse((node) => {
+          if (node.isMesh) {
+            node.castShadow = true;
+            node.receiveShadow = true;
+
+            // Match mesh to metadata record by walking up node hierarchy
+            let cur = node;
+            let matched = null;
+            while (cur) {
+              if (metaByName.has(cur.name)) {
+                matched = metaByName.get(cur.name);
+                break;
+              }
+              const stripped = cur.name ? cur.name.replace(/\.\d+$/, '') : '';
+              if (stripped && metaByName.has(stripped)) {
+                matched = metaByName.get(stripped);
+                break;
+              }
+              cur = cur.parent;
+            }
+
+            if (matched) {
+              node.userData.bim = matched;
+              matched.meshes.push(node);
+            }
+
+            // Clone original PBR material & attach clipping planes
+            const origMat = node.material ? node.material.clone() : new THREE.MeshStandardMaterial({ color: 0x94a3b8 });
+            origMat.clippingPlanes = clipPlanes;
+            origMat.clipShadows = true;
+            node.userData.origMaterial = origMat;
+            node.material = origMat;
+
+            allMeshes.push(node);
+          }
+        });
+
+        document.getElementById('loading-overlay').style.display = 'none';
+        buildSidebarTrees();
+        applyFederationColors();
+        applyVisibilityFilters();
+      });
+    }
+
+    // Apply Federation Color Mode to all meshes
+    function applyFederationColors() {
+      elements.forEach((el) => {
+        const isSel = selectedElement && selectedElement.name === el.name;
+        el.meshes.forEach((mesh) => {
+          if (colorMode === 'pbr' && !xrayMode && !isSel) {
+            mesh.material = mesh.userData.origMaterial;
+            return;
+          }
+
+          let hex = 0x94a3b8;
+          if (colorMode === 'ifc') hex = IFC_COLORS[el.ifcClass] || 0x38bdf8;
+          else if (colorMode === 'csi') hex = csiColorMap.get(el.csiCode) || 0x38bdf8;
+          else if (colorMode === 'storey') hex = STOREY_COLORS[el.storeyId] || 0x38bdf8;
+          else if (colorMode === 'discipline') hex = DISC_COLORS[el.discipline] || 0x38bdf8;
+          else if (colorMode === 'pbr') {
+            hex = mesh.userData.origMaterial.color ? mesh.userData.origMaterial.color.getHex() : 0x94a3b8;
+          }
+
+          const ghosted = xrayMode && (!selectedElement || selectedElement.name !== el.name);
+
+          mesh.material = new THREE.MeshStandardMaterial({
+            color: isSel ? 0x00ffff : hex,
+            emissive: isSel ? 0x005577 : 0x000000,
+            roughness: 0.45,
+            metalness: 0.15,
+            wireframe: colorMode === 'wireframe',
+            transparent: ghosted || el.ifcClass === 'IfcCurtainWall' || el.ifcClass === 'IfcWindow',
+            opacity: ghosted ? 0.14 : (el.ifcClass === 'IfcCurtainWall' || el.ifcClass === 'IfcWindow' ? 0.55 : 1.0),
+            depthWrite: !ghosted,
+            clippingPlanes: clipPlanes,
+            clipShadows: true
+          });
+        });
+      });
+
+      updateLegendOverlay();
+    }
+
+    function updateLegendOverlay() {
+      const titleEl = document.getElementById('legend-title');
+      const gridEl = document.getElementById('legend-grid');
+      gridEl.innerHTML = '';
+
+      let items = [];
+      if (colorMode === 'ifc' || colorMode === 'pbr' || colorMode === 'wireframe') {
+        titleEl.textContent = colorMode === 'pbr' ? 'PBR Mode (IFC Reference)' : 'IFC4 Entity Class Legend';
+        Object.entries(IFC_COLORS).forEach(([k, hex]) => {
+          items.push({ label: k.replace('Ifc', ''), hex });
+        });
+      } else if (colorMode === 'csi') {
+        titleEl.textContent = 'CSI MasterFormat Trade Legend';
+        csiColorMap.forEach((hex, code) => {
+          items.push({ label: `CSI ${code}`, hex });
+        });
+      } else if (colorMode === 'storey') {
+        titleEl.textContent = 'IfcBuildingStorey Legend';
+        Object.entries(STOREY_COLORS).forEach(([k, hex]) => {
+          items.push({ label: STOREY_NAMES[k] ? STOREY_NAMES[k].split('·')[0] + k : k, hex });
+        });
+      } else if (colorMode === 'discipline') {
+        titleEl.textContent = 'ISO 19650 Discipline Legend';
+        Object.entries(DISC_COLORS).forEach(([k, hex]) => {
+          items.push({ label: k, hex });
+        });
+      }
+
+      items.forEach((it) => {
+        const div = document.createElement('div');
+        div.className = 'legend-item';
+        const colorStr = '#' + it.hex.toString(16).padStart(6, '0');
+        div.innerHTML = `<span class="swatch" style="background:${colorStr}"></span><span>${it.label}</span>`;
+        gridEl.appendChild(div);
+      });
+    }
+
+    // Apply Visibility Filters & Sync BOQ Table + KPIs
+    function applyVisibilityFilters() {
+      let visCount = 0;
+      let visArea = 0;
+      let visVol = 0;
+      const visibleElements = [];
+
+      elements.forEach((el) => {
+        let vis =
+          visibleBuildings.has(el.buildingId) &&
+          visibleStoreys.has(el.storeyId) &&
+          visibleIfcClasses.has(el.ifcClass) &&
+          visibleCsiCodes.has(el.csiCode) &&
+          !manuallyHiddenNames.has(el.name);
+
+        if (isolatedNames !== null && !isolatedNames.has(el.name)) {
+          vis = false;
+        }
+
+        el.meshes.forEach((m) => {
+          m.visible = vis;
+        });
+
+        if (vis) {
+          visCount++;
+          visArea += el.areaM2;
+          visVol += el.volumeM3;
+          visibleElements.push(el);
+        }
+      });
+
+      document.getElementById('kpi-elements').textContent = `${visCount} / ${elements.length}`;
+      document.getElementById('kpi-area').textContent = `${visArea.toLocaleString(undefined, { maximumFractionDigits: 1 })} m²`;
+      document.getElementById('kpi-volume').textContent = `${visVol.toLocaleString(undefined, { maximumFractionDigits: 1 })} m³`;
+
+      renderBoqTable(visibleElements);
+    }
+
+    // Build Left Sidebar Filter Lists
+    function buildSidebarTrees() {
+      // 1. Buildings
+      const bldgList = document.getElementById('building-filter-list');
+      bldgList.innerHTML = '';
+      Object.entries(BUILDING_NAMES).forEach(([bId, bLabel]) => {
+        const count = elements.filter(e => e.buildingId === bId).length;
+        const row = document.createElement('div');
+        row.className = 'filter-row';
+        row.innerHTML = `
+          <label class="filter-left">
+            <input type="checkbox" checked data-bldg="${bId}" />
+            <span class="filter-name">${bLabel}</span>
+          </label>
+          <div class="filter-right">
+            <span class="count-pill">${count}</span>
+            <button class="mini-btn" data-iso-bldg="${bId}" title="Isolate Building">🎯</button>
+          </div>
+        `;
+        row.querySelector('input').addEventListener('change', (e) => {
+          if (e.target.checked) visibleBuildings.add(bId);
+          else visibleBuildings.delete(bId);
+          isolatedNames = null;
+          applyVisibilityFilters();
+        });
+        row.querySelector('[data-iso-bldg]').addEventListener('click', () => {
+          isolatedNames = new Set(elements.filter(e => e.buildingId === bId).map(e => e.name));
+          applyVisibilityFilters();
+        });
+        bldgList.appendChild(row);
+      });
+
+      // 2. Storeys
+      const storeyList = document.getElementById('storey-filter-list');
+      storeyList.innerHTML = '';
+      Object.entries(STOREY_NAMES).forEach(([sId, sLabel]) => {
+        const count = elements.filter(e => e.storeyId === sId).length;
+        const hex = '#' + (STOREY_COLORS[sId] || 0x38bdf8).toString(16).padStart(6, '0');
+        const row = document.createElement('div');
+        row.className = 'filter-row';
+        row.innerHTML = `
+          <label class="filter-left">
+            <input type="checkbox" checked data-storey="${sId}" />
+            <span class="swatch" style="background:${hex}"></span>
+            <span class="filter-name">${sLabel}</span>
+          </label>
+          <div class="filter-right">
+            <span class="count-pill">${count}</span>
+            <button class="mini-btn" data-iso-storey="${sId}" title="Isolate Storey">🎯</button>
+          </div>
+        `;
+        row.querySelector('input').addEventListener('change', (e) => {
+          if (e.target.checked) visibleStoreys.add(sId);
+          else visibleStoreys.delete(sId);
+          isolatedNames = null;
+          applyVisibilityFilters();
+        });
+        row.querySelector('[data-iso-storey]').addEventListener('click', () => {
+          isolatedNames = new Set(elements.filter(e => e.storeyId === sId).map(e => e.name));
+          applyVisibilityFilters();
+        });
+        storeyList.appendChild(row);
+      });
+
+      // 3. IFC4 Entity Classes
+      const ifcList = document.getElementById('ifc-class-list');
+      ifcList.innerHTML = '';
+      Object.entries(bimData.classSummary)
+        .sort((a, b) => b[1].count - a[1].count)
+        .forEach(([cls, stat]) => {
+          const hex = '#' + (IFC_COLORS[cls] || 0x38bdf8).toString(16).padStart(6, '0');
+          const row = document.createElement('div');
+          row.className = 'filter-row';
+          row.innerHTML = `
+            <label class="filter-left">
+              <input type="checkbox" class="ifc-chk" checked value="${cls}" />
+              <span class="swatch" style="background:${hex}"></span>
+              <span class="filter-name">${cls}</span>
+            </label>
+            <div class="filter-right">
+              <span class="count-pill">${stat.count}</span>
+              <button class="mini-btn" data-iso-ifc="${cls}" title="Isolate ${cls}">🎯</button>
+            </div>
+          `;
+          row.querySelector('input').addEventListener('change', (e) => {
+            if (e.target.checked) visibleIfcClasses.add(cls);
+            else visibleIfcClasses.delete(cls);
+            isolatedNames = null;
+            applyVisibilityFilters();
+          });
+          row.querySelector('[data-iso-ifc]').addEventListener('click', () => {
+            isolatedNames = new Set(elements.filter(e => e.ifcClass === cls).map(e => e.name));
+            applyVisibilityFilters();
+          });
+          ifcList.appendChild(row);
+        });
+
+      // 4. CSI MasterFormat Trade Packages
+      const csiList = document.getElementById('csi-filter-list');
+      csiList.innerHTML = '';
+      Object.entries(bimData.csiSummary)
+        .sort((a, b) => a[0].localeCompare(b[0]))
+        .forEach(([code, stat]) => {
+          const hex = '#' + (csiColorMap.get(code) || 0x38bdf8).toString(16).padStart(6, '0');
+          const row = document.createElement('div');
+          row.className = 'filter-row';
+          row.innerHTML = `
+            <label class="filter-left">
+              <input type="checkbox" class="csi-chk" checked value="${code}" />
+              <span class="swatch" style="background:${hex}"></span>
+              <span class="filter-name" title="${code} — ${stat.title}">${code} · ${stat.title}</span>
+            </label>
+            <div class="filter-right">
+              <span class="count-pill">${stat.count}</span>
+              <button class="mini-btn" data-iso-csi="${code}" title="Isolate CSI ${code}">🎯</button>
+            </div>
+          `;
+          row.querySelector('input').addEventListener('change', (e) => {
+            if (e.target.checked) visibleCsiCodes.add(code);
+            else visibleCsiCodes.delete(code);
+            isolatedNames = null;
+            applyVisibilityFilters();
+          });
+          row.querySelector('[data-iso-csi]').addEventListener('click', () => {
+            isolatedNames = new Set(elements.filter(e => e.csiCode === code).map(e => e.name));
+            applyVisibilityFilters();
+          });
+          csiList.appendChild(row);
+        });
+
+      // 5. Linked 2D Sheets
+      const sheetsList = document.getElementById('linked-sheets-list');
+      sheetsList.innerHTML = '';
+      SHEETS.forEach((s) => {
+        const row = document.createElement('div');
+        row.className = 'filter-row';
+        row.style.cursor = 'pointer';
+        row.innerHTML = `
+          <div class="filter-left">
+            <span style="color:var(--accent); font-family:var(--font-mono); font-weight:700; font-size:11px;">${s.id}</span>
+            <span class="filter-name">${s.title}</span>
+          </div>
+          <div class="filter-right">
+            <button class="mini-btn">Preview</button>
+          </div>
+        `;
+        row.addEventListener('click', () => openSheetModal(s));
+        sheetsList.appendChild(row);
+      });
+    }
+
+    // Select & Inspect Element
+    function selectElement(el, flyTo = false) {
+      selectedElement = el;
+      if (selectionBoxHelper) {
+        scene.remove(selectionBoxHelper);
+        selectionBoxHelper = null;
+      }
+
+      if (!el) {
+        document.getElementById('insp-class-badge').textContent = 'No Selection';
+        applyFederationColors();
+        return;
+      }
+
+      document.getElementById('insp-class-badge').textContent = el.ifcClass;
+      document.getElementById('prop-name').textContent = el.name;
+      document.getElementById('prop-guid').textContent = el.globalId;
+      document.getElementById('prop-container').textContent = el.isoContainer;
+      document.getElementById('prop-bldg').textContent = BUILDING_NAMES[el.buildingId] || el.buildingId;
+      document.getElementById('prop-storey').textContent = STOREY_NAMES[el.storeyId] || el.storeyId;
+      document.getElementById('prop-disc').textContent = `${el.discipline} — ${el.disciplineName}`;
+
+      document.getElementById('prop-ifc').textContent = el.ifcClass;
+      document.getElementById('prop-predef').textContent = el.predefinedType;
+      document.getElementById('prop-csi').textContent = `${el.csiCode} — ${el.csiTitle}`;
+      document.getElementById('prop-uniformat').textContent = el.uniformat;
+      document.getElementById('prop-uniclass').textContent = el.uniclass;
+      document.getElementById('prop-mat').textContent = el.material;
+
+      const [dx, dy, dz] = el.dimensions;
+      document.getElementById('prop-dims').textContent = `${dx.toFixed(2)}m × ${dy.toFixed(2)}m × ${dz.toFixed(2)}m`;
+      document.getElementById('prop-dims-imp').textContent = `${mToFtIn(dx)} × ${mToFtIn(dy)} × ${mToFtIn(dz)}`;
+      document.getElementById('prop-elev').textContent = `EL ${el.bboxMin[2] >= 0 ? '+' : ''}${el.bboxMin[2].toFixed(2)}m to EL +${el.bboxMax[2].toFixed(2)}m`;
+      document.getElementById('prop-area').textContent = `${el.areaM2.toFixed(2)} m² (${el.areaSqFt.toFixed(1)} sq ft)`;
+      document.getElementById('prop-vol').textContent = `${el.volumeM3.toFixed(3)} m³ (${el.volumeCuFt.toFixed(1)} cu ft)`;
+      document.getElementById('prop-topo').textContent = `${el.vertices} verts / ${el.triangles} tris`;
+      document.getElementById('prop-notes').textContent = el.specNotes;
+
+      if (el.meshes.length > 0) {
+        selectionBoxHelper = new THREE.BoxHelper(el.meshes[0], 0xf59e0b);
+        scene.add(selectionBoxHelper);
+
+        if (flyTo) {
+          zoomToElement(el);
+        }
+      }
+
+      applyFederationColors();
+
+      // Highlight table row
+      document.querySelectorAll('#boq-tbody tr').forEach((tr) => {
+        tr.classList.toggle('selected', tr.dataset.name === el.name);
+      });
+    }
+
+    function zoomToElement(el) {
+      if (!el || !el.meshes.length) return;
+      const box = new THREE.Box3();
+      el.meshes.forEach(m => box.expandByObject(m));
+      const center = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z, 2.5);
+
+      controls.target.copy(center);
+      const dir = new THREE.Vector3(-1, 0.75, 1).normalize();
+      activeCam.position.copy(center).addScaledVector(dir, maxDim * 2.2);
+      controls.update();
+    }
+
+    // Raycasting for 3D Selection & Laser Tape Measure
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    let downPos = { x: 0, y: 0 };
+
+    renderer.domElement.addEventListener('pointerdown', (e) => {
+      downPos = { x: e.clientX, y: e.clientY };
+    });
+
+    renderer.domElement.addEventListener('pointerup', (e) => {
+      const dist = Math.hypot(e.clientX - downPos.x, e.clientY - downPos.y);
+      if (dist > 5) return; // Dragged camera
+
+      const rect = renderer.domElement.getBoundingClientRect();
+      mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, activeCam);
+      const visMeshes = allMeshes.filter(m => m.visible);
+      const hits = raycaster.intersectObjects(visMeshes, false);
+
+      // Filter hits that are inside active clipping planes
+      const validHit = hits.find((h) => {
+        return clipPlanes.every(p => p.distanceToPoint(h.point) >= -0.02);
+      });
+
+      if (measureActive && validHit) {
+        handleMeasureClick(validHit.point);
+        return;
+      }
+
+      if (validHit && validHit.object.userData.bim) {
+        selectElement(validHit.object.userData.bim, false);
+      } else {
+        selectElement(null, false);
+      }
+    });
+
+    // Laser Tape Measure Logic
+    function handleMeasureClick(pt) {
+      const markerGeo = new THREE.SphereGeometry(0.16, 16, 16);
+      const markerMat = new THREE.MeshBasicMaterial({ color: 0xf59e0b, depthTest: false });
+      const marker = new THREE.Mesh(markerGeo, markerMat);
+      marker.position.copy(pt);
+      measureGroup.add(marker);
+
+      const statusEl = document.getElementById('measure-status-text');
+
+      if (!measurePtA) {
+        measurePtA = pt.clone();
+        statusEl.innerHTML = `Point A locked at <strong>(${pt.x.toFixed(2)}m, EL +${pt.y.toFixed(2)}m, ${pt.z.toFixed(2)}m)</strong>. Click Point B...`;
+      } else {
+        const ptB = pt.clone();
+        const distM = measurePtA.distanceTo(ptB);
+        const dx = Math.abs(ptB.x - measurePtA.x);
+        const dy = Math.abs(ptB.y - measurePtA.y);
+        const dz = Math.abs(ptB.z - measurePtA.z);
+
+        const lineGeo = new THREE.BufferGeometry().setFromPoints([measurePtA, ptB]);
+        const lineMat = new THREE.LineBasicMaterial({ color: 0xf59e0b, linewidth: 2, depthTest: false });
+        measureGroup.add(new THREE.Line(lineGeo, lineMat));
+
+        const summary = `${distM.toFixed(2)}m (${mToFtIn(distM)}) | ΔHoriz: ${Math.hypot(dx, dz).toFixed(2)}m | ΔElev: ${dy.toFixed(2)}m`;
+        statusEl.innerHTML = `<strong>Measured: ${summary}</strong> — Click next Point A...`;
+
+        const histList = document.getElementById('measure-history-list');
+        const item = document.createElement('div');
+        item.style.cssText = 'background:var(--bg-dark); border:1px solid var(--border); padding:5px 8px; border-radius:4px; font-family:var(--font-mono); font-size:10.5px; color:var(--accent-gold);';
+        item.textContent = `📏 ${summary}`;
+        histList.prepend(item);
+
+        measurePtA = null;
+      }
+    }
+
+    function toggleMeasureMode() {
+      measureActive = !measureActive;
+      measurePtA = null;
+      document.getElementById('btn-measure-tool').classList.toggle('active', measureActive);
+      document.getElementById('btn-toggle-measure-side').classList.toggle('active', measureActive);
+      document.getElementById('measure-banner').classList.toggle('active', measureActive);
+    }
+
+    document.getElementById('btn-measure-tool').addEventListener('click', toggleMeasureMode);
+    document.getElementById('btn-toggle-measure-side').addEventListener('click', toggleMeasureMode);
+    document.getElementById('btn-clear-measures').addEventListener('click', () => {
+      measureGroup.clear();
+      measurePtA = null;
+      document.getElementById('measure-history-list').innerHTML = '';
+    });
+
+    // BOQ Table Rendering & Sorting
+    let currentSortKey = 'name';
+    let sortAsc = true;
+
+    function renderBoqTable(visibleElements) {
+      const q = document.getElementById('boq-search').value.trim().toLowerCase();
+      let rows = visibleElements;
+      if (q) {
+        rows = rows.filter(e =>
+          e.name.toLowerCase().includes(q) ||
+          e.globalId.toLowerCase().includes(q) ||
+          e.ifcClass.toLowerCase().includes(q) ||
+          e.csiCode.toLowerCase().includes(q) ||
+          e.csiTitle.toLowerCase().includes(q) ||
+          e.material.toLowerCase().includes(q)
+        );
+      }
+
+      rows.sort((a, b) => {
+        let va = currentSortKey === 'elev' ? a.bboxMax[2] : a[currentSortKey];
+        let vb = currentSortKey === 'elev' ? b.bboxMax[2] : b[currentSortKey];
+        if (typeof va === 'number') return sortAsc ? va - vb : vb - va;
+        return sortAsc ? String(va).localeCompare(String(vb)) : String(vb).localeCompare(String(va));
+      });
+
+      document.getElementById('boq-count-label').textContent = `${rows.length} rows`;
+
+      const tbody = document.getElementById('boq-tbody');
+      const frag = document.createDocumentFragment();
+      rows.forEach((el) => {
+        const tr = document.createElement('tr');
+        tr.dataset.name = el.name;
+        if (selectedElement && selectedElement.name === el.name) tr.classList.add('selected');
+        tr.innerHTML = `
+          <td style="color:#f8fafc; font-weight:600;">${el.name}</td>
+          <td style="color:var(--text-muted);">${el.globalId}</td>
+          <td style="color:var(--accent);">${el.ifcClass}</td>
+          <td>${el.buildingId}</td>
+          <td>${el.storeyId}</td>
+          <td>${el.csiCode}</td>
+          <td>${el.csiTitle}</td>
+          <td>${el.material}</td>
+          <td>${el.areaM2.toFixed(2)}</td>
+          <td>${el.volumeM3.toFixed(3)}</td>
+          <td>+${el.bboxMax[2].toFixed(2)}m</td>
+        `;
+        tr.addEventListener('click', () => selectElement(el, true));
+        frag.appendChild(tr);
+      });
+      tbody.innerHTML = '';
+      tbody.appendChild(frag);
+    }
+
+    document.getElementById('boq-search').addEventListener('input', () => applyVisibilityFilters());
+    document.querySelectorAll('.boq-table thead th').forEach((th) => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.sort;
+        if (currentSortKey === key) sortAsc = !sortAsc;
+        else { currentSortKey = key; sortAsc = true; }
+        applyVisibilityFilters();
+      });
+    });
+
+    // BOQ Drawer Size Toggles
+    const boqDrawer = document.getElementById('boq-drawer');
+    document.getElementById('btn-boq-collapse').addEventListener('click', () => {
+      boqDrawer.className = 'boq-drawer collapsed';
+      setTimeout(onResize, 220);
+    });
+    document.getElementById('btn-boq-normal').addEventListener('click', () => {
+      boqDrawer.className = 'boq-drawer';
+      setTimeout(onResize, 220);
+    });
+    document.getElementById('btn-boq-expand').addEventListener('click', () => {
+      boqDrawer.className = 'boq-drawer expanded';
+      setTimeout(onResize, 220);
+    });
+
+    // Left Explorer Tab Switching
+    document.querySelectorAll('.tab-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Color Mode Chips
+    document.querySelectorAll('#color-mode-chips .chip-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#color-mode-chips .chip-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        colorMode = btn.dataset.colormode;
+        applyFederationColors();
+      });
+    });
+
+    // Quick Discipline Presets
+    function resetAllFilters() {
+      isolatedNames = null;
+      manuallyHiddenNames.clear();
+      ['BLDG-01', 'BLDG-02', 'BLDG-03', 'SITE-01'].forEach(b => visibleBuildings.add(b));
+      ['L00', 'L01', 'L02', 'L03', 'L04'].forEach(s => visibleStoreys.add(s));
+      elements.forEach(e => {
+        visibleIfcClasses.add(e.ifcClass);
+        visibleCsiCodes.add(e.csiCode);
+      });
+      document.querySelectorAll('.left-explorer input[type="checkbox"]').forEach(c => { c.checked = true; });
+      applyVisibilityFilters();
+    }
+
+    document.getElementById('preset-all').addEventListener('click', resetAllFilters);
+    document.getElementById('btn-reset-all').addEventListener('click', resetAllFilters);
+    document.getElementById('btn-all-ifc-on').addEventListener('click', resetAllFilters);
+    document.getElementById('btn-all-csi-on').addEventListener('click', resetAllFilters);
+
+    document.getElementById('preset-no-roof').addEventListener('click', () => {
+      resetAllFilters();
+      isolatedNames = new Set(elements.filter(e => e.parentGroup !== 'Roof_Group' && !e.name.startsWith('Roof_Cottage')).map(e => e.name));
+      applyVisibilityFilters();
+    });
+
+    document.getElementById('preset-struct').addEventListener('click', () => {
+      const structSet = new Set(['IfcWall', 'IfcSlab', 'IfcBeam', 'IfcFooting', 'IfcChimney', 'IfcStairFlight']);
+      isolatedNames = new Set(elements.filter(e => structSet.has(e.ifcClass) || e.name.startsWith('Rock_')).map(e => e.name));
+      applyVisibilityFilters();
+    });
+
+    document.getElementById('preset-envelope').addEventListener('click', () => {
+      const envSet = new Set(['IfcRoof', 'IfcCurtainWall', 'IfcWindow', 'IfcDoor', 'IfcMember']);
+      isolatedNames = new Set(elements.filter(e => envSet.has(e.ifcClass)).map(e => e.name));
+      applyVisibilityFilters();
+    });
+
+    document.getElementById('preset-interior').addEventListener('click', () => {
+      const intSet = new Set(['IfcFurnishingElement', 'IfcSanitaryTerminal', 'IfcElectricAppliance', 'IfcLightFixture']);
+      isolatedNames = new Set(elements.filter(e => intSet.has(e.ifcClass)).map(e => e.name));
+      applyVisibilityFilters();
+    });
+
+    document.getElementById('preset-cottage').addEventListener('click', () => {
+      isolatedNames = new Set(elements.filter(e => e.buildingId === 'BLDG-02').map(e => e.name));
+      controls.target.set(8.5, 11.2, -16.0);
+      activeCam.position.set(22.0, 17.5, -2.0);
+      controls.update();
+      applyVisibilityFilters();
+    });
+
+    // Section Box Sliders & Cut Presets
+    function syncClipSliders() {
+      const ymax = parseFloat(document.getElementById('clip-ymax').value);
+      const ymin = parseFloat(document.getElementById('clip-ymin').value);
+      const xmin = parseFloat(document.getElementById('clip-xmin').value);
+      const xmax = parseFloat(document.getElementById('clip-xmax').value);
+      const zmin = parseFloat(document.getElementById('clip-zmin').value);
+      const zmax = parseFloat(document.getElementById('clip-zmax').value);
+
+      clipPlanes[0].constant = ymax;
+      clipPlanes[1].constant = -ymin;
+      clipPlanes[2].constant = -xmin;
+      clipPlanes[3].constant = xmax;
+      clipPlanes[4].constant = -zmin;
+      clipPlanes[5].constant = zmax;
+
+      document.getElementById('val-ymax').textContent = `${ymax >= 0 ? '+' : ''}${ymax.toFixed(1)}m`;
+      document.getElementById('val-ymin').textContent = `${ymin >= 0 ? '+' : ''}${ymin.toFixed(1)}m`;
+      document.getElementById('val-xmin').textContent = `${xmin.toFixed(1)}m`;
+      document.getElementById('val-xmax').textContent = `+${xmax.toFixed(1)}m`;
+      document.getElementById('val-zmin').textContent = `${zmin.toFixed(1)}m`;
+      document.getElementById('val-zmax').textContent = `+${zmax.toFixed(1)}m`;
+    }
+
+    ['clip-ymax', 'clip-ymin', 'clip-xmin', 'clip-xmax', 'clip-zmin', 'clip-zmax'].forEach((id) => {
+      document.getElementById(id).addEventListener('input', syncClipSliders);
+    });
+
+    function setSectionPreset(ymax, ymin, xmin, xmax, zmin, zmax) {
+      document.getElementById('clip-ymax').value = ymax;
+      document.getElementById('clip-ymin').value = ymin;
+      document.getElementById('clip-xmin').value = xmin;
+      document.getElementById('clip-xmax').value = xmax;
+      document.getElementById('clip-zmin').value = zmin;
+      document.getElementById('clip-zmax').value = zmax;
+      syncClipSliders();
+    }
+
+    document.getElementById('btn-reset-section').addEventListener('click', () => setSectionPreset(22, -5, -80, 80, -80, 80));
+
+    document.querySelectorAll('[data-cut]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const c = btn.dataset.cut;
+        if (c === 'none') setSectionPreset(22, -5, -80, 80, -80, 80);
+        else if (c === 'plan-l02') setSectionPreset(4.3, -5, -80, 80, -80, 80);
+        else if (c === 'plan-l01') setSectionPreset(2.8, -5, -80, 80, -80, 80);
+        else if (c === 'sec-aa') setSectionPreset(22, -5, -80, 80, -80, 24.5);
+        else if (c === 'sec-bb') setSectionPreset(22, -5, -14.5, 80, -80, 80);
+        else if (c === 'cottage-cut') {
+          setSectionPreset(12.2, 8.0, -5, 25, -30, 0);
+          controls.target.set(8.5, 10.8, -16.0);
+          activeCam.position.set(16.0, 16.5, -5.0);
+          controls.update();
+        }
+      });
+    });
+
+    // Camera Views & Orthographic Toggle
+    function toggleOrtho() {
+      isOrtho = !isOrtho;
+      const prevCam = activeCam;
+      activeCam = isOrtho ? orthoCam : perspCam;
+      activeCam.position.copy(prevCam.position);
+      activeCam.quaternion.copy(prevCam.quaternion);
+      controls.object = activeCam;
+      controls.update();
+      document.getElementById('btn-cam-ortho').classList.toggle('active', isOrtho);
+    }
+
+    document.getElementById('btn-cam-ortho').addEventListener('click', toggleOrtho);
+
+    document.querySelectorAll('[data-view]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const v = btn.dataset.view;
+        const t = new THREE.Vector3(-14, 4.0, 22);
+        if (v === 'COTTAGE') {
+          controls.target.set(8.5, 11.0, -16.0);
+          activeCam.position.set(22.0, 16.0, -3.0);
+        } else {
+          controls.target.copy(t);
+          if (v === 'TOP') activeCam.position.set(-14, 75, 22.01);
+          else if (v === 'SOUTH') activeCam.position.set(-14, 6, 72);
+          else if (v === 'NORTH') activeCam.position.set(-14, 6, -28);
+          else if (v === 'WEST') activeCam.position.set(-66, 6, 22);
+          else if (v === 'EAST') activeCam.position.set(36, 6, 22);
+          else if (v === 'ISO_SW') activeCam.position.set(-50, 26, 56);
+        }
+        controls.update();
+      });
+    });
+
+    // Station Jump Dropdown (Three.js coords: X = bx, Y = bz, Z = -by)
+    const STATIONS = {
+      SW_PROW: { pos: [-20.5, 4.5, 28.0], tgt: [-25.5, 4.1, 33.5], cutY: 4.4 },
+      INGLENOOK: { pos: [-19.5, 4.5, 27.5], tgt: [-14.2, 4.2, 23.0], cutY: 4.4 },
+      FOYER: { pos: [-11.5, 3.8, 17.0], tgt: [-12.5, 4.2, 21.5], cutY: 4.5 },
+      DINING: { pos: [-12.0, 4.5, 25.0], tgt: [-7.0, 4.1, 21.5], cutY: 4.4 },
+      KITCHEN: { pos: [-8.5, 4.5, 22.0], tgt: [-3.5, 4.2, 24.5], cutY: 4.4 },
+      STUDY: { pos: [-14.0, 4.5, 18.0], tgt: [-16.8, 4.2, 15.0], cutY: 4.4 },
+      PRIMARY_BED: { pos: [-2.0, 4.5, 26.5], tgt: [4.5, 4.1, 29.0], cutY: 4.4 },
+      PRIMARY_BATH: { pos: [-5.5, 4.5, 27.0], tgt: [-7.5, 4.1, 29.8], cutY: 4.4 },
+      ROOF_DECK: { pos: [-22.0, 9.5, 30.0], tgt: [-12.5, 5.8, 22.0], cutY: 22.0 },
+      COTTAGE_EXT: { pos: [21.0, 15.0, -4.0], tgt: [8.5, 11.2, -16.0], cutY: 22.0 },
+      COTTAGE_INT: { pos: [7.5, 11.4, -18.5], tgt: [9.5, 11.2, -13.5], cutY: 12.1 },
+      HELIPAD: { pos: [-38.0, 10.0, 26.0], tgt: [-24.5, 4.2, 17.5], cutY: 22.0 }
+    };
+
+    document.getElementById('station-jump-select').addEventListener('change', (e) => {
+      const st = STATIONS[e.target.value];
+      if (!st) return;
+      activeCam.position.set(...st.pos);
+      controls.target.set(...st.tgt);
+      controls.update();
+    });
+
+    // Selection Action Buttons
+    document.getElementById('btn-isolate-sel').addEventListener('click', () => {
+      if (!selectedElement) return;
+      isolatedNames = new Set([selectedElement.name]);
+      applyVisibilityFilters();
+    });
+
+    document.getElementById('btn-hide-sel').addEventListener('click', () => {
+      if (!selectedElement) return;
+      manuallyHiddenNames.add(selectedElement.name);
+      applyVisibilityFilters();
+    });
+
+    document.getElementById('btn-xray-toggle').addEventListener('click', () => {
+      xrayMode = !xrayMode;
+      document.getElementById('btn-xray-toggle').classList.toggle('active', xrayMode);
+      applyFederationColors();
+    });
+
+    // Inspector Quick Actions
+    document.getElementById('btn-insp-zoom').addEventListener('click', () => zoomToElement(selectedElement));
+    document.getElementById('btn-insp-iso-class').addEventListener('click', () => {
+      if (!selectedElement) return;
+      isolatedNames = new Set(elements.filter(e => e.ifcClass === selectedElement.ifcClass).map(e => e.name));
+      applyVisibilityFilters();
+    });
+    document.getElementById('btn-insp-iso-csi').addEventListener('click', () => {
+      if (!selectedElement) return;
+      isolatedNames = new Set(elements.filter(e => e.csiCode === selectedElement.csiCode).map(e => e.name));
+      applyVisibilityFilters();
+    });
+    document.getElementById('btn-insp-iso-storey').addEventListener('click', () => {
+      if (!selectedElement) return;
+      isolatedNames = new Set(elements.filter(e => e.storeyId === selectedElement.storeyId).map(e => e.name));
+      applyVisibilityFilters();
+    });
+
+    // Keyboard Shortcuts
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+      const k = e.key.toLowerCase();
+      if (k === 'o') toggleOrtho();
+      else if (k === 'm') toggleMeasureMode();
+      else if (k === 'i' && selectedElement) {
+        isolatedNames = new Set([selectedElement.name]);
+        applyVisibilityFilters();
+      } else if (k === 'h' && selectedElement) {
+        manuallyHiddenNames.add(selectedElement.name);
+        applyVisibilityFilters();
+      } else if (k === 'x') {
+        xrayMode = !xrayMode;
+        document.getElementById('btn-xray-toggle').classList.toggle('active', xrayMode);
+        applyFederationColors();
+      } else if (k === 'r') {
+        resetAllFilters();
+      }
+    });
+
+    // 2D Sheet Quick Preview Modal
+    const sheetModal = document.getElementById('sheet-modal');
+    function openSheetModal(s) {
+      document.getElementById('modal-sheet-title').textContent = `${s.id} — ${s.title}`;
+      document.getElementById('modal-sheet-img').src = `./drawings/${s.file}`;
+      document.getElementById('modal-open-binder').href = `./drawings/index.html#${s.id}`;
+      sheetModal.classList.add('open');
+    }
+    document.getElementById('btn-close-sheet-modal').addEventListener('click', () => sheetModal.classList.remove('open'));
+    sheetModal.addEventListener('click', (e) => { if (e.target === sheetModal) sheetModal.classList.remove('open'); });
+
+    // Export CSV (Contractor Excel BOQ)
+    document.getElementById('btn-export-csv').addEventListener('click', () => {
+      const headers = [
+        'Name', 'GlobalId', 'ISO19650_Container', 'IfcClass', 'PredefinedType',
+        'Discipline', 'BuildingId', 'StoreyId', 'CSI_Code', 'CSI_Title',
+        'Uniformat', 'Uniclass', 'Material', 'Length_m', 'Width_m', 'Height_m',
+        'ElevMin_m', 'ElevMax_m', 'Area_m2', 'Area_SqFt', 'Volume_m3', 'Volume_CuFt', 'SpecNotes'
+      ];
+      const csvRows = [headers.join(',')];
+      elements.forEach((e) => {
+        const row = [
+          `"${e.name}"`, `"${e.globalId}"`, `"${e.isoContainer}"`, `"${e.ifcClass}"`, `"${e.predefinedType}"`,
+          `"${e.discipline}"`, `"${e.buildingId}"`, `"${e.storeyId}"`, `"${e.csiCode}"`, `"${e.csiTitle}"`,
+          `"${e.uniformat}"`, `"${e.uniclass}"`, `"${e.material}"`,
+          e.dimensions[0], e.dimensions[1], e.dimensions[2],
+          e.bboxMin[2], e.bboxMax[2], e.areaM2, e.areaSqFt, e.volumeM3, e.volumeCuFt,
+          `"${(e.specNotes || '').replace(/"/g, '""')}"`
+        ];
+        csvRows.push(row.join(','));
+      });
+      const blob = new Blob([csvRows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'MAS-THH-ZZ-ZZ-SH-A-0501_Massaro_BIM_BOQ.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Export IFC4 STEP File (.ifc)
+    document.getElementById('btn-export-ifc').addEventListener('click', () => {
+      const lines = [
+        'ISO-10303-21;',
+        'HEADER;',
+        "FILE_DESCRIPTION(('ViewDefinition [CoordinationView_V2.0]'),'2;1');",
+        "FILE_NAME('MAS-THH-ZZ-ZZ-M3-A-0001_MassaroHouse.ifc','2026-11-18T00:00:00',('Architect'),('FLW / Thomas A. Heinz AIA'),'Blender 5.2 LTS BIM Exporter','IFC4 ADD2 TC1','ISO 19650 S4 Deliverable');",
+        "FILE_SCHEMA(('IFC4'));",
+        'ENDSEC;',
+        'DATA;',
+        "#1=IFCPROJECT('0MassaroProj0000000001',$,'Massaro House & 1951 Chahroudi Cottage — Petra Island',$,$,$,$,$,#2);",
+        "#2=IFCUNITASSIGNMENT((#3,#4,#5));",
+        "#3=IFCSIUNIT(*,.LENGTHUNIT.,$,.METRE.);",
+        "#4=IFCSIUNIT(*,.AREAUNIT.,$,.SQUARE_METRE.);",
+        "#5=IFCSIUNIT(*,.VOLUMEUNIT.,$,.CUBIC_METRE.);",
+        "#10=IFCSITE('0PetraIslandSite000001',$,'Petra Island, Lake Mahopac, NY (134.55m x 129.75m)',$,$,$,$,$,.ELEMENT.,(41,22,35),(-73,-44,-11),0.,$,$);",
+        "#20=IFCBUILDING('0MassaroMainBldg000001',$,'BLDG-01 Massaro Main Residence',$,$,$,$,$,.ELEMENT.,$,$,$);",
+        "#21=IFCBUILDING('0ChahroudiCottage00001',$,'BLDG-02 1951 FLW Chahroudi Guest Cottage',$,$,$,$,$,.ELEMENT.,$,$,$);",
+        "#30=IFCBUILDINGSTOREY('0StoreyL00Bedrock00001',$,'L00 Lake & Bedrock Foundation',$,$,$,$,$,.ELEMENT.,0.0);",
+        "#31=IFCBUILDINGSTOREY('0StoreyL01LowerEntry01',$,'L01 Lower Entry & Boat Dock',$,$,$,$,$,.ELEMENT.,1.5);",
+        "#32=IFCBUILDINGSTOREY('0StoreyL02MainLiving01',$,'L02 Main Residence Living Deck',$,$,$,$,$,.ELEMENT.,3.5);",
+        "#33=IFCBUILDINGSTOREY('0StoreyL03RoofDeck0001',$,'L03 Clerestory & Roof Deck',$,$,$,$,$,.ELEMENT.,5.8);",
+        "#34=IFCBUILDINGSTOREY('0StoreyL04Skylights001',$,'L04 Upper Skylight Dome & Cottage',$,$,$,$,$,.ELEMENT.,7.2);"
+      ];
+
+      let stepId = 100;
+      elements.forEach((e) => {
+        const entityUpper = e.ifcClass.toUpperCase();
+        const desc = `${e.csiCode} ${e.csiTitle} | ${e.material} | Area=${e.areaM2}m2 Vol=${e.volumeM3}m3`;
+        lines.push(`#${stepId}=${entityUpper}('${e.globalId}',$,'${e.name}','${desc}','${e.predefinedType}',$,$,'${e.isoContainer}',.${e.predefinedType}.);`);
+        stepId++;
+      });
+
+      lines.push('ENDSEC;');
+      lines.push('END-ISO-10303-21;');
+
+      const blob = new Blob([lines.join('\n')], { type: 'application/x-step' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'MAS-THH-ZZ-ZZ-M3-A-0001_MassaroHouse_IFC4.ifc';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Resize Handling
+    function onResize() {
+      const w = container.clientWidth;
+      const h = container.clientHeight;
+      if (w === 0 || h === 0) return;
+      const asp = w / h;
+      perspCam.aspect = asp;
+      perspCam.updateProjectionMatrix();
+
+      orthoCam.left = -orthoSize * asp;
+      orthoCam.right = orthoSize * asp;
+      orthoCam.top = orthoSize;
+      orthoCam.bottom = -orthoSize;
+      orthoCam.updateProjectionMatrix();
+
+      renderer.setSize(w, h);
+    }
+
+    window.addEventListener('resize', onResize);
+
+    // Render Loop
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, activeCam);
+    }
+
+    initBIM();
+    animate();
+  </script>
+</body>
+</html>

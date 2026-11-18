@@ -586,11 +586,13 @@
           </div>
         </div>
         <div class="quick-toggles">
+          <a href="./bim.html" class="btn btn-sm" style="text-decoration:none;" title="Open ISO 19650 / IFC4 Contractor BIM Coordination Viewer">🏗️ BIM</a>
+          <a href="./drawings/index.html" class="btn btn-sm" style="text-decoration:none;" title="Open 10-Sheet Architectural Construction Drawing Set (A-000 to A-501)">📐 Drawings</a>
           <button id="btn-toggle-roof" class="btn btn-sm toggle-on" title="Toggle Roof_Group">🏠 Roof: ON</button>
           <button id="btn-toggle-context" class="btn btn-sm toggle-on" title="Toggle Context_Group">🌳 Context: ON</button>
           <button id="btn-toggle-lines" class="btn btn-sm" title="Toggle Subtle Hidden-Line CAD Render (Hotkey: L)">✏️ Lines: OFF</button>
           <button id="btn-toggle-style" class="btn btn-sm style-btn" title="Switch UI Style: German DIN 1451 vs Star Trek LCARS (Hotkey: T)">📐 Style: DIN</button>
-          <button id="btn-changelog" class="btn btn-sm" title="View Version Changelog">📋 v1.2</button>
+          <button id="btn-changelog" class="btn btn-sm" title="View Version Changelog">📋 v2.0</button>
           <button id="btn-exit-xr" class="btn btn-sm danger" style="display:none;">✕ Exit XR</button>
         </div>
       </div>
@@ -628,6 +630,13 @@
           <button id="btn-close-changelog" class="btn btn-sm">✕ Close</button>
         </div>
         <div id="changelog-entries">
+          <div class="changelog-entry">
+            <div class="changelog-ver">v2.0.0 · 2026-11-18 (ISO 19650 / IFC4 Contractor BIM Coordination Viewer &amp; 10-Sheet Construction Drawing Set)</div>
+            <div class="changelog-desc">
+              • <strong>Dedicated Contractor BIM Coordination Viewer (<code>bim.html</code>)</strong>: Full ISO 19650-2 (<code>MAS-THH-ZZ-ZZ-M3-A-0001</code>, Suitability <code>S4</code>, Rev <code>P02.1</code>) &amp; <code>IFC4 ADD2 TC1</code> federation viewer across all <code>834</code> mesh elements with spatial hierarchy filters (<code>BLDG-01..03</code>, <code>SITE-01</code>, Storeys <code>L00..L04</code>), 18 IFC4 Entity Classes, CSI MasterFormat 2020 trade packages, 6 Federation Color Modes, 6-plane interactive 3D Section Box, Point-to-Point Laser Tape Measure <code>[M]</code>, Right-Docked <code>Pset_*</code> / <code>Qto_*</code> Property Inspector, and live BOQ spreadsheet with <code>.IFC</code> &amp; <code>.CSV</code> exports.<br>
+              • <strong>10-Sheet Architectural Construction Drawing Binder (<code>drawings/index.html</code>)</strong>: Vector SVG CAD sheets <code>A-000</code> through <code>A-501</code> with 30°/60° FLW triangular grids, dimensions, elevations, sections, interior details, and BIM Quantity Take-Off schedules.
+            </div>
+          </div>
           <div class="changelog-entry">
             <div class="changelog-ver">v1.2.0 · 2026-11-17 (Photo-Accurate Massaro Interiors &amp; 1951 Chahroudi Guest Cottage Overhaul)</div>
             <div class="changelog-desc">

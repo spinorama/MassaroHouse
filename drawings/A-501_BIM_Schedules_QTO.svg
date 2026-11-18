@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1280" width="1920" height="1280">
+  <defs>
+    <pattern id="hatch-masonry" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#1e293b" stroke-width="1.2"/>
+    </pattern>
+    <pattern id="hatch-rock" width="12" height="12" patternTransform="rotate(-30 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="8" y2="0" stroke="#475569" stroke-width="1.0"/>
+      <line x1="0" y1="6" x2="12" y2="6" stroke="#64748b" stroke-width="0.8"/>
+    </pattern>
+    <pattern id="hatch-earth" width="10" height="10" patternTransform="rotate(60 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#64748b" stroke-width="0.9"/>
+    </pattern>
+    <pattern id="grid-flw" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="0.6"/>
+    </pattern>
+    <style>
+      text { font-family: 'DIN Alternate', 'Bahnschrift', 'Roboto Mono', 'Consolas', monospace; fill: #0f172a; }
+      .tb-h1 { font-size: 18px; font-weight: 700; letter-spacing: 1.5px; }
+      .tb-h2 { font-size: 13px; font-weight: 700; letter-spacing: 1px; fill: #1e293b; }
+      .tb-lbl { font-size: 9.5px; font-weight: 600; fill: #64748b; letter-spacing: 0.8px; }
+      .tb-val { font-size: 11.5px; font-weight: 700; fill: #0f172a; }
+      .sheet-num { font-size: 32px; font-weight: 800; fill: #0f172a; letter-spacing: 1px; }
+      .dim-txt { font-size: 10.5px; font-weight: 700; fill: #b91c1c; text-anchor: middle; }
+      .tag-txt { font-size: 10px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .sub-txt { font-size: 9px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .note-txt { font-size: 11px; fill: #1e293b; }
+      .hdr-txt { font-size: 14px; font-weight: 700; fill: #0f172a; letter-spacing: 1px; }
+    </style>
+  </defs>
+  <!-- Blueprint Crisp Archival Paper Background -->
+  <rect x="0" y="0" width="1920" height="1280" fill="#fcfaf5"/>
+  <!-- Fine Engineering Grid Background inside Drawing Area -->
+  <rect x="28" y="28" width="1602" height="1224" fill="url(#grid-flw)"/>
+  <!-- Outer Sheet Border & CAD Margin -->
+  <rect x="18" y="18" width="1884" height="1244" fill="none" stroke="#0f172a" stroke-width="3.0"/>
+  <rect x="28" y="28" width="1602" height="1224" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+
+  <!-- RIGHT-HAND ISO 19650 / AIA CONTRACTOR TITLE BLOCK (x = 1610..1902) -->
+  <g transform="translate(1610, 28)">
+    <rect x="0" y="0" width="282" height="1224" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+    <!-- Top Brand / Architect Block -->
+    <rect x="0" y="0" width="282" height="78" fill="#0f172a"/>
+    <text x="141" y="28" text-anchor="middle" style="font-size:15px;font-weight:800;fill:#f8fafc;letter-spacing:2px;">MASSARO HOUSE · PETRA ISLAND</text>
+    <text x="141" y="48" text-anchor="middle" style="font-size:10px;font-weight:600;fill:#94a3b8;letter-spacing:1.2px;">FRANK LLOYD WRIGHT (1950) · T. HEINZ AIA</text>
+    <text x="141" y="65" text-anchor="middle" style="font-size:9.5px;font-weight:700;fill:#38bdf8;letter-spacing:1px;">ISO 19650 / IFC4 BIM DELIVERABLE SET</text>
+
+    <!-- Project Metadata -->
+    <line x1="0" y1="165" x2="282" y2="165" stroke="#0f172a" stroke-width="1.2"/>
+    <text x="12" y="96" class="tb-lbl">PROJECT / SITE LOCATION</text>
+    <text x="12" y="112" class="tb-val">PETRA ISLAND, LAKE MAHOPAC, NY</text>
+    <text x="12" y="128" style="font-size:10px;fill:#334155;">41.3765° N, 73.7364° W · EXTENTS 134.55 × 129.75m</text>
+    <text x="12" y="146" class="tb-lbl">CLIENT / REPOSITORY</text>
+    <text x="12" y="159" style="font-size:10px;font-weight:700;fill:#0f172a;">github.com/spinorama/MassaroHouse</text>
+
+    <!-- ISO 19650 Information Container Box -->
+    <rect x="0" y="165" width="282" height="24" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.0"/>
+    <text x="141" y="181" text-anchor="middle" class="tb-h2">ISO 19650 METADATA REGISTER</text>
+    <text x="12" y="206" class="tb-lbl">INFORMATION CONTAINER ID (ISO 19650-2)</text>
+    <text x="12" y="222" style="font-size:12px;font-weight:800;fill:#0369a1;">MAS-THH-ZZ-ZZ-SH-A-0501</text>
+    <text x="12" y="242" class="tb-lbl">STATUS / SUITABILITY CODE</text>
+    <text x="12" y="256" class="tb-val">S4 — SUITABLE FOR STAGE APPROVAL</text>
+    <text x="12" y="276" class="tb-lbl">REVISION</text>
+    <text x="12" y="290" class="tb-val">P02.1 (2026-11-17)</text>
+    <text x="145" y="276" class="tb-lbl">IFC SCHEMA</text>
+    <text x="145" y="290" class="tb-val">IFC4 ADD2 TC1</text>
+    <text x="12" y="310" class="tb-lbl">DISCIPLINE</text>
+    <text x="12" y="324" class="tb-val">BIM / QUANTITY SURVEYING</text>
+    <text x="145" y="310" class="tb-lbl">UNITS / DATUM</text>
+    <text x="145" y="324" class="tb-val">METRIC (m) / EL 0.00m</text>
+    <line x1="0" y1="336" x2="282" y2="336" stroke="#0f172a" stroke-width="1.2"/>
+
+    <!-- Revision History Table -->
+    <rect x="0" y="336" width="282" height="22" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.0"/>
+    <text x="141" y="351" text-anchor="middle" class="tb-h2">ISSUE &amp; REVISION SCHEDULE</text>
+    <text x="10" y="372" class="tb-lbl">REV</text>
+    <text x="50" y="372" class="tb-lbl">DATE</text>
+    <text x="125" y="372" class="tb-lbl">DESCRIPTION</text>
+    <line x1="0" y1="378" x2="282" y2="378" stroke="#94a3b8" stroke-width="0.8"/>
+    <text x="10" y="394" style="font-size:10px;font-weight:700;">P01.0</text>
+    <text x="50" y="394" style="font-size:10px;">2026-11-14</text>
+    <text x="125" y="394" style="font-size:10px;">INITIAL 3D / WEBXR ISSUE</text>
+    <text x="10" y="412" style="font-size:10px;font-weight:700;">P02.0</text>
+    <text x="50" y="412" style="font-size:10px;">2026-11-17</text>
+    <text x="125" y="412" style="font-size:10px;">INTERIOR &amp; COTTAGE OVERHAUL</text>
+    <text x="10" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">P02.1</text>
+    <text x="50" y="430" style="font-size:10px;fill:#b91c1c;">2026-11-17</text>
+    <text x="125" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">CONTRACTOR BIM &amp; CD SET</text>
+    <line x1="0" y1="444" x2="282" y2="444" stroke="#0f172a" stroke-width="1.2"/>
+
+    <!-- Key Plan / Mini Silhouette -->
+    <text x="141" y="464" text-anchor="middle" class="tb-lbl">KEY PLAN · PETRA ISLAND EXTENTS</text>
+    <rect x="26" y="474" width="230" height="170" fill="#e0f2fe" stroke="#0f172a" stroke-width="1.0"/>
+    <polygon points="115,474 256,474 256,644 140,644 102,590 95,540" fill="#dcfce7" stroke="#15803d" stroke-width="1.0"/>
+    <polygon points="116,550 148,578 88,602 108,562" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+    <polygon points="150,512 162,518 158,534 144,538 142,522" fill="#fde68a" stroke="#92400e" stroke-width="1.2"/>
+    <text x="40" y="634" style="font-size:9px;font-weight:700;fill:#0369a1;">LAKE MAHOPAC</text>
+
+    <!-- North Arrow & Scale Block -->
+    <line x1="0" y1="660" x2="282" y2="660" stroke="#0f172a" stroke-width="1.2"/>
+    <g transform="translate(235, 705)">
+      <circle cx="0" cy="0" r="22" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+      <polygon points="0,-20 -6,8 0,2 6,8" fill="#0f172a"/>
+      <text x="0" y="-25" text-anchor="middle" style="font-size:11px;font-weight:800;">N</text>
+    </g>
+    <text x="14" y="685" class="tb-lbl">DRAWING SCALE</text>
+    <text x="14" y="706" style="font-size:15px;font-weight:800;">TABULAR · 834 ELEMENTS</text>
+    <text x="14" y="726" style="font-size:9.5px;fill:#475569;">30° / 60° FLW TRIANGULAR MODULE</text>
+
+    <!-- Sheet Title & Sheet Number Box -->
+    <line x1="0" y1="1040" x2="282" y2="1040" stroke="#0f172a" stroke-width="1.5"/>
+    <text x="14" y="1062" class="tb-lbl">SHEET TITLE</text>
+    <text x="14" y="1088" class="tb-h1">BIM SCHEDULES &amp; IFC4 QTO</text>
+    <line x1="0" y1="1130" x2="282" y2="1130" stroke="#0f172a" stroke-width="1.5"/>
+    <rect x="0" y="1130" width="282" height="94" fill="#f1f5f9"/>
+    <text x="14" y="1152" class="tb-lbl">SHEET NUMBER</text>
+    <text x="141" y="1198" text-anchor="middle" class="sheet-num">A-501</text>
+    <text x="268" y="1214" text-anchor="end" style="font-size:9.5px;font-weight:700;fill:#475569;">OF 10 SHEETS</text>
+  </g>
+
+
+    <g transform="translate(55, 55)">
+      <!-- TABLE 1: IFC4 ENTITY CLASS SUMMARY & QUANTITY TAKE-OFF -->
+      <rect x="0" y="0" width="745" height="560" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+      <rect x="0" y="0" width="745" height="34" fill="#1e293b"/>
+      <text x="16" y="22" style="font-size:13px;font-weight:800;fill:#ffffff;">1 · IFC4 ENTITY CLASS QUANTITY TAKE-OFF SUMMARY (ISO 16739-1)</text>
+      <text x="16" y="54" class="tb-lbl">IFC4 ENTITY CLASS</text>
+      <text x="245" y="54" class="tb-lbl">DISCIPLINE</text>
+      <text x="355" y="54" class="tb-lbl">COUNT</text>
+      <text x="445" y="54" class="tb-lbl">GROSS AREA (m² / FT²)</text>
+      <text x="615" y="54" class="tb-lbl">NET VOL (m³)</text>
+      <line x1="0" y1="62" x2="745" y2="62" stroke="#cbd5e1" stroke-width="1"/>
+    
+<rect x="2" y="70" width="741" height="26" fill="#ffffff"/>
+<text x="16" y="88" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcRoof</text>
+<text x="245" y="88" style="font-size:10.5px;font-weight:700;">ARC</text>
+<text x="355" y="88" style="font-size:11px;font-weight:800;">235</text>
+<text x="445" y="88" style="font-size:10.5px;">2885.7 m² (31,061 ft²)</text>
+<text x="615" y="88" style="font-size:10.5px;font-weight:700;">518.79 m³</text>
+<rect x="2" y="99" width="741" height="26" fill="#f8fafc"/>
+<text x="16" y="117" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcCurtainWall</text>
+<text x="245" y="117" style="font-size:10.5px;font-weight:700;">ARC</text>
+<text x="355" y="117" style="font-size:11px;font-weight:800;">137</text>
+<text x="445" y="117" style="font-size:10.5px;">1056.6 m² (11,374 ft²)</text>
+<text x="615" y="117" style="font-size:10.5px;font-weight:700;">20.54 m³</text>
+<rect x="2" y="128" width="741" height="26" fill="#ffffff"/>
+<text x="16" y="146" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcFurnishingElement</text>
+<text x="245" y="146" style="font-size:10.5px;font-weight:700;">ARC</text>
+<text x="355" y="146" style="font-size:11px;font-weight:800;">131</text>
+<text x="445" y="146" style="font-size:10.5px;">679.2 m² (7,311 ft²)</text>
+<text x="615" y="146" style="font-size:10.5px;font-weight:700;">46.15 m³</text>
+<rect x="2" y="157" width="741" height="26" fill="#f8fafc"/>
+<text x="16" y="175" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcWindow</text>
+<text x="245" y="175" style="font-size:10.5px;font-weight:700;">ARC</text>
+<text x="355" y="175" style="font-size:11px;font-weight:800;">53</text>
+<text x="445" y="175" style="font-size:10.5px;">282.3 m² (3,039 ft²)</text>
+<text x="615" y="175" style="font-size:10.5px;font-weight:700;">8.90 m³</text>
+<rect x="2" y="186" width="741" height="26" fill="#ffffff"/>
+<text x="16" y="204" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcSlab</text>
+<text x="245" y="204" style="font-size:10.5px;font-weight:700;">CIV</text>
+<text x="355" y="204" style="font-size:11px;font-weight:800;">46</text>
+<text x="445" y="204" style="font-size:10.5px;">4594.9 m² (49,460 ft²)</text>
+<text x="615" y="204" style="font-size:10.5px;font-weight:700;">1629.20 m³</text>
+<rect x="2" y="215" width="741" height="26" fill="#f8fafc"/>
+<text x="16" y="233" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcLightFixture</text>
+<text x="245" y="233" style="font-size:10.5px;font-weight:700;">MEP</text>
+<text x="355" y="233" style="font-size:11px;font-weight:800;">44</text>
+<text x="445" y="233" style="font-size:10.5px;">83.5 m² (898 ft²)</text>
+<text x="615" y="233" style="font-size:10.5px;font-weight:700;">2.93 m³</text>
+<rect x="2" y="244" width="741" height="26" fill="#ffffff"/>
+<text x="16" y="262" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcWall</text>
+<text x="245" y="262" style="font-size:10.5px;font-weight:700;">ARC</text>
+<text x="355" y="262" style="font-size:11px;font-weight:800;">31</text>
+<text x="445" y="262" style="font-size:10.5px;">956.2 m² (10,293 ft²)</text>
+<text x="615" y="262" style="font-size:10.5px;font-weight:700;">197.30 m³</text>
+<rect x="2" y="273" width="741" height="26" fill="#f8fafc"/>
+<text x="16" y="291" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcGeographicElement</text>
+<text x="245" y="291" style="font-size:10.5px;font-weight:700;">GEO</text>
+<text x="355" y="291" style="font-size:11px;font-weight:800;">30</text>
+<text x="445" y="291" style="font-size:10.5px;">63319.5 m² (681,572 ft²)</text>
+<text x="615" y="291" style="font-size:10.5px;font-weight:700;">86401.27 m³</text>
+<rect x="2" y="302" width="741" height="26" fill="#ffffff"/>
+<text x="16" y="320" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcCivilElement</text>
+<text x="245" y="320" style="font-size:10.5px;font-weight:700;">CIV</text>
+<text x="355" y="320" style="font-size:11px;font-weight:800;">27</text>
+<text x="445" y="320" style="font-size:10.5px;">684.7 m² (7,370 ft²)</text>
+<text x="615" y="320" style="font-size:10.5px;font-weight:700;">326.17 m³</text>
+<rect x="2" y="331" width="741" height="26" fill="#f8fafc"/>
+<text x="16" y="349" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcChimney</text>
+<text x="245" y="349" style="font-size:10.5px;font-weight:700;">ARC</text>
+<text x="355" y="349" style="font-size:11px;font-weight:800;">26</text>
+<text x="445" y="349" style="font-size:10.5px;">389.2 m² (4,189 ft²)</text>
+<text x="615" y="349" style="font-size:10.5px;font-weight:700;">107.86 m³</text>
+<rect x="2" y="360" width="741" height="26" fill="#ffffff"/>
+<text x="16" y="378" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcDoor</text>
+<text x="245" y="378" style="font-size:10.5px;font-weight:700;">ARC</text>
+<text x="355" y="378" style="font-size:11px;font-weight:800;">14</text>
+<text x="445" y="378" style="font-size:10.5px;">44.2 m² (476 ft²)</text>
+<text x="615" y="378" style="font-size:10.5px;font-weight:700;">1.17 m³</text>
+<rect x="2" y="389" width="741" height="26" fill="#f8fafc"/>
+<text x="16" y="407" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcStairFlight</text>
+<text x="245" y="407" style="font-size:10.5px;font-weight:700;">ARC</text>
+<text x="355" y="407" style="font-size:11px;font-weight:800;">14</text>
+<text x="445" y="407" style="font-size:10.5px;">125.2 m² (1,348 ft²)</text>
+<text x="615" y="407" style="font-size:10.5px;font-weight:700;">21.39 m³</text>
+<rect x="2" y="418" width="741" height="26" fill="#ffffff"/>
+<text x="16" y="436" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcRailing</text>
+<text x="245" y="436" style="font-size:10.5px;font-weight:700;">ARC</text>
+<text x="355" y="436" style="font-size:11px;font-weight:800;">13</text>
+<text x="445" y="436" style="font-size:10.5px;">79.0 m² (850 ft²)</text>
+<text x="615" y="436" style="font-size:10.5px;font-weight:700;">3.71 m³</text>
+<rect x="2" y="447" width="741" height="26" fill="#f8fafc"/>
+<text x="16" y="465" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcFooting</text>
+<text x="245" y="465" style="font-size:10.5px;font-weight:700;">STR</text>
+<text x="355" y="465" style="font-size:11px;font-weight:800;">10</text>
+<text x="445" y="465" style="font-size:10.5px;">455.6 m² (4,904 ft²)</text>
+<text x="615" y="465" style="font-size:10.5px;font-weight:700;">149.90 m³</text>
+<rect x="2" y="476" width="741" height="26" fill="#ffffff"/>
+<text x="16" y="494" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcSanitaryTerminal</text>
+<text x="245" y="494" style="font-size:10.5px;font-weight:700;">MEP</text>
+<text x="355" y="494" style="font-size:11px;font-weight:800;">9</text>
+<text x="445" y="494" style="font-size:10.5px;">2.2 m² (24 ft²)</text>
+<text x="615" y="494" style="font-size:10.5px;font-weight:700;">0.05 m³</text>
+<rect x="2" y="505" width="741" height="26" fill="#f8fafc"/>
+<text x="16" y="523" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcBeam</text>
+<text x="245" y="523" style="font-size:10.5px;font-weight:700;">STR</text>
+<text x="355" y="523" style="font-size:11px;font-weight:800;">7</text>
+<text x="445" y="523" style="font-size:10.5px;">214.6 m² (2,310 ft²)</text>
+<text x="615" y="523" style="font-size:10.5px;font-weight:700;">35.72 m³</text>
+<rect x="2" y="534" width="741" height="26" fill="#ffffff"/>
+<text x="16" y="552" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcElectricAppliance</text>
+<text x="245" y="552" style="font-size:10.5px;font-weight:700;">MEP</text>
+<text x="355" y="552" style="font-size:11px;font-weight:800;">6</text>
+<text x="445" y="552" style="font-size:10.5px;">19.6 m² (211 ft²)</text>
+<text x="615" y="552" style="font-size:10.5px;font-weight:700;">1.68 m³</text>
+<rect x="2" y="563" width="741" height="26" fill="#f8fafc"/>
+<text x="16" y="581" style="font-size:11px;font-weight:800;fill:#0369a1;">IfcMember</text>
+<text x="245" y="581" style="font-size:10.5px;font-weight:700;">STR</text>
+<text x="355" y="581" style="font-size:11px;font-weight:800;">1</text>
+<text x="445" y="581" style="font-size:10.5px;">108.0 m² (1,163 ft²)</text>
+<text x="615" y="581" style="font-size:10.5px;font-weight:700;">3.15 m³</text>
+
+      <g transform="translate(775, 0)">
+        <rect x="0" y="0" width="745" height="560" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="0" y="0" width="745" height="34" fill="#1e293b"/>
+        <text x="16" y="22" style="font-size:13px;font-weight:800;fill:#ffffff;">2 · CSI MASTERFORMAT CONTRACTOR WORK BREAKDOWN SCHEDULE</text>
+        <text x="16" y="54" class="tb-lbl">CSI DIVISION &amp; TRADE PACKAGE</text>
+        <text x="465" y="54" class="tb-lbl">ITEMS</text>
+        <text x="535" y="54" class="tb-lbl">AREA (m²)</text>
+        <text x="635" y="54" class="tb-lbl">VOL (m³)</text>
+        <line x1="0" y1="62" x2="745" y2="62" stroke="#cbd5e1" stroke-width="1"/>
+    
+<rect x="2" y="70" width="741" height="28" fill="#ffffff"/>
+<text x="16" y="88" style="font-size:10.5px;font-weight:700;fill:#0f172a;">03 30 00 · Cast-in-Place Concrete & Rubble Piers</text>
+<text x="465" y="88" style="font-size:11px;font-weight:800;fill:#b91c1c;">10</text>
+<text x="535" y="88" style="font-size:10.5px;">455.6 m²</text>
+<text x="635" y="88" style="font-size:10.5px;font-weight:700;">149.90 m³</text>
+<rect x="2" y="101" width="741" height="28" fill="#f8fafc"/>
+<text x="16" y="119" style="font-size:10.5px;font-weight:700;fill:#0f172a;">03 35 00 · Integral Cherokee-Red Scored Concrete Finishi</text>
+<text x="465" y="119" style="font-size:11px;font-weight:800;fill:#b91c1c;">46</text>
+<text x="535" y="119" style="font-size:10.5px;">4594.9 m²</text>
+<text x="635" y="119" style="font-size:10.5px;font-weight:700;">1629.20 m³</text>
+<rect x="2" y="132" width="741" height="28" fill="#ffffff"/>
+<text x="16" y="150" style="font-size:10.5px;font-weight:700;fill:#0f172a;">03 38 00 · Post-Tensioned Concrete & Timber Girders</text>
+<text x="465" y="150" style="font-size:11px;font-weight:800;fill:#b91c1c;">7</text>
+<text x="535" y="150" style="font-size:10.5px;">214.6 m²</text>
+<text x="635" y="150" style="font-size:10.5px;font-weight:700;">35.72 m³</text>
+<rect x="2" y="163" width="741" height="28" fill="#f8fafc"/>
+<text x="16" y="181" style="font-size:10.5px;font-weight:700;fill:#0f172a;">04 43 00 · Stone Masonry & Firebrick Hearths</text>
+<text x="465" y="181" style="font-size:11px;font-weight:800;fill:#b91c1c;">26</text>
+<text x="535" y="181" style="font-size:10.5px;">389.2 m²</text>
+<text x="635" y="181" style="font-size:10.5px;font-weight:700;">107.86 m³</text>
+<rect x="2" y="194" width="741" height="28" fill="#ffffff"/>
+<text x="16" y="212" style="font-size:10.5px;font-weight:700;fill:#0f172a;">04 43 13 · Desert-Rubble Stone Masonry & Mahogany Wainsc</text>
+<text x="465" y="212" style="font-size:11px;font-weight:800;fill:#b91c1c;">31</text>
+<text x="535" y="212" style="font-size:10.5px;">956.2 m²</text>
+<text x="635" y="212" style="font-size:10.5px;font-weight:700;">197.30 m³</text>
+<rect x="2" y="225" width="741" height="28" fill="#f8fafc"/>
+<text x="16" y="243" style="font-size:10.5px;font-weight:700;fill:#0f172a;">05 73 13 · Glazed Balcony Guardrails & Stepped Risers</text>
+<text x="465" y="243" style="font-size:11px;font-weight:800;fill:#b91c1c;">27</text>
+<text x="535" y="243" style="font-size:10.5px;">204.2 m²</text>
+<text x="635" y="243" style="font-size:10.5px;font-weight:700;">25.10 m³</text>
+<rect x="2" y="256" width="741" height="28" fill="#ffffff"/>
+<text x="16" y="274" style="font-size:10.5px;font-weight:700;fill:#0f172a;">06 13 00 · Exposed Hexagonal Redwood/Mahogany Roof Frami</text>
+<text x="465" y="274" style="font-size:11px;font-weight:800;fill:#b91c1c;">1</text>
+<text x="535" y="274" style="font-size:10.5px;">108.0 m²</text>
+<text x="635" y="274" style="font-size:10.5px;font-weight:700;">3.15 m³</text>
+<rect x="2" y="287" width="741" height="28" fill="#f8fafc"/>
+<text x="16" y="305" style="font-size:10.5px;font-weight:700;fill:#0f172a;">06 41 00 · Custom Frank Lloyd Wright Mahogany Millwork &</text>
+<text x="465" y="305" style="font-size:11px;font-weight:800;fill:#b91c1c;">131</text>
+<text x="535" y="305" style="font-size:10.5px;">679.2 m²</text>
+<text x="635" y="305" style="font-size:10.5px;font-weight:700;">46.15 m³</text>
+<rect x="2" y="318" width="741" height="28" fill="#ffffff"/>
+<text x="16" y="336" style="font-size:10.5px;font-weight:700;fill:#0f172a;">07 31 29 · Standing-Seam Sheet Copper Fascia & Cedar Shi</text>
+<text x="465" y="336" style="font-size:11px;font-weight:800;fill:#b91c1c;">26</text>
+<text x="535" y="336" style="font-size:10.5px;">1536.7 m²</text>
+<text x="635" y="336" style="font-size:10.5px;font-weight:700;">82.95 m³</text>
+<rect x="2" y="349" width="741" height="28" fill="#f8fafc"/>
+<text x="16" y="367" style="font-size:10.5px;font-weight:700;fill:#0f172a;">07 61 00 · Standing-Seam Sheet Copper Fascia & Cedar Shi</text>
+<text x="465" y="367" style="font-size:11px;font-weight:800;fill:#b91c1c;">19</text>
+<text x="535" y="367" style="font-size:10.5px;">407.1 m²</text>
+<text x="635" y="367" style="font-size:10.5px;font-weight:700;">42.66 m³</text>
+<rect x="2" y="380" width="741" height="28" fill="#ffffff"/>
+<text x="16" y="398" style="font-size:10.5px;font-weight:700;fill:#0f172a;">08 14 00 · Custom Mahogany French & Folding Doors</text>
+<text x="465" y="398" style="font-size:11px;font-weight:800;fill:#b91c1c;">14</text>
+<text x="535" y="398" style="font-size:10.5px;">44.2 m²</text>
+<text x="635" y="398" style="font-size:10.5px;font-weight:700;">1.17 m³</text>
+<rect x="2" y="411" width="741" height="28" fill="#f8fafc"/>
+<text x="16" y="429" style="font-size:10.5px;font-weight:700;fill:#0f172a;">08 44 13 · Glazed African Mahogany Curtain Walls & Casem</text>
+<text x="465" y="429" style="font-size:11px;font-weight:800;fill:#b91c1c;">190</text>
+<text x="535" y="429" style="font-size:10.5px;">1339.0 m²</text>
+<text x="635" y="429" style="font-size:10.5px;font-weight:700;">29.44 m³</text>
+<rect x="2" y="442" width="741" height="28" fill="#ffffff"/>
+<text x="16" y="460" style="font-size:10.5px;font-weight:700;fill:#0f172a;">08 63 00 · Pyramidal Coffered Skylight Assemblies (27 Un</text>
+<text x="465" y="460" style="font-size:11px;font-weight:800;fill:#b91c1c;">190</text>
+<text x="535" y="460" style="font-size:10.5px;">941.9 m²</text>
+<text x="635" y="460" style="font-size:10.5px;font-weight:700;">393.18 m³</text>
+<rect x="2" y="473" width="741" height="28" fill="#f8fafc"/>
+<text x="16" y="491" style="font-size:10.5px;font-weight:700;fill:#0f172a;">11 30 13 · Kitchen Appliances, Mosaic Backsplash & Rock-</text>
+<text x="465" y="491" style="font-size:11px;font-weight:800;fill:#b91c1c;">6</text>
+<text x="535" y="491" style="font-size:10.5px;">19.6 m²</text>
+<text x="635" y="491" style="font-size:10.5px;font-weight:700;">1.68 m³</text>
+<rect x="2" y="504" width="741" height="28" fill="#ffffff"/>
+<text x="16" y="522" style="font-size:10.5px;font-weight:700;fill:#0f172a;">22 41 00 · Kitchen Appliances, Mosaic Backsplash & Rock-</text>
+<text x="465" y="522" style="font-size:11px;font-weight:800;fill:#b91c1c;">9</text>
+<text x="535" y="522" style="font-size:10.5px;">2.2 m²</text>
+<text x="635" y="522" style="font-size:10.5px;font-weight:700;">0.05 m³</text>
+<rect x="2" y="535" width="741" height="28" fill="#f8fafc"/>
+<text x="16" y="553" style="font-size:10.5px;font-weight:700;fill:#0f172a;">26 51 00 · Taliesin Lamps, Triangular Downlights & Indir</text>
+<text x="465" y="553" style="font-size:11px;font-weight:800;fill:#b91c1c;">44</text>
+<text x="535" y="553" style="font-size:10.5px;">83.5 m²</text>
+<text x="635" y="553" style="font-size:10.5px;font-weight:700;">2.93 m³</text>
+<rect x="2" y="566" width="741" height="28" fill="#ffffff"/>
+<text x="16" y="584" style="font-size:10.5px;font-weight:700;fill:#0f172a;">31 23 16 · In-Situ Granite Bedrock Outcrops ('Whale Rock</text>
+<text x="465" y="584" style="font-size:11px;font-weight:800;fill:#b91c1c;">30</text>
+<text x="535" y="584" style="font-size:10.5px;">63319.5 m²</text>
+<text x="635" y="584" style="font-size:10.5px;font-weight:700;">86401.27 m³</text>
+<rect x="2" y="597" width="741" height="28" fill="#f8fafc"/>
+<text x="16" y="615" style="font-size:10.5px;font-weight:700;fill:#0f172a;">35 51 13 · Timber Pile Marine Pier, Boathouse Slip & Out</text>
+<text x="465" y="615" style="font-size:11px;font-weight:800;fill:#b91c1c;">27</text>
+<text x="535" y="615" style="font-size:10.5px;">684.7 m²</text>
+<text x="635" y="615" style="font-size:10.5px;font-weight:700;">326.17 m³</text>
+      </g>
+
+      <g transform="translate(0, 585)">
+        <rect x="0" y="0" width="1520" height="580" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="0" y="0" width="1520" height="34" fill="#1e293b"/>
+        <text x="16" y="22" style="font-size:13px;font-weight:800;fill:#ffffff;">3 · ARCHITECTURAL ROOM, FINISH, GLAZING &amp; ELEVATION SCHEDULE (MAIN RESIDENCE &amp; 1951 CHAHROUDI COTTAGE)</text>
+        <text x="16" y="56" class="tb-lbl">SPACE ID</text>
+        <text x="110" y="56" class="tb-lbl">BUILDING / STOREY</text>
+        <text x="290" y="56" class="tb-lbl">ROOM / ZONE NAME</text>
+        <text x="560" y="56" class="tb-lbl">DATUM ELEV</text>
+        <text x="690" y="56" class="tb-lbl">FLOOR FINISH</text>
+        <text x="940" y="56" class="tb-lbl">WALL / MILLWORK FINISH</text>
+        <text x="1230" y="56" class="tb-lbl">CEILING / DAYLIGHTING</text>
+        <line x1="0" y1="64" x2="1520" y2="64" stroke="#cbd5e1" stroke-width="1"/>
+    
+<rect x="2" y="72" width="1516" height="28" fill="#ffffff"/>
+<text x="16" y="90" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-101</text>
+<text x="110" y="90" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-01 · L01</text>
+<text x="290" y="90" style="font-size:10.5px;font-weight:700;">SW Cantilever Prow Balcony</text>
+<text x="560" y="90" style="font-size:10px;font-weight:700;">EL +3.18m</text>
+<text x="690" y="90" style="font-size:10px;">Scored Cherokee-Red Concrete</text>
+<text x="940" y="90" style="font-size:10px;">Buff Stucco Parapet + Tempered Glass</text>
+<text x="1230" y="90" style="font-size:10px;">Open to Sky / Mahogany Soffit</text>
+<rect x="2" y="104" width="1516" height="28" fill="#f8fafc"/>
+<text x="16" y="122" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-102</text>
+<text x="110" y="122" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-01 · L01</text>
+<text x="290" y="122" style="font-size:10.5px;font-weight:700;">Cantilevered Great Living Room</text>
+<text x="560" y="122" style="font-size:10px;font-weight:700;">EL +3.20m</text>
+<text x="690" y="122" style="font-size:10px;">Scored Cherokee-Red + Hex Rugs</text>
+<text x="940" y="122" style="font-size:10px;">African Mahogany Mullions + Desert Rubble</text>
+<text x="1230" y="122" style="font-size:10px;">Mahogany Planks + 6 Tri Downlights</text>
+<rect x="2" y="136" width="1516" height="28" fill="#ffffff"/>
+<text x="16" y="154" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-103</text>
+<text x="110" y="154" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-01 · L01</text>
+<text x="290" y="154" style="font-size:10.5px;font-weight:700;">Double-Sided Hearth Inglenook</text>
+<text x="560" y="154" style="font-size:10px;font-weight:700;">EL +3.20m</text>
+<text x="690" y="154" style="font-size:10px;">Scored Cherokee-Red + Granite Bench</text>
+<text x="940" y="154" style="font-size:10px;">Desert-Rubble Concrete + Fieldstones</text>
+<text x="1230" y="154" style="font-size:10px;">Mahogany Planks + Indirect LED Cove</text>
+<rect x="2" y="168" width="1516" height="28" fill="#f8fafc"/>
+<text x="16" y="186" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-104</text>
+<text x="110" y="186" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-01 · L02</text>
+<text x="290" y="186" style="font-size:10.5px;font-weight:700;">Whale Rock Entry Foyer</text>
+<text x="560" y="186" style="font-size:10px;font-weight:700;">EL +3.80m</text>
+<text x="690" y="186" style="font-size:10px;">Scored Cherokee-Red + In-Situ Rock</text>
+<text x="940" y="186" style="font-size:10px;">18m Native Granite 'Whale Rock' + Mahogany</text>
+<text x="1230" y="186" style="font-size:10px;">Stepped Concrete/Mahogany Skylights</text>
+<rect x="2" y="200" width="1516" height="28" fill="#ffffff"/>
+<text x="16" y="218" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-105</text>
+<text x="110" y="218" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-01 · L02</text>
+<text x="290" y="218" style="font-size:10.5px;font-weight:700;">27-Skylight Central Atrium Gallery</text>
+<text x="560" y="218" style="font-size:10px;font-weight:700;">EL +3.80m</text>
+<text x="690" y="218" style="font-size:10px;">Scored Cherokee-Red Concrete</text>
+<text x="940" y="218" style="font-size:10px;">Desert Rubble + 4.4m Crane Screen Mural</text>
+<text x="1230" y="218" style="font-size:10px;">27 Pyramidal Glass Skylights (+8.54m)</text>
+<rect x="2" y="232" width="1516" height="28" fill="#f8fafc"/>
+<text x="16" y="250" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-106</text>
+<text x="110" y="250" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-01 · L02</text>
+<text x="290" y="250" style="font-size:10.5px;font-weight:700;">Whale-Rock Integrated Kitchen</text>
+<text x="560" y="250" style="font-size:10px;font-weight:700;">EL +3.80m</text>
+<text x="690" y="250" style="font-size:10px;">Scored Cherokee-Red Concrete</text>
+<text x="940" y="250" style="font-size:10px;">In-Situ Boulder + Red Mosaic Tile + Mahogany</text>
+<text x="1230" y="250" style="font-size:10px;">Coffered Skylight Grid + LED Cove</text>
+<rect x="2" y="264" width="1516" height="28" fill="#ffffff"/>
+<text x="16" y="282" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-107</text>
+<text x="110" y="282" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-01 · L02</text>
+<text x="290" y="282" style="font-size:10.5px;font-weight:700;">Atrium Dining Room</text>
+<text x="560" y="282" style="font-size:10px;font-weight:700;">EL +3.80m</text>
+<text x="690" y="282" style="font-size:10px;">Scored Cherokee-Red Concrete</text>
+<text x="940" y="282" style="font-size:10px;">Desert-Rubble Hearth + Mahogany Buffet</text>
+<text x="1230" y="282" style="font-size:10px;">Mahogany Planks + Brass Chandelier</text>
+<rect x="2" y="296" width="1516" height="28" fill="#f8fafc"/>
+<text x="16" y="314" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-108</text>
+<text x="110" y="314" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-01 · L02</text>
+<text x="290" y="314" style="font-size:10.5px;font-weight:700;">East Wing Master Bedroom Suite</text>
+<text x="560" y="314" style="font-size:10px;font-weight:700;">EL +3.80m</text>
+<text x="690" y="314" style="font-size:10px;">Scored Cherokee-Red + Usonian Rug</text>
+<text x="940" y="314" style="font-size:10px;">Stacked Fieldstone Hearth + Mahogany Credenza</text>
+<text x="1230" y="314" style="font-size:10px;">Stepped Diagonal Mahogany Tray + Cove</text>
+<rect x="2" y="328" width="1516" height="28" fill="#ffffff"/>
+<text x="16" y="346" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-109</text>
+<text x="110" y="346" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-01 · L02</text>
+<text x="290" y="346" style="font-size:10.5px;font-weight:700;">Rock-Wall En-Suite Shower &amp; Bath</text>
+<text x="560" y="346" style="font-size:10px;font-weight:700;">EL +3.80m</text>
+<text x="690" y="346" style="font-size:10px;">Scored Cherokee-Red Concrete</text>
+<text x="940" y="346" style="font-size:10px;">Stepped Granite Cascade + Frosted FLW Glass</text>
+<text x="1230" y="346" style="font-size:10px;">Mahogany Planks + Wright Light Box</text>
+<rect x="2" y="360" width="1516" height="28" fill="#f8fafc"/>
+<text x="16" y="378" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-110</text>
+<text x="110" y="378" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-01 · L02</text>
+<text x="290" y="378" style="font-size:10.5px;font-weight:700;">North Prow Study &amp; Guest Alcove</text>
+<text x="560" y="378" style="font-size:10px;font-weight:700;">EL +3.80m</text>
+<text x="690" y="378" style="font-size:10px;">Scored Cherokee-Red Concrete</text>
+<text x="940" y="378" style="font-size:10px;">Desert Rubble + Corner Boulder + Mahogany</text>
+<text x="1230" y="378" style="font-size:10px;">Mahogany Plank Ceiling (+7.38m)</text>
+<rect x="2" y="392" width="1516" height="28" fill="#ffffff"/>
+<text x="16" y="410" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-111</text>
+<text x="110" y="410" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-01 · L04</text>
+<text x="290" y="410" style="font-size:10.5px;font-weight:700;">Rooftop Helipad &amp; US Flag Deck</text>
+<text x="560" y="410" style="font-size:10px;font-weight:700;">EL +8.05m</text>
+<text x="690" y="410" style="font-size:10px;">Reinforced Membrane + Ø9.3m Helipad</text>
+<text x="940" y="410" style="font-size:10px;">20-oz Patinaed Standing-Seam Copper Fascia</text>
+<text x="1230" y="410" style="font-size:10px;">Open Sky / Skylight Pyramids</text>
+<rect x="2" y="424" width="1516" height="28" fill="#f8fafc"/>
+<text x="16" y="442" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-201</text>
+<text x="110" y="442" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-02 · L03</text>
+<text x="290" y="442" style="font-size:10.5px;font-weight:700;">Chahroudi Cottage Living &amp; Hearth</text>
+<text x="560" y="442" style="font-size:10px;font-weight:700;">EL +5.16m</text>
+<text x="690" y="442" style="font-size:10px;">Diagonal-Scored Cherokee-Red Concrete</text>
+<text x="940" y="442" style="font-size:10px;">Battered Concrete Hood + Gold Granite Slab</text>
+<text x="1230" y="442" style="font-size:10px;">30+ Exposed Hexagonal Timber Rafters</text>
+<rect x="2" y="456" width="1516" height="28" fill="#ffffff"/>
+<text x="16" y="474" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-202</text>
+<text x="110" y="474" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-02 · L03</text>
+<text x="290" y="474" style="font-size:10.5px;font-weight:700;">Chahroudi Cottage Bedroom Alcove</text>
+<text x="560" y="474" style="font-size:10px;font-weight:700;">EL +5.16m</text>
+<text x="690" y="474" style="font-size:10px;">Diagonal-Scored Cherokee-Red Concrete</text>
+<text x="940" y="474" style="font-size:10px;">Board-and-Batten Mahogany + Folding Doors</text>
+<text x="1230" y="474" style="font-size:10px;">Exposed Redwood/Mahogany Rafters</text>
+<rect x="2" y="488" width="1516" height="28" fill="#f8fafc"/>
+<text x="16" y="506" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-203</text>
+<text x="110" y="506" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-02 · L03</text>
+<text x="290" y="506" style="font-size:10.5px;font-weight:700;">Chahroudi Cottage Galley Kitchen</text>
+<text x="560" y="506" style="font-size:10px;font-weight:700;">EL +5.16m</text>
+<text x="690" y="506" style="font-size:10px;">Scored Cherokee-Red Concrete</text>
+<text x="940" y="506" style="font-size:10px;">Desert Rubble + Hex Stained-Glass Window</text>
+<text x="1230" y="506" style="font-size:10px;">Mahogany Soffit &amp; Skylight Slot</text>
+<rect x="2" y="520" width="1516" height="28" fill="#ffffff"/>
+<text x="16" y="538" style="font-size:10.5px;font-weight:800;fill:#b91c1c;">RM-204</text>
+<text x="110" y="538" style="font-size:10px;font-weight:700;fill:#0369a1;">BLDG-02 · L03</text>
+<text x="290" y="538" style="font-size:10.5px;font-weight:700;">Chahroudi Cottage Terrace &amp; Pool</text>
+<text x="560" y="538" style="font-size:10px;font-weight:700;">EL +5.04m</text>
+<text x="690" y="538" style="font-size:10px;">3-Step Cherokee-Red + Reflection Pool</text>
+<text x="940" y="538" style="font-size:10px;">Battered Desert-Rubble Planter Wall</text>
+<text x="1230" y="538" style="font-size:10px;">Cantilevered Eave + Globe Pendant</text>
+      </g>
+    </g>
+</svg>

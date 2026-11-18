@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1280" width="1920" height="1280">
+  <defs>
+    <pattern id="hatch-masonry" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#1e293b" stroke-width="1.2"/>
+    </pattern>
+    <pattern id="hatch-rock" width="12" height="12" patternTransform="rotate(-30 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="8" y2="0" stroke="#475569" stroke-width="1.0"/>
+      <line x1="0" y1="6" x2="12" y2="6" stroke="#64748b" stroke-width="0.8"/>
+    </pattern>
+    <pattern id="hatch-earth" width="10" height="10" patternTransform="rotate(60 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#64748b" stroke-width="0.9"/>
+    </pattern>
+    <pattern id="grid-flw" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="0.6"/>
+    </pattern>
+    <style>
+      text { font-family: 'DIN Alternate', 'Bahnschrift', 'Roboto Mono', 'Consolas', monospace; fill: #0f172a; }
+      .tb-h1 { font-size: 18px; font-weight: 700; letter-spacing: 1.5px; }
+      .tb-h2 { font-size: 13px; font-weight: 700; letter-spacing: 1px; fill: #1e293b; }
+      .tb-lbl { font-size: 9.5px; font-weight: 600; fill: #64748b; letter-spacing: 0.8px; }
+      .tb-val { font-size: 11.5px; font-weight: 700; fill: #0f172a; }
+      .sheet-num { font-size: 32px; font-weight: 800; fill: #0f172a; letter-spacing: 1px; }
+      .dim-txt { font-size: 10.5px; font-weight: 700; fill: #b91c1c; text-anchor: middle; }
+      .tag-txt { font-size: 10px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .sub-txt { font-size: 9px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .note-txt { font-size: 11px; fill: #1e293b; }
+      .hdr-txt { font-size: 14px; font-weight: 700; fill: #0f172a; letter-spacing: 1px; }
+    </style>
+  </defs>
+  <!-- Blueprint Crisp Archival Paper Background -->
+  <rect x="0" y="0" width="1920" height="1280" fill="#fcfaf5"/>
+  <!-- Fine Engineering Grid Background inside Drawing Area -->
+  <rect x="28" y="28" width="1602" height="1224" fill="url(#grid-flw)"/>
+  <!-- Outer Sheet Border & CAD Margin -->
+  <rect x="18" y="18" width="1884" height="1244" fill="none" stroke="#0f172a" stroke-width="3.0"/>
+  <rect x="28" y="28" width="1602" height="1224" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+
+  <!-- RIGHT-HAND ISO 19650 / AIA CONTRACTOR TITLE BLOCK (x = 1610..1902) -->
+  <g transform="translate(1610, 28)">
+    <rect x="0" y="0" width="282" height="1224" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+    <!-- Top Brand / Architect Block -->
+    <rect x="0" y="0" width="282" height="78" fill="#0f172a"/>
+    <text x="141" y="28" text-anchor="middle" style="font-size:15px;font-weight:800;fill:#f8fafc;letter-spacing:2px;">MASSARO HOUSE · PETRA ISLAND</text>
+    <text x="141" y="48" text-anchor="middle" style="font-size:10px;font-weight:600;fill:#94a3b8;letter-spacing:1.2px;">FRANK LLOYD WRIGHT (1950) · T. HEINZ AIA</text>
+    <text x="141" y="65" text-anchor="middle" style="font-size:9.5px;font-weight:700;fill:#38bdf8;letter-spacing:1px;">ISO 19650 / IFC4 BIM DELIVERABLE SET</text>
+
+    <!-- Project Metadata -->
+    <line x1="0" y1="165" x2="282" y2="165" stroke="#0f172a" stroke-width="1.2"/>
+    <text x="12" y="96" class="tb-lbl">PROJECT / SITE LOCATION</text>
+    <text x="12" y="112" class="tb-val">PETRA ISLAND, LAKE MAHOPAC, NY</text>
+    <text x="12" y="128" style="font-size:10px;fill:#334155;">41.3765° N, 73.7364° W · EXTENTS 134.55 × 129.75m</text>
+    <text x="12" y="146" class="tb-lbl">CLIENT / REPOSITORY</text>
+    <text x="12" y="159" style="font-size:10px;font-weight:700;fill:#0f172a;">github.com/spinorama/MassaroHouse</text>
+
+    <!-- ISO 19650 Information Container Box -->
+    <rect x="0" y="165" width="282" height="24" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.0"/>
+    <text x="141" y="181" text-anchor="middle" class="tb-h2">ISO 19650 METADATA REGISTER</text>
+    <text x="12" y="206" class="tb-lbl">INFORMATION CONTAINER ID (ISO 19650-2)</text>
+    <text x="12" y="222" style="font-size:12px;font-weight:800;fill:#0369a1;">MAS-THH-C1-L3-DR-A-0104</text>
+    <text x="12" y="242" class="tb-lbl">STATUS / SUITABILITY CODE</text>
+    <text x="12" y="256" class="tb-val">S4 — SUITABLE FOR STAGE APPROVAL</text>
+    <text x="12" y="276" class="tb-lbl">REVISION</text>
+    <text x="12" y="290" class="tb-val">P02.1 (2026-11-17)</text>
+    <text x="145" y="276" class="tb-lbl">IFC SCHEMA</text>
+    <text x="145" y="290" class="tb-val">IFC4 ADD2 TC1</text>
+    <text x="12" y="310" class="tb-lbl">DISCIPLINE</text>
+    <text x="12" y="324" class="tb-val">HISTORIC FLW ARCHITECTURE</text>
+    <text x="145" y="310" class="tb-lbl">UNITS / DATUM</text>
+    <text x="145" y="324" class="tb-val">METRIC (m) / EL 0.00m</text>
+    <line x1="0" y1="336" x2="282" y2="336" stroke="#0f172a" stroke-width="1.2"/>
+
+    <!-- Revision History Table -->
+    <rect x="0" y="336" width="282" height="22" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.0"/>
+    <text x="141" y="351" text-anchor="middle" class="tb-h2">ISSUE &amp; REVISION SCHEDULE</text>
+    <text x="10" y="372" class="tb-lbl">REV</text>
+    <text x="50" y="372" class="tb-lbl">DATE</text>
+    <text x="125" y="372" class="tb-lbl">DESCRIPTION</text>
+    <line x1="0" y1="378" x2="282" y2="378" stroke="#94a3b8" stroke-width="0.8"/>
+    <text x="10" y="394" style="font-size:10px;font-weight:700;">P01.0</text>
+    <text x="50" y="394" style="font-size:10px;">2026-11-14</text>
+    <text x="125" y="394" style="font-size:10px;">INITIAL 3D / WEBXR ISSUE</text>
+    <text x="10" y="412" style="font-size:10px;font-weight:700;">P02.0</text>
+    <text x="50" y="412" style="font-size:10px;">2026-11-17</text>
+    <text x="125" y="412" style="font-size:10px;">INTERIOR &amp; COTTAGE OVERHAUL</text>
+    <text x="10" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">P02.1</text>
+    <text x="50" y="430" style="font-size:10px;fill:#b91c1c;">2026-11-17</text>
+    <text x="125" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">CONTRACTOR BIM &amp; CD SET</text>
+    <line x1="0" y1="444" x2="282" y2="444" stroke="#0f172a" stroke-width="1.2"/>
+
+    <!-- Key Plan / Mini Silhouette -->
+    <text x="141" y="464" text-anchor="middle" class="tb-lbl">KEY PLAN · PETRA ISLAND EXTENTS</text>
+    <rect x="26" y="474" width="230" height="170" fill="#e0f2fe" stroke="#0f172a" stroke-width="1.0"/>
+    <polygon points="115,474 256,474 256,644 140,644 102,590 95,540" fill="#dcfce7" stroke="#15803d" stroke-width="1.0"/>
+    <polygon points="116,550 148,578 88,602 108,562" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+    <polygon points="150,512 162,518 158,534 144,538 142,522" fill="#fde68a" stroke="#92400e" stroke-width="1.2"/>
+    <text x="40" y="634" style="font-size:9px;font-weight:700;fill:#0369a1;">LAKE MAHOPAC</text>
+
+    <!-- North Arrow & Scale Block -->
+    <line x1="0" y1="660" x2="282" y2="660" stroke="#0f172a" stroke-width="1.2"/>
+    <g transform="translate(235, 705)">
+      <circle cx="0" cy="0" r="22" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+      <polygon points="0,-20 -6,8 0,2 6,8" fill="#0f172a"/>
+      <text x="0" y="-25" text-anchor="middle" style="font-size:11px;font-weight:800;">N</text>
+    </g>
+    <text x="14" y="685" class="tb-lbl">DRAWING SCALE</text>
+    <text x="14" y="706" style="font-size:15px;font-weight:800;">1 : 75 (BLDG-02 · EL +5.16m)</text>
+    <text x="14" y="726" style="font-size:9.5px;fill:#475569;">30° / 60° FLW TRIANGULAR MODULE</text>
+
+    <!-- Sheet Title & Sheet Number Box -->
+    <line x1="0" y1="1040" x2="282" y2="1040" stroke="#0f172a" stroke-width="1.5"/>
+    <text x="14" y="1062" class="tb-lbl">SHEET TITLE</text>
+    <text x="14" y="1088" class="tb-h1">1951 CHAHROUDI COTTAGE PLANS</text>
+    <line x1="0" y1="1130" x2="282" y2="1130" stroke="#0f172a" stroke-width="1.5"/>
+    <rect x="0" y="1130" width="282" height="94" fill="#f1f5f9"/>
+    <text x="14" y="1152" class="tb-lbl">SHEET NUMBER</text>
+    <text x="141" y="1198" text-anchor="middle" class="sheet-num">A-104</text>
+    <text x="268" y="1214" text-anchor="end" style="font-size:9.5px;font-weight:700;fill:#475569;">OF 10 SHEETS</text>
+  </g>
+
+<rect x="55" y="55" width="740" height="700" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<rect x="55" y="55" width="740" height="32" fill="#1e293b"/>
+<text x="72" y="76" style="font-size:13px;font-weight:800;fill:#ffffff;">1 · 1951 CHAHROUDI GUEST COTTAGE FLOOR PLAN (EL +5.16m) — SCALE 1:75</text>
+<polygon points="556.0,96.6 698.8,176.4 673.6,504.0 430.0,672.0 379.6,336.0 421.6,193.2" fill="none" stroke="#64748b" stroke-width="1.4" stroke-dasharray="8,4"/>
+<polygon points="228.4,260.4 396.4,226.8 421.6,613.2 287.2,730.8 144.4,697.2 161.2,403.2" fill="#fde8e8" stroke="#991b1b" stroke-width="2.0"/>
+<polygon points="157.0,420.0 236.8,285.6 320.8,428.4 157.0,680.4" fill="#bae6fd" stroke="#0284c7" stroke-width="2.0"/>
+<polygon points="547.6,151.2 656.8,210.0 631.6,478.8 446.8,613.2 413.2,344.4 446.8,226.8" fill="#fff7ed" stroke="#0f172a" stroke-width="3.0"/>
+<polygon points="337.6,201.6 446.8,151.2 472.0,235.2 413.2,344.4 320.8,310.8" fill="url(#hatch-masonry)" stroke="#0f172a" stroke-width="2.5"/>
+<rect x="504.6" y="381.4" width="44" height="52" transform="rotate(-28 526.6 407.4)" fill="url(#hatch-masonry)" stroke="#0f172a" stroke-width="2.2"/>
+<circle cx="442.6" cy="378.0" r="22" fill="#fed7aa" stroke="#7c2d12" stroke-width="1.5"/>
+<rect x="521.6" y="244.4" width="52" height="32" transform="rotate(22 547.6 260.4)" fill="#bae6fd" stroke="#0369a1" stroke-width="1.5"/>
+<text x="228.4" y="462.0" class="tag-txt">REFLECTION POOL</text>
+<text x="541.6" y="462.4" class="tag-txt">BATTERED CONCRETE HEARTH</text>
+<text x="547.6" y="232.4" class="tag-txt">BEDROOM ALCOVE</text>
+<text x="358.0" y="208.6" class="tag-txt">GALLEY KITCHEN + HEX STAINED GLASS</text>
+<rect x="825" y="55" width="750" height="700" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<rect x="825" y="55" width="750" height="32" fill="#1e293b"/>
+<text x="842" y="76" style="font-size:13px;font-weight:800;fill:#ffffff;">2 · EXPOSED HEXAGONAL TIMBER RAFTER FRAMING PLAN (30+ RAFTERS) — SCALE 1:75</text>
+<polygon points="1336.0,96.6 1478.8,176.4 1453.6,504.0 1210.0,672.0 1159.6,336.0 1201.6,193.2" fill="#fef3c7" stroke="#7c2d12" stroke-width="3.0"/>
+<line x1="1336.0" y1="96.6" x2="1319.2" y2="226.8" stroke="#7c2d12" stroke-width="3.2"/>
+<line x1="1359.8" y1="109.9" x2="1317.8" y2="233.1" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1383.6" y1="123.2" x2="1316.4" y2="239.4" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1407.4" y1="136.5" x2="1315.0" y2="245.7" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1431.2" y1="149.8" x2="1313.6" y2="252.0" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1455.0" y1="163.1" x2="1312.2" y2="258.3" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1478.8" y1="176.4" x2="1319.2" y2="226.8" stroke="#7c2d12" stroke-width="3.2"/>
+<line x1="1474.6" y1="231.0" x2="1317.8" y2="233.1" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1470.4" y1="285.6" x2="1316.4" y2="239.4" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1466.2" y1="340.2" x2="1315.0" y2="245.7" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1462.0" y1="394.8" x2="1313.6" y2="252.0" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1457.8" y1="449.4" x2="1312.2" y2="258.3" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1453.6" y1="504.0" x2="1319.2" y2="487.2" stroke="#7c2d12" stroke-width="3.2"/>
+<line x1="1413.0" y1="532.0" x2="1317.8" y2="482.7" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1372.4" y1="560.0" x2="1316.4" y2="478.1" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1331.8" y1="588.0" x2="1315.0" y2="473.6" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1291.2" y1="616.0" x2="1313.6" y2="469.0" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1250.6" y1="644.0" x2="1312.2" y2="464.5" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1210.0" y1="672.0" x2="1319.2" y2="487.2" stroke="#7c2d12" stroke-width="3.2"/>
+<line x1="1201.6" y1="616.0" x2="1317.8" y2="482.7" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1193.2" y1="560.0" x2="1316.4" y2="478.1" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1184.8" y1="504.0" x2="1315.0" y2="473.6" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1176.4" y1="448.0" x2="1313.6" y2="469.0" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1168.0" y1="392.0" x2="1312.2" y2="464.5" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1159.6" y1="336.0" x2="1285.6" y2="378.0" stroke="#7c2d12" stroke-width="3.2"/>
+<line x1="1166.6" y1="312.2" x2="1285.6" y2="378.0" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1173.6" y1="288.4" x2="1285.6" y2="378.0" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1180.6" y1="264.6" x2="1285.6" y2="378.0" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1187.6" y1="240.8" x2="1285.6" y2="378.0" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1194.6" y1="217.0" x2="1285.6" y2="378.0" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1201.6" y1="193.2" x2="1319.2" y2="226.8" stroke="#7c2d12" stroke-width="3.2"/>
+<line x1="1224.0" y1="177.1" x2="1317.8" y2="233.1" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1246.4" y1="161.0" x2="1316.4" y2="239.4" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1268.8" y1="144.9" x2="1315.0" y2="245.7" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1291.2" y1="128.8" x2="1313.6" y2="252.0" stroke="#9a3412" stroke-width="1.8"/>
+<line x1="1313.6" y1="112.7" x2="1312.2" y2="258.3" stroke="#9a3412" stroke-width="1.8"/>
+<polyline points="1319.2,226.8 1285.6,378.0 1319.2,487.2" fill="none" stroke="#451a03" stroke-width="4.5"/>
+<rect x="55" y="780" width="1520" height="440" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+<rect x="55" y="780" width="1520" height="32" fill="#1e293b"/>
+<text x="72" y="801" style="font-size:13px;font-weight:800;fill:#ffffff;">3 · WEST LAKESIDE ELEVATION — 1951 FLW CHAHROUDI GUEST COTTAGE (REF: ARCHIVAL PLATE 15)</text>
+<line x1="120" y1="1140.0" x2="1500" y2="1140.0" stroke="#0f172a" stroke-width="3.0"/>
+<rect x="260" y="1122.0" width="920" height="18" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+<polygon points="340,1122.0 560,1122.0 548,945.0 352,945.0" fill="url(#hatch-masonry)" stroke="#0f172a" stroke-width="2.2"/>
+<rect x="460" y="845.0" width="85" height="100" fill="url(#hatch-masonry)" stroke="#0f172a" stroke-width="2.0"/>
+<rect x="910" y="830.0" width="110" height="130" fill="url(#hatch-masonry)" stroke="#0f172a" stroke-width="2.0"/>
+<rect x="560" y="972.0" width="60" height="150" fill="#bae6fd" stroke="#7c2d12" stroke-width="2.5"/>
+<rect x="560" y="1094.0" width="60" height="28" fill="#b45309" stroke="#7c2d12" stroke-width="1.5"/>
+<rect x="622" y="972.0" width="60" height="150" fill="#bae6fd" stroke="#7c2d12" stroke-width="2.5"/>
+<rect x="622" y="1094.0" width="60" height="28" fill="#b45309" stroke="#7c2d12" stroke-width="1.5"/>
+<rect x="684" y="972.0" width="60" height="150" fill="#bae6fd" stroke="#7c2d12" stroke-width="2.5"/>
+<rect x="684" y="1094.0" width="60" height="28" fill="#b45309" stroke="#7c2d12" stroke-width="1.5"/>
+<rect x="746" y="972.0" width="60" height="150" fill="#bae6fd" stroke="#7c2d12" stroke-width="2.5"/>
+<rect x="746" y="1094.0" width="60" height="28" fill="#b45309" stroke="#7c2d12" stroke-width="1.5"/>
+<polygon points="810,1122.0 1180,1122.0 1165,1048.0 810,1048.0" fill="url(#hatch-masonry)" stroke="#0f172a" stroke-width="2.2"/>
+<rect x="815" y="972.0" width="64" height="76" fill="#bae6fd" stroke="#7c2d12" stroke-width="2.0"/>
+<rect x="883" y="972.0" width="64" height="76" fill="#bae6fd" stroke="#7c2d12" stroke-width="2.0"/>
+<rect x="951" y="972.0" width="64" height="76" fill="#bae6fd" stroke="#7c2d12" stroke-width="2.0"/>
+<rect x="1019" y="972.0" width="64" height="76" fill="#bae6fd" stroke="#7c2d12" stroke-width="2.0"/>
+<rect x="1087" y="972.0" width="64" height="76" fill="#bae6fd" stroke="#7c2d12" stroke-width="2.0"/>
+<line x1="1145" y1="972.0" x2="1145" y2="1002.0" stroke="#0f172a" stroke-width="1.5"/>
+<circle cx="1145" cy="1014.0" r="12" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
+<polygon points="485,972.0 1310,972.0 945,858.0 740,866.0" fill="#d6d3d1" stroke="#0f172a" stroke-width="2.5"/>
+</svg>

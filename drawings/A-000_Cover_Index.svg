@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1280" width="1920" height="1280">
+  <defs>
+    <pattern id="hatch-masonry" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#1e293b" stroke-width="1.2"/>
+    </pattern>
+    <pattern id="hatch-rock" width="12" height="12" patternTransform="rotate(-30 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="8" y2="0" stroke="#475569" stroke-width="1.0"/>
+      <line x1="0" y1="6" x2="12" y2="6" stroke="#64748b" stroke-width="0.8"/>
+    </pattern>
+    <pattern id="hatch-earth" width="10" height="10" patternTransform="rotate(60 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#64748b" stroke-width="0.9"/>
+    </pattern>
+    <pattern id="grid-flw" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="0.6"/>
+    </pattern>
+    <style>
+      text { font-family: 'DIN Alternate', 'Bahnschrift', 'Roboto Mono', 'Consolas', monospace; fill: #0f172a; }
+      .tb-h1 { font-size: 18px; font-weight: 700; letter-spacing: 1.5px; }
+      .tb-h2 { font-size: 13px; font-weight: 700; letter-spacing: 1px; fill: #1e293b; }
+      .tb-lbl { font-size: 9.5px; font-weight: 600; fill: #64748b; letter-spacing: 0.8px; }
+      .tb-val { font-size: 11.5px; font-weight: 700; fill: #0f172a; }
+      .sheet-num { font-size: 32px; font-weight: 800; fill: #0f172a; letter-spacing: 1px; }
+      .dim-txt { font-size: 10.5px; font-weight: 700; fill: #b91c1c; text-anchor: middle; }
+      .tag-txt { font-size: 10px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .sub-txt { font-size: 9px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .note-txt { font-size: 11px; fill: #1e293b; }
+      .hdr-txt { font-size: 14px; font-weight: 700; fill: #0f172a; letter-spacing: 1px; }
+    </style>
+  </defs>
+  <!-- Blueprint Crisp Archival Paper Background -->
+  <rect x="0" y="0" width="1920" height="1280" fill="#fcfaf5"/>
+  <!-- Fine Engineering Grid Background inside Drawing Area -->
+  <rect x="28" y="28" width="1602" height="1224" fill="url(#grid-flw)"/>
+  <!-- Outer Sheet Border & CAD Margin -->
+  <rect x="18" y="18" width="1884" height="1244" fill="none" stroke="#0f172a" stroke-width="3.0"/>
+  <rect x="28" y="28" width="1602" height="1224" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+
+  <!-- RIGHT-HAND ISO 19650 / AIA CONTRACTOR TITLE BLOCK (x = 1610..1902) -->
+  <g transform="translate(1610, 28)">
+    <rect x="0" y="0" width="282" height="1224" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+    <!-- Top Brand / Architect Block -->
+    <rect x="0" y="0" width="282" height="78" fill="#0f172a"/>
+    <text x="141" y="28" text-anchor="middle" style="font-size:15px;font-weight:800;fill:#f8fafc;letter-spacing:2px;">MASSARO HOUSE · PETRA ISLAND</text>
+    <text x="141" y="48" text-anchor="middle" style="font-size:10px;font-weight:600;fill:#94a3b8;letter-spacing:1.2px;">FRANK LLOYD WRIGHT (1950) · T. HEINZ AIA</text>
+    <text x="141" y="65" text-anchor="middle" style="font-size:9.5px;font-weight:700;fill:#38bdf8;letter-spacing:1px;">ISO 19650 / IFC4 BIM DELIVERABLE SET</text>
+
+    <!-- Project Metadata -->
+    <line x1="0" y1="165" x2="282" y2="165" stroke="#0f172a" stroke-width="1.2"/>
+    <text x="12" y="96" class="tb-lbl">PROJECT / SITE LOCATION</text>
+    <text x="12" y="112" class="tb-val">PETRA ISLAND, LAKE MAHOPAC, NY</text>
+    <text x="12" y="128" style="font-size:10px;fill:#334155;">41.3765° N, 73.7364° W · EXTENTS 134.55 × 129.75m</text>
+    <text x="12" y="146" class="tb-lbl">CLIENT / REPOSITORY</text>
+    <text x="12" y="159" style="font-size:10px;font-weight:700;fill:#0f172a;">github.com/spinorama/MassaroHouse</text>
+
+    <!-- ISO 19650 Information Container Box -->
+    <rect x="0" y="165" width="282" height="24" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.0"/>
+    <text x="141" y="181" text-anchor="middle" class="tb-h2">ISO 19650 METADATA REGISTER</text>
+    <text x="12" y="206" class="tb-lbl">INFORMATION CONTAINER ID (ISO 19650-2)</text>
+    <text x="12" y="222" style="font-size:12px;font-weight:800;fill:#0369a1;">MAS-THH-ZZ-ZZ-DR-A-0000</text>
+    <text x="12" y="242" class="tb-lbl">STATUS / SUITABILITY CODE</text>
+    <text x="12" y="256" class="tb-val">S4 — SUITABLE FOR STAGE APPROVAL</text>
+    <text x="12" y="276" class="tb-lbl">REVISION</text>
+    <text x="12" y="290" class="tb-val">P02.1 (2026-11-17)</text>
+    <text x="145" y="276" class="tb-lbl">IFC SCHEMA</text>
+    <text x="145" y="290" class="tb-val">IFC4 ADD2 TC1</text>
+    <text x="12" y="310" class="tb-lbl">DISCIPLINE</text>
+    <text x="12" y="324" class="tb-val">GENERAL / BIM MANAGEMENT</text>
+    <text x="145" y="310" class="tb-lbl">UNITS / DATUM</text>
+    <text x="145" y="324" class="tb-val">METRIC (m) / EL 0.00m</text>
+    <line x1="0" y1="336" x2="282" y2="336" stroke="#0f172a" stroke-width="1.2"/>
+
+    <!-- Revision History Table -->
+    <rect x="0" y="336" width="282" height="22" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.0"/>
+    <text x="141" y="351" text-anchor="middle" class="tb-h2">ISSUE &amp; REVISION SCHEDULE</text>
+    <text x="10" y="372" class="tb-lbl">REV</text>
+    <text x="50" y="372" class="tb-lbl">DATE</text>
+    <text x="125" y="372" class="tb-lbl">DESCRIPTION</text>
+    <line x1="0" y1="378" x2="282" y2="378" stroke="#94a3b8" stroke-width="0.8"/>
+    <text x="10" y="394" style="font-size:10px;font-weight:700;">P01.0</text>
+    <text x="50" y="394" style="font-size:10px;">2026-11-14</text>
+    <text x="125" y="394" style="font-size:10px;">INITIAL 3D / WEBXR ISSUE</text>
+    <text x="10" y="412" style="font-size:10px;font-weight:700;">P02.0</text>
+    <text x="50" y="412" style="font-size:10px;">2026-11-17</text>
+    <text x="125" y="412" style="font-size:10px;">INTERIOR &amp; COTTAGE OVERHAUL</text>
+    <text x="10" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">P02.1</text>
+    <text x="50" y="430" style="font-size:10px;fill:#b91c1c;">2026-11-17</text>
+    <text x="125" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">CONTRACTOR BIM &amp; CD SET</text>
+    <line x1="0" y1="444" x2="282" y2="444" stroke="#0f172a" stroke-width="1.2"/>
+
+    <!-- Key Plan / Mini Silhouette -->
+    <text x="141" y="464" text-anchor="middle" class="tb-lbl">KEY PLAN · PETRA ISLAND EXTENTS</text>
+    <rect x="26" y="474" width="230" height="170" fill="#e0f2fe" stroke="#0f172a" stroke-width="1.0"/>
+    <polygon points="115,474 256,474 256,644 140,644 102,590 95,540" fill="#dcfce7" stroke="#15803d" stroke-width="1.0"/>
+    <polygon points="116,550 148,578 88,602 108,562" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+    <polygon points="150,512 162,518 158,534 144,538 142,522" fill="#fde68a" stroke="#92400e" stroke-width="1.2"/>
+    <text x="40" y="634" style="font-size:9px;font-weight:700;fill:#0369a1;">LAKE MAHOPAC</text>
+
+    <!-- North Arrow & Scale Block -->
+    <line x1="0" y1="660" x2="282" y2="660" stroke="#0f172a" stroke-width="1.2"/>
+    <g transform="translate(235, 705)">
+      <circle cx="0" cy="0" r="22" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+      <polygon points="0,-20 -6,8 0,2 6,8" fill="#0f172a"/>
+      <text x="0" y="-25" text-anchor="middle" style="font-size:11px;font-weight:800;">N</text>
+    </g>
+    <text x="14" y="685" class="tb-lbl">DRAWING SCALE</text>
+    <text x="14" y="706" style="font-size:15px;font-weight:800;">NTS · INDEX</text>
+    <text x="14" y="726" style="font-size:9.5px;fill:#475569;">30° / 60° FLW TRIANGULAR MODULE</text>
+
+    <!-- Sheet Title & Sheet Number Box -->
+    <line x1="0" y1="1040" x2="282" y2="1040" stroke="#0f172a" stroke-width="1.5"/>
+    <text x="14" y="1062" class="tb-lbl">SHEET TITLE</text>
+    <text x="14" y="1088" class="tb-h1">COVER &amp; ISO 19650 REGISTER</text>
+    <line x1="0" y1="1130" x2="282" y2="1130" stroke="#0f172a" stroke-width="1.5"/>
+    <rect x="0" y="1130" width="282" height="94" fill="#f1f5f9"/>
+    <text x="14" y="1152" class="tb-lbl">SHEET NUMBER</text>
+    <text x="141" y="1198" text-anchor="middle" class="sheet-num">A-000</text>
+    <text x="268" y="1214" text-anchor="end" style="font-size:9.5px;font-weight:700;fill:#475569;">OF 10 SHEETS</text>
+  </g>
+
+
+    <g transform="translate(60, 60)">
+      <rect x="0" y="0" width="1510" height="130" fill="#0f172a" rx="4"/>
+      <text x="35" y="48" style="font-size:28px;font-weight:800;fill:#f8fafc;letter-spacing:2px;">MASSARO HOUSE &amp; 1951 FLW CHAHROUDI GUEST COTTAGE</text>
+      <text x="35" y="80" style="font-size:15px;font-weight:600;fill:#38bdf8;letter-spacing:1.5px;">PETRA ISLAND · LAKE MAHOPAC, NEW YORK · CONTRACTOR BIM &amp; CONSTRUCTION DRAWING SET (ISO 19650 / IFC4)</text>
+      <text x="35" y="108" style="font-size:12px;fill:#cbd5e1;">CALIBRATED SITE EXTENTS: 134.55m × 129.75m (441'-5" × 425'-8") · 834 IFC4 MODEL ELEMENTS · 18 CAMERA / WAYPOINT STATIONS</text>
+
+      <!-- Sheet Index Table -->
+      <rect x="0" y="155" width="920" height="520" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+      <rect x="0" y="155" width="920" height="34" fill="#1e293b"/>
+      <text x="18" y="177" style="font-size:13px;font-weight:800;fill:#ffffff;letter-spacing:1px;">DRAWING SHEET REGISTER (ISO 19650-2 INFORMATION CONTAINERS)</text>
+      <text x="18" y="210" class="tb-lbl">SHEET</text>
+      <text x="95" y="210" class="tb-lbl">ISO 19650 CONTAINER ID</text>
+      <text x="315" y="210" class="tb-lbl">SHEET TITLE &amp; SCOPE</text>
+      <text x="745" y="210" class="tb-lbl">SCALE</text>
+      <text x="835" y="210" class="tb-lbl">STATUS</text>
+      <line x1="0" y1="220" x2="920" y2="220" stroke="#cbd5e1" stroke-width="1"/>
+    
+<rect x="2" y="228" width="916" height="38" fill="#ffffff"/>
+<text x="18" y="252" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-000</text>
+<text x="95" y="252" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-ZZ-ZZ-DR-A-0000</text>
+<text x="315" y="252" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Cover Sheet, ISO 19650 Register, Legends &amp; General Contractor Notes</text>
+<text x="745" y="252" style="font-size:11px;font-weight:700;">NTS</text>
+<text x="835" y="252" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<rect x="2" y="270" width="916" height="38" fill="#f8fafc"/>
+<text x="18" y="294" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-100</text>
+<text x="95" y="294" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-SITE-00-DR-C-0100</text>
+<text x="315" y="294" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Master Site Plan — Petra Island, Lake Mahopac, Dock &amp; Both Residences</text>
+<text x="745" y="294" style="font-size:11px;font-weight:700;">1:500</text>
+<text x="835" y="294" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<rect x="2" y="312" width="916" height="38" fill="#ffffff"/>
+<text x="18" y="336" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-101</text>
+<text x="95" y="336" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-M1-L1-DR-A-0101</text>
+<text x="315" y="336" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Main Residence Floor Plan — Cantilever Living (+3.20m) &amp; Split-Level (+3.80m)</text>
+<text x="745" y="336" style="font-size:11px;font-weight:700;">1:150</text>
+<text x="835" y="336" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<rect x="2" y="354" width="916" height="38" fill="#f8fafc"/>
+<text x="18" y="378" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-102</text>
+<text x="95" y="378" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-M1-L4-DR-A-0102</text>
+<text x="315" y="378" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Main Residence Roof, 27-Skylight Grid, Helipad &amp; Copper Fascia Plan</text>
+<text x="745" y="378" style="font-size:11px;font-weight:700;">1:150</text>
+<text x="835" y="378" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<rect x="2" y="396" width="916" height="38" fill="#ffffff"/>
+<text x="18" y="420" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-103</text>
+<text x="95" y="420" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-M1-L2-DR-E-0103</text>
+<text x="315" y="420" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Main Residence Reflected Ceiling Plan (RCP), Skylights &amp; LED Cove Lighting</text>
+<text x="745" y="420" style="font-size:11px;font-weight:700;">1:150</text>
+<text x="835" y="420" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<rect x="2" y="438" width="916" height="38" fill="#f8fafc"/>
+<text x="18" y="462" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-104</text>
+<text x="95" y="462" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-C1-L3-DR-A-0104</text>
+<text x="315" y="462" style="font-size:11.5px;font-weight:600;fill:#0f172a;">1951 FLW Chahroudi Guest Cottage — Floor Plan, Hex Rafters &amp; Elevations</text>
+<text x="745" y="462" style="font-size:11px;font-weight:700;">1:75</text>
+<text x="835" y="462" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<rect x="2" y="480" width="916" height="38" fill="#ffffff"/>
+<text x="18" y="504" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-201</text>
+<text x="95" y="504" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-M1-ZZ-DR-A-0201</text>
+<text x="315" y="504" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Main Residence Exterior Elevations — West (Lake), South, East &amp; North</text>
+<text x="745" y="504" style="font-size:11px;font-weight:700;">1:200</text>
+<text x="835" y="504" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<rect x="2" y="522" width="916" height="38" fill="#f8fafc"/>
+<text x="18" y="546" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-301</text>
+<text x="95" y="546" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-M1-ZZ-DR-S-0301</text>
+<text x="315" y="546" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Building Sections A–A (Cantilever Girder &amp; Atrium) &amp; B–B (Whale Rock &amp; Kitchen)</text>
+<text x="745" y="546" style="font-size:11px;font-weight:700;">1:150</text>
+<text x="835" y="546" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<rect x="2" y="564" width="916" height="38" fill="#ffffff"/>
+<text x="18" y="588" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-401</text>
+<text x="95" y="588" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-M1-L2-DR-A-0401</text>
+<text x="315" y="588" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Enlarged Interior Elevations — Whale Rock Kitchen, Crane Mural, Master &amp; Bath</text>
+<text x="745" y="588" style="font-size:11px;font-weight:700;">1:50</text>
+<text x="835" y="588" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<rect x="2" y="606" width="916" height="38" fill="#f8fafc"/>
+<text x="18" y="630" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-501</text>
+<text x="95" y="630" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-ZZ-ZZ-SH-A-0501</text>
+<text x="315" y="630" style="font-size:11.5px;font-weight:600;fill:#0f172a;">BIM Quantity Take-Off (QTO), IFC4 Entity Schedule, CSI Trades &amp; Room Schedule</text>
+<text x="745" y="630" style="font-size:11px;font-weight:700;">TABLE</text>
+<text x="835" y="630" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+
+      <rect x="945" y="155" width="565" height="520" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+      <rect x="945" y="155" width="565" height="34" fill="#1e293b"/>
+      <text x="963" y="177" style="font-size:13px;font-weight:800;fill:#ffffff;letter-spacing:1px;">ISO 19650 &amp; GENERAL CONTRACTOR SPECIFICATIONS</text>
+      <text x="963" y="212" class="tb-h2">1. COMMON DATA ENVIRONMENT (CDE) &amp; MODEL FEDERATION</text>
+      <text x="963" y="232" class="note-txt">• 3D BIM Asset: massaro_house.glb + massaro_bim_metadata.json (834 elements)</text>
+      <text x="963" y="250" class="note-txt">• Interactive Contractor BIM Viewer: bim.html (IFC4 class tree, CSI trade filters,</text>
+      <text x="963" y="268" class="note-txt">  6-plane section box, laser measurement tool, CSV BOQ &amp; IFC4 STEP export).</text>
+      <text x="963" y="298" class="tb-h2">2. GEOTECHNICAL &amp; BEDROCK INTEGRATION (CSI DIV 31 / 03)</text>
+      <text x="963" y="318" class="note-txt">• Native Precambrian granite outcrops ('Whale Rock', 'Tail Rock', Bath &amp; Study</text>
+      <text x="963" y="336" class="note-txt">  boulders) shall remain undisturbed in-situ. Concrete slabs, waterproof</text>
+      <text x="963" y="354" class="note-txt">  sealants, and honed bluestone countertops shall be scribed directly to rock.</text>
+      <text x="963" y="384" class="tb-h2">3. POST-TENSIONED CANTILEVER STRUCTURE (CSI DIV 03 38 00)</text>
+      <text x="963" y="404" class="note-txt">• SW Living Wing cantilevers 8.53m (28'-0") beyond shoreline pier over Lake</text>
+      <text x="963" y="422" class="note-txt">  Mahopac via 3 tapered concrete girders anchored to bedrock counterweights.</text>
+      <text x="963" y="452" class="tb-h2">4. ARCHITECTURAL MILLWORK, COPPER &amp; GLAZING (DIV 06 / 07 / 08)</text>
+      <text x="963" y="472" class="note-txt">• All interior/exterior wood frames, soffits, banquettes &amp; casework: FAS-grade</text>
+      <text x="963" y="490" class="note-txt">  kiln-dried African Mahogany. Roof fascia: 20-oz patinaed standing-seam copper.</text>
+      <text x="963" y="508" class="note-txt">• Atrium roof grid: 27 equilateral triangular insulated low-E glass pyramids.</text>
+      <text x="963" y="538" class="tb-h2">5. 1951 FLW CHAHROUDI GUEST COTTAGE PRESERVATION</text>
+      <text x="963" y="558" class="note-txt">• Historic 1951 Frank Lloyd Wright cottage (BLDG-02, EL +5.16m): preserve</text>
+      <text x="963" y="576" class="note-txt">  battered desert-rubble masonry, hexagonal exposed rafters &amp; stained glass.</text>
+
+      <!-- Bottom Summary Cards -->
+      <rect x="0" y="700" width="1510" height="460" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+      <rect x="0" y="700" width="1510" height="34" fill="#1e293b"/>
+      <text x="18" y="722" style="font-size:13px;font-weight:800;fill:#ffffff;letter-spacing:1px;">PROJECT BUILDING &amp; STOREY FEDERATION MATRIX (IFC4 SPATIAL HIERARCHY)</text>
+    
+<rect x="20" y="752" width="478" height="388" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="4"/>
+<text x="36" y="782" style="font-size:14px;font-weight:800;fill:#0f172a;">BLDG-01 · MASSARO MAIN RESIDENCE</text>
+<text x="36" y="802" style="font-size:10.5px;font-weight:700;fill:#b91c1c;">5,000 SQ FT (465 m²) · 2 LEVELS + ROOF HELIPAD</text>
+<line x1="36" y1="814" x2="482" y2="814" stroke="#cbd5e1" stroke-width="1"/>
+<text x="36" y="842" style="font-size:11px;fill:#1e293b;">• L00 Substructure (EL +0.20m to +2.82m): 5 Desert-Rubble Piers + 3 Post-Tensioned Cantilever Girders</text>
+<text x="36" y="870" style="font-size:11px;fill:#1e293b;">• L01 Lower Cantilever Wing (EL +3.20m): Great Living Room, SW Prow Balcony, South Lake Terrace</text>
+<text x="36" y="898" style="font-size:11px;fill:#1e293b;">• L02 Upper Split-Level Wing (EL +3.80m): Whale Rock Entry, 27-Skylight Atrium, Crane Mural Gallery,</text>
+<text x="36" y="926" style="font-size:11px;fill:#1e293b;">  Whale-Rock Kitchen, Boat-Table Dining Room, East Master Suite, Rock-Shower Bath &amp; North Prow Study</text>
+<text x="36" y="954" style="font-size:11px;fill:#1e293b;">• L04 Roof &amp; Helipad (EL +7.48m to +10.12m): 27 Triangular Skylights, Ø9.3m Helipad, US Flag, Copper Fascia</text>
+<rect x="516" y="752" width="478" height="388" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="4"/>
+<text x="532" y="782" style="font-size:14px;font-weight:800;fill:#0f172a;">BLDG-02 · 1951 FLW CHAHROUDI COTTAGE</text>
+<text x="532" y="802" style="font-size:10.5px;font-weight:700;fill:#b91c1c;">1,200 SQ FT (111 m²) · HISTORIC GUEST HOUSE (EL +5.16m)</text>
+<line x1="532" y1="814" x2="978" y2="814" stroke="#cbd5e1" stroke-width="1"/>
+<text x="532" y="842" style="font-size:11px;fill:#1e293b;">• Authentic 1951 Frank Lloyd Wright structure upslope in the northeastern island clearing</text>
+<text x="532" y="870" style="font-size:11px;fill:#1e293b;">• Battered Desert-Rubble NW Kitchen Wing (Hexagonal Stained-Glass Window &amp; Vintage Red Stove)</text>
+<text x="532" y="898" style="font-size:11px;fill:#1e293b;">• Monumental Battered Concrete Fireplace Hood with Cast-In Gold/Tan Granite Boulder Slab &amp; Mesh Screen</text>
+<text x="532" y="926" style="font-size:11px;fill:#1e293b;">• Exposed Hexagonal Timber Rafter Ceiling (30+ Radiating Rafters), Folding Doors &amp; Bedroom Alcove</text>
+<text x="532" y="954" style="font-size:11px;fill:#1e293b;">• 4 Mahogany French Doors onto 3-Step Cherokee-Red Terrace &amp; Triangular Lakeside Reflection Pool</text>
+<rect x="1012" y="752" width="478" height="388" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="4"/>
+<text x="1028" y="782" style="font-size:14px;font-weight:800;fill:#0f172a;">BLDG-03 &amp; SITE-01 · MARINE &amp; ISLAND SITE</text>
+<text x="1028" y="802" style="font-size:10.5px;font-weight:700;fill:#b91c1c;">11-ACRE PRIVATE ISLAND · 134.55m × 129.75m EXTENTS</text>
+<line x1="1028" y1="814" x2="1474" y2="814" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1028" y="842" style="font-size:11px;fill:#1e293b;">• Western Cove Timber Pile Pier (EL +0.62m), Cantilevered Boathouse Canopy &amp; Moored Runabout Boat</text>
+<text x="1028" y="870" style="font-size:11px;fill:#1e293b;">• Terracotta Seawall Apron, 8-Step Arrival Promenade &amp; Sloped Bluestone Island Walkway</text>
+<text x="1028" y="898" style="font-size:11px;fill:#1e293b;">• NE Pyramid-Hipped Utility Shed, Woodland Shed, Boat Trailer &amp; 120-Tree Deciduous Woodland Canopy</text>
+    </g>
+</svg>

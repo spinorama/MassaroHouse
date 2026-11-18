@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Massaro House — ISO 19650 Architectural Drawing Set (A-000 to A-501)</title>
+  <style>
+    :root {
+      --bg-dark: #070d17;
+      --bg-panel: #0d1626;
+      --bg-card: #132036;
+      --bg-hover: #1b2d4b;
+      --border: #23395d;
+      --accent: #38bdf8;
+      --accent-gold: #f59e0b;
+      --accent-green: #10b981;
+      --text-main: #e2e8f0;
+      --text-muted: #94a3b8;
+      --font-mono: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top CDE Header */
+    header {
+      height: 54px;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      flex-shrink: 0;
+      z-index: 20;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .iso-badge {
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .suitability-badge {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--accent-green);
+      color: var(--accent-green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .title-block h1 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: #f8fafc;
+    }
+
+    .title-block p {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn:hover {
+      background: var(--bg-hover);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      color: #070d17;
+    }
+
+    .btn-gold {
+      background: rgba(245, 158, 11, 0.16);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    .btn-gold:hover {
+      background: var(--accent-gold);
+      color: #070d17;
+    }
+
+    /* Main Workspace */
+    .workspace {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Left Sheet Index Sidebar */
+    aside.sheet-sidebar {
+      width: 330px;
+      background: var(--bg-panel);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+
+    .sidebar-header {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-header h2 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 7px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: var(--font-sans);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .sheet-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .sheet-item {
+      background: var(--bg-card);
+      border: 1px solid transparent;
+      border-radius: 6px;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sheet-item:hover {
+      background: var(--bg-hover);
+      border-color: var(--border);
+    }
+
+    .sheet-item.active {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: var(--accent);
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+
+    .sheet-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sheet-id {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .sheet-scale {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.7);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .sheet-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #f1f5f9;
+    }
+
+    .sheet-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .sidebar-footer {
+      padding: 10px 14px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      line-height: 1.5;
+    }
+
+    /* Center Viewport Area */
+    main.viewport-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #050911;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Floating CAD Toolbar */
+    .cad-toolbar {
+      height: 44px;
+      background: rgba(13, 22, 38, 0.92);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 10;
+    }
+
+    .toolbar-left, .toolbar-center, .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .active-sheet-banner {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .active-sheet-banner strong {
+      color: var(--accent);
+    }
+
+    .zoom-readout {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent-gold);
+      min-width: 52px;
+      text-align: center;
+    }
+
+    /* Interactive Sheet Canvas Container */
+    .canvas-stage {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      cursor: grab;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image:
+        radial-gradient(rgba(56, 189, 248, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    .canvas-stage.dragging {
+      cursor: grabbing;
+    }
+
+    .sheet-transform-layer {
+      transform-origin: center center;
+      transition: transform 0.04s linear;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(56, 189, 248, 0.25);
+      background: #0a1424;
+      user-select: none;
+    }
+
+    .sheet-transform-layer.paper-mode {
+      filter: invert(0.93) hue-rotate(180deg) contrast(1.08);
+    }
+
+    #sheet-img {
+      display: block;
+      width: 1520px;
+      height: 1020px;
+      max-width: none;
+      pointer-events: none;
+    }
+
+    /* Reference & Renders Drawer Modal */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.8);
+      backdrop-filter: blur(4px);
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+    }
+
+    .drawer-backdrop.open {
+      display: flex;
+    }
+
+    .drawer-modal {
+      width: 100%;
+      max-width: 1240px;
+      height: 85vh;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
+    }
+
+    .drawer-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .drawer-header h3 {
+      font-size: 15px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .gallery-section-title {
+      font-size: 13px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 12px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .gallery-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      background: #000;
+      cursor: pointer;
+    }
+
+    .gallery-card-caption {
+      padding: 8px 10px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-main);
+    }
+
+    @media print {
+      header, aside.sheet-sidebar, .cad-toolbar {
+        display: none !important;
+      }
+      body, .workspace, main.viewport-area, .canvas-stage {
+        background: #fff !important;
+        height: auto !important;
+        overflow: visible !important;
+      }
+      .sheet-transform-layer {
+        transform: none !important;
+        box-shadow: none !important;
+      }
+      #sheet-img {
+        width: 100% !important;
+        height: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand-group">
+      <span class="iso-badge">MAS-THH-ZZ-ZZ-DR-A-0000</span>
+      <span class="suitability-badge">S4 · CONTRACTOR DELIVERABLE</span>
+      <div class="title-block">
+        <h1>MASSARO HOUSE &amp; 1951 CHAHROUDI COTTAGE — CONSTRUCTION DRAWING SET</h1>
+        <p>Petra Island, Lake Mahopac, NY · Frank Lloyd Wright (1949–1951) / Thomas A. Heinz, AIA (2003–2007) · Rev P02.1</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn" id="btn-open-gallery" title="View Blender Verification Renders & Archival Reference Plates">
+        📸 Renders &amp; Archival Plates (30)
+      </button>
+      <a class="btn btn-gold" href="../bim.html" title="Open ISO 19650 / IFC4 3D BIM Coordination Viewer">
+        🏗️ 3D BIM Model Viewer
+      </a>
+      <a class="btn btn-primary" href="../index.html" title="Return to 4-Mode Interactive WebXR Experience">
+        🥽 4-Mode WebXR Tour
+      </a>
+    </div>
+  </header>
+
+  <div class="workspace">
+    <aside class="sheet-sidebar">
+      <div class="sidebar-header">
+        <h2>
+          <span>Architectural Sheet Index</span>
+          <span style="color: var(--accent);">10 Sheets</span>
+        </h2>
+        <input type="text" id="sheet-search" class="search-input" placeholder="Filter sheets (e.g. A-101, Roof, Cottage, QTO)..." />
+      </div>
+      <div class="sheet-list" id="sheet-list"></div>
+      <div class="sidebar-footer">
+        <div>SCHEMA: IFC4 ADD2 TC1 / ISO 19650-2</div>
+        <div>GRID MODULE: 30° / 60° EQUIANGULAR TRIANGLE</div>
+        <div>SITE EXTENTS: 134.55m E-W × 129.75m N-S</div>
+      </div>
+    </aside>
+
+    <main class="viewport-area">
+      <div class="cad-toolbar">
+        <div class="toolbar-left">
+          <button class="btn" id="btn-prev" title="Previous Sheet (Left Arrow)">◀ Prev</button>
+          <button class="btn" id="btn-next" title="Next Sheet (Right Arrow)">Next ▶</button>
+          <div class="active-sheet-banner">
+            <strong id="banner-id">A-000</strong>
+            <span id="banner-title">COVER SHEET, DRAWING INDEX &amp; ISO 19650 MATRIX</span>
+          </div>
+        </div>
+
+        <div class="toolbar-center">
+          <button class="btn" id="btn-zoom-out" title="Zoom Out">−</button>
+          <span class="zoom-readout" id="zoom-readout">100%</span>
+          <button class="btn" id="btn-zoom-in" title="Zoom In">+</button>
+          <button class="btn" id="btn-zoom-fit" title="Fit Sheet to Viewport">Fit Sheet</button>
+          <button class="btn" id="btn-zoom-100" title="Actual Size (100%)">1:1</button>
+          <button class="btn" id="btn-paper-mode" title="Toggle Dark CAD Blueprint / White Bond Paper">🌓 Paper Mode</button>
+        </div>
+
+        <div class="toolbar-right">
+          <a class="btn" id="btn-raw-svg" href="./A-000_Cover_Index.svg" target="_blank" title="Open Raw Vector SVG in New Tab">↗ Raw SVG</a>
+          <a class="btn" id="btn-download-svg" href="./A-000_Cover_Index.svg" download title="Download Vector SVG Sheet">⬇️ Download SVG</a>
+          <button class="btn" onclick="window.print()" title="Print Active Sheet to PDF">🖨️ Print Sheet</button>
+        </div>
+      </div>
+
+      <div class="canvas-stage" id="canvas-stage">
+        <div class="sheet-transform-layer" id="transform-layer">
+          <img id="sheet-img" src="./A-000_Cover_Index.svg" alt="Architectural Drawing Sheet" />
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Verification Renders & Reference Plates Modal -->
+  <div class="drawer-backdrop" id="gallery-modal">
+    <div class="drawer-modal">
+      <div class="drawer-header">
+        <h3>📸 BIM Verification Renders (9) &amp; Archival Reference Plates (21)</h3>
+        <button class="btn" id="btn-close-gallery">✕ Close</button>
+      </div>
+      <div class="drawer-body">
+        <div class="gallery-section-title">Blender 5.2 LTS Cycles/EEVEE Verification Renders (../renders/)</div>
+        <div class="gallery-grid" id="renders-grid"></div>
+
+        <div class="gallery-section-title">Historical &amp; Archival Reference Plates (../reference/)</div>
+        <div class="gallery-grid" id="reference-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SHEETS = [
+      {
+        id: 'A-000',
+        file: 'A-000_Cover_Index.svg',
+        title: 'COVER SHEET, DRAWING INDEX & ISO 19650 MATRIX',
+        scale: 'N.T.S.',
+        container: 'MAS-THH-ZZ-ZZ-DR-A-0000',
+        series: '000 General',
+        desc: 'Project directory, ISO 19650 metadata, 10-sheet index, symbols legend, and CSI division summary'
+      },
+      {
+        id: 'A-100',
+        file: 'A-100_Master_Site_Plan.svg',
+        title: 'PETRA ISLAND MASTER SITE & ROOF PLAN',
+        scale: '1:500',
+        container: 'MAS-THH-SITE-ZZ-DR-A-0100',
+        series: '100 Plans',
+        desc: 'Full 134.55m × 129.75m calibrated extents, Main Residence, 1951 Chahroudi Cottage, Helipad & Docks'
+      },
+      {
+        id: 'A-101',
+        file: 'A-101_Main_Floor_Plan.svg',
+        title: 'MAIN RESIDENCE LEVEL L01/L02 FLOOR PLAN',
+        scale: '1:100',
+        container: 'MAS-THH-BLDG01-L02-DR-A-0101',
+        series: '100 Plans',
+        desc: '30°/60° triangular grid, Whale Rock & Entry Boulder penetrations, 6 Desert Rubblestone piers, rooms & furniture'
+      },
+      {
+        id: 'A-102',
+        file: 'A-102_Roof_Skylight_Plan.svg',
+        title: 'MAIN RESIDENCE ROOF FRAMING & 26-SKYLIGHT PLAN',
+        scale: '1:100',
+        container: 'MAS-THH-BLDG01-L03-DR-A-0102',
+        series: '100 Plans',
+        desc: '3-tiered patinated copper fascia shells, 26 triangular/hexagonal skylights, and roof observation deck'
+      },
+      {
+        id: 'A-103',
+        file: 'A-103_Reflected_Ceiling_Plan.svg',
+        title: 'MAIN RESIDENCE REFLECTED CEILING & LIGHTING PLAN',
+        scale: '1:100',
+        container: 'MAS-THH-BLDG01-L02-DR-A-0103',
+        series: '100 Plans',
+        desc: 'Mahogany soffit boards, recessed light coves, 6 triangular mahogany chandeliers, and skylight wells'
+      },
+      {
+        id: 'A-104',
+        file: 'A-104_Chahroudi_Cottage_Plans.svg',
+        title: '1951 FLW CHAHROUDI GUEST COTTAGE — PLAN, ROOF & ELEVATIONS',
+        scale: '1:50',
+        container: 'MAS-THH-BLDG02-L01-DR-A-0104',
+        series: '100 Plans',
+        desc: 'Original 1951 built structure: 120 sq m floor plan, cathedral rafters, stone hearth, built-ins & elevations'
+      },
+      {
+        id: 'A-201',
+        file: 'A-201_Exterior_Elevations.svg',
+        title: 'EXTERIOR BUILDING ELEVATIONS (SOUTH, WEST, NORTH, EAST)',
+        scale: '1:125',
+        container: 'MAS-THH-BLDG01-ZZ-DR-A-0201',
+        series: '200 Elevations',
+        desc: 'Orthographic projections across all 4 cardinal orientations with EL +0.00m to EL +8.20m datum lines'
+      },
+      {
+        id: 'A-301',
+        file: 'A-301_Building_Sections.svg',
+        title: 'LONGITUDINAL & TRANSVERSE BUILDING SECTIONS (A-A & B-B)',
+        scale: '1:100',
+        container: 'MAS-THH-BLDG01-ZZ-DR-A-0301',
+        series: '300 Sections',
+        desc: '8.5m SW structural prow cantilever over Lake Mahopac and natural granite bedrock interlock details'
+      },
+      {
+        id: 'A-401',
+        file: 'A-401_Interior_Elevations_Details.svg',
+        title: 'ENLARGED INTERIOR ARCHITECTURAL DETAILS & MILLWORK',
+        scale: '1:25',
+        container: 'MAS-THH-BLDG01-L02-DR-A-0401',
+        series: '400 Details',
+        desc: 'Entry Foyer granite steps, Living Room triangular builtin sofa & tables, Curved Cherry Kitchen Island & Bath'
+      },
+      {
+        id: 'A-501',
+        file: 'A-501_BIM_Schedules_QTO.svg',
+        title: 'ISO 19650 / IFC4 ELEMENT SCHEDULES & QUANTITY TAKE-OFF (BOQ)',
+        scale: 'N.T.S.',
+        container: 'MAS-THH-ZZ-ZZ-SH-A-0501',
+        series: '500 Schedules',
+        desc: 'Complete 834-element BIM quantity take-off by IFC4 Entity Class, CSI MasterFormat Division & Building Storey'
+      }
+    ];
+
+    const RENDERS = [
+      { file: '../renders/01_living_room_cantilever.png', title: '01 — Great Room SW Prow Cantilever, Triangular Tables & Chandeliers' },
+      { file: '../renders/02_entry_foyer_rock_steps.png', title: '02 — Entry Foyer Natural Granite Outcrop, Cast Steps & Skylight Grid' },
+      { file: '../renders/03_kitchen_dining_island.png', title: '03 — Kitchen & Dining Wing: Curved Cherry Island, Stone Pier & 10-Seat Table' },
+      { file: '../renders/04_primary_bedroom_study_rock.png', title: '04 — Primary Suite & Study: Granite Boulder Piercing Glass Curtain Wall' },
+      { file: '../renders/05_primary_bath_rock_tub.png', title: '05 — Primary Bath: Copper Soaking Tub Against Natural Petra Island Granite' },
+      { file: '../renders/06_cottage_exterior.png', title: '06 — 1951 FLW Chahroudi Guest Cottage Exterior & Redwood Clapboard Siding' },
+      { file: '../renders/07_cottage_interior_hearth.png', title: '07 — 1951 Chahroudi Cottage Interior: Exposed Rafters, Clerestory & Hearth' },
+      { file: '../renders/08_exterior_aerial_overview.png', title: '08 — Master Aerial Overview: Massaro House, Helipad, Docks & Cottage' },
+      { file: '../renders/09_dollhouse_cutaway_both_houses.png', title: '09 — Dollhouse Architectural Cutaway: Interior Layout of Both Houses' }
+    ];
+
+    const REFERENCES = [
+      { file: '../reference/00_site_satellite_extents.jpg', title: '00 — Calibrated Satellite Site Extents (134.55m × 129.75m)' },
+      { file: '../reference/01_exterior_lake_cantilever.jpg', title: '01 — Exterior SW Cantilever Prow Over Lake Mahopac' },
+      { file: '../reference/02_living_room_prow_cantilever.jpg', title: '02 — Great Room Prow & Built-in Triangular Seating' },
+      { file: '../reference/03_entry_rock_stairs_skylight.jpg', title: '03 — Entry Foyer Rock Stairs & Triangular Skylight Grid' },
+      { file: '../reference/04_dining_kitchen_stone_pier.jpg', title: '04 — Dining Room & Desert Rubblestone Structural Pier' },
+      { file: '../reference/05_bathroom_rock_wall_tub.jpg', title: '05 — Primary Bathroom Natural Bedrock Wall & Tub' },
+      { file: '../reference/06_aerial_island_overview.jpg', title: '06 — Petra Island Aerial Photography' },
+      { file: '../reference/07_bedroom_rock_outcrop.jpg', title: '07 — Bedroom Granite Outcrop Integration' },
+      { file: '../reference/08_floor_plan_diagram.jpg', title: '08 — Architectural Floor Plan Diagram' },
+      { file: '../reference/09_exterior_copper_roof_fascia.jpg', title: '09 — Patinated Copper Roof Fascia & Clerestory' },
+      { file: '../reference/10_kitchen_curved_island_skylights.jpg', title: '10 — Kitchen Curved Cherry Island & Skylight Matrix' },
+      { file: '../reference/11_chahroudi_cottage_exterior.jpg', title: '11 — 1951 FLW Chahroudi Guest Cottage Exterior' },
+      { file: '../reference/12_chahroudi_cottage_interior.jpg', title: '12 — 1951 Chahroudi Cottage Living Area & Clerestory' },
+      { file: '../reference/13_chahroudi_cottage_plan_sketch.jpg', title: '13 — 1951 Chahroudi Cottage Historical Plan Sketch' },
+      { file: '../reference/14_massaro_fireplace_inglenook.jpg', title: '14 — Great Room Fireplace Inglenook & Stone Chimney' },
+      { file: '../reference/15_massaro_roof_deck_skylights.jpg', title: '15 — Upper Observation Roof Deck & Skylights' },
+      { file: '../reference/16_chahroudi_cottage_interior_hearth.png', title: '16 — Chahroudi Cottage Hearth & Cathedral Rafters' },
+      { file: '../reference/17_chahroudi_cottage_exterior_trees.png', title: '17 — Chahroudi Cottage in Woodland Clearing' },
+      { file: '../reference/18_massaro_kitchen_curved_island.png', title: '18 — Massaro Kitchen Cabinetry & Curved Counter' },
+      { file: '../reference/19_massaro_living_room_chandeliers.png', title: '19 — Great Room Triangular Wood Chandeliers & Coffee Tables' },
+      { file: '../reference/20_massaro_study_window_boulder.png', title: '20 — Study Window Glass Fitted Directly to Granite Boulder' }
+    ];
+
+    let activeIndex = 0;
+    let scale = 0.75;
+    let panX = 0;
+    let panY = 0;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+
+    const sheetListEl = document.getElementById('sheet-list');
+    const sheetImgEl = document.getElementById('sheet-img');
+    const transformLayer = document.getElementById('transform-layer');
+    const canvasStage = document.getElementById('canvas-stage');
+    const zoomReadout = document.getElementById('zoom-readout');
+    const bannerId = document.getElementById('banner-id');
+    const bannerTitle = document.getElementById('banner-title');
+    const btnRawSvg = document.getElementById('btn-raw-svg');
+    const btnDownloadSvg = document.getElementById('btn-download-svg');
+
+    function updateTransform() {
+      transformLayer.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+      zoomReadout.textContent = `${Math.round(scale * 100)}%`;
+    }
+
+    function fitSheetToViewport() {
+      const stageRect = canvasStage.getBoundingClientRect();
+      const pad = 48;
+      const scaleX = (stageRect.width - pad) / 1520;
+      const scaleY = (stageRect.height - pad) / 1020;
+      scale = Math.max(0.25, Math.min(1.5, Math.min(scaleX, scaleY)));
+      panX = 0;
+      panY = 0;
+      updateTransform();
+    }
+
+    function selectSheet(index) {
+      if (index < 0) index = SHEETS.length - 1;
+      if (index >= SHEETS.length) index = 0;
+      activeIndex = index;
+      const s = SHEETS[activeIndex];
+      sheetImgEl.src = `./${s.file}`;
+      bannerId.textContent = s.id;
+      bannerTitle.textContent = s.title;
+      btnRawSvg.href = `./${s.file}`;
+      btnDownloadSvg.href = `./${s.file}`;
+
+      document.querySelectorAll('.sheet-item').forEach((el, i) => {
+        el.classList.toggle('active', i === activeIndex);
+      });
+    }
+
+    function renderSheetList(filterText = '') {
+      const q = filterText.trim().toLowerCase();
+      sheetListEl.innerHTML = '';
+      SHEETS.forEach((s, idx) => {
+        if (q && !(s.id.toLowerCase().includes(q) || s.title.toLowerCase().includes(q) || s.desc.toLowerCase().includes(q) || s.container.toLowerCase().includes(q))) {
+          return;
+        }
+        const item = document.createElement('div');
+        item.className = `sheet-item ${idx === activeIndex ? 'active' : ''}`;
+        item.innerHTML = `
+          <div class="sheet-top">
+            <span class="sheet-id">${s.id}</span>
+            <span class="sheet-scale">SCALE ${s.scale}</span>
+          </div>
+          <div class="sheet-title">${s.title}</div>
+          <div class="sheet-meta">
+            <span>${s.container}</span>
+            <span>REV P02.1</span>
+          </div>
+        `;
+        item.addEventListener('click', () => selectSheet(idx));
+        sheetListEl.appendChild(item);
+      });
+    }
+
+    document.getElementById('sheet-search').addEventListener('input', (e) => {
+      renderSheetList(e.target.value);
+    });
+
+    document.getElementById('btn-prev').addEventListener('click', () => selectSheet(activeIndex - 1));
+    document.getElementById('btn-next').addEventListener('click', () => selectSheet(activeIndex + 1));
+
+    document.getElementById('btn-zoom-in').addEventListener('click', () => {
+      scale = Math.min(3.5, scale * 1.2);
+      updateTransform();
+    });
+
+    document.getElementById('btn-zoom-out').addEventListener('click', () => {
+      scale = Math.max(0.2, scale / 1.2);
+      updateTransform();
+    });
+
+    document.getElementById('btn-zoom-fit').addEventListener('click', fitSheetToViewport);
+    document.getElementById('btn-zoom-100').addEventListener('click', () => {
+      scale = 1.0;
+      panX = 0;
+      panY = 0;
+      updateTransform();
+    });
+
+    document.getElementById('btn-paper-mode').addEventListener('click', () => {
+      transformLayer.classList.toggle('paper-mode');
+    });
+
+    // Pan & Zoom on Stage
+    canvasStage.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX - panX;
+      startY = e.clientY - panY;
+      canvasStage.classList.add('dragging');
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      panX = e.clientX - startX;
+      panY = e.clientY - startY;
+      updateTransform();
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+      canvasStage.classList.remove('dragging');
+    });
+
+    canvasStage.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const factor = e.deltaY < 0 ? 1.12 : 0.89;
+      scale = Math.max(0.2, Math.min(4.0, scale * factor));
+      updateTransform();
+    }, { passive: false });
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT') return;
+      if (e.key === 'ArrowRight') selectSheet(activeIndex + 1);
+      if (e.key === 'ArrowLeft') selectSheet(activeIndex - 1);
+      if (e.key === 'f' || e.key === 'F') fitSheetToViewport();
+    });
+
+    // Populate Gallery Modal
+    const rendersGrid = document.getElementById('renders-grid');
+    RENDERS.forEach((r) => {
+      const card = document.createElement('div');
+      card.className = 'gallery-card';
+      card.innerHTML = `
+        <a href="${r.file}" target="_blank"><img src="${r.file}" alt="${r.title}" loading="lazy" /></a>
+        <div class="gallery-card-caption">${r.title}</div>
+      `;
+      rendersGrid.appendChild(card);
+    });
+
+    const referenceGrid = document.getElementById('reference-grid');
+    REFERENCES.forEach((r) => {
+      const card = document.createElement('div');
+      card.className = 'gallery-card';
+      card.innerHTML = `
+        <a href="${r.file}" target="_blank"><img src="${r.file}" alt="${r.title}" loading="lazy" /></a>
+        <div class="gallery-card-caption">${r.title}</div>
+      `;
+      referenceGrid.appendChild(card);
+    });
+
+    const galleryModal = document.getElementById('gallery-modal');
+    document.getElementById('btn-open-gallery').addEventListener('click', () => {
+      galleryModal.classList.add('open');
+    });
+    document.getElementById('btn-close-gallery').addEventListener('click', () => {
+      galleryModal.classList.remove('open');
+    });
+    galleryModal.addEventListener('click', (e) => {
+      if (e.target === galleryModal) galleryModal.classList.remove('open');
+    });
+
+    // Deep-link sheet via URL hash (#A-101 etc.)
+    function checkHash() {
+      const h = window.location.hash.replace('#', '').toUpperCase();
+      if (h) {
+        const idx = SHEETS.findIndex(s => s.id === h);
+        if (idx !== -1) selectSheet(idx);
+      }
+    }
+
+    renderSheetList();
+    fitSheetToViewport();
+    checkHash();
+    window.addEventListener('resize', fitSheetToViewport);
+  </script>
+</body>
+</html>

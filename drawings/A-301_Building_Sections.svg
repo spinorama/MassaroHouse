@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1280" width="1920" height="1280">
+  <defs>
+    <pattern id="hatch-masonry" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#1e293b" stroke-width="1.2"/>
+    </pattern>
+    <pattern id="hatch-rock" width="12" height="12" patternTransform="rotate(-30 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="8" y2="0" stroke="#475569" stroke-width="1.0"/>
+      <line x1="0" y1="6" x2="12" y2="6" stroke="#64748b" stroke-width="0.8"/>
+    </pattern>
+    <pattern id="hatch-earth" width="10" height="10" patternTransform="rotate(60 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#64748b" stroke-width="0.9"/>
+    </pattern>
+    <pattern id="grid-flw" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="0.6"/>
+    </pattern>
+    <style>
+      text { font-family: 'DIN Alternate', 'Bahnschrift', 'Roboto Mono', 'Consolas', monospace; fill: #0f172a; }
+      .tb-h1 { font-size: 18px; font-weight: 700; letter-spacing: 1.5px; }
+      .tb-h2 { font-size: 13px; font-weight: 700; letter-spacing: 1px; fill: #1e293b; }
+      .tb-lbl { font-size: 9.5px; font-weight: 600; fill: #64748b; letter-spacing: 0.8px; }
+      .tb-val { font-size: 11.5px; font-weight: 700; fill: #0f172a; }
+      .sheet-num { font-size: 32px; font-weight: 800; fill: #0f172a; letter-spacing: 1px; }
+      .dim-txt { font-size: 10.5px; font-weight: 700; fill: #b91c1c; text-anchor: middle; }
+      .tag-txt { font-size: 10px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+      .sub-txt { font-size: 9px; font-weight: 600; fill: #475569; text-anchor: middle; }
+      .note-txt { font-size: 11px; fill: #1e293b; }
+      .hdr-txt { font-size: 14px; font-weight: 700; fill: #0f172a; letter-spacing: 1px; }
+    </style>
+  </defs>
+  <!-- Blueprint Crisp Archival Paper Background -->
+  <rect x="0" y="0" width="1920" height="1280" fill="#fcfaf5"/>
+  <!-- Fine Engineering Grid Background inside Drawing Area -->
+  <rect x="28" y="28" width="1602" height="1224" fill="url(#grid-flw)"/>
+  <!-- Outer Sheet Border & CAD Margin -->
+  <rect x="18" y="18" width="1884" height="1244" fill="none" stroke="#0f172a" stroke-width="3.0"/>
+  <rect x="28" y="28" width="1602" height="1224" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+
+  <!-- RIGHT-HAND ISO 19650 / AIA CONTRACTOR TITLE BLOCK (x = 1610..1902) -->
+  <g transform="translate(1610, 28)">
+    <rect x="0" y="0" width="282" height="1224" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+    <!-- Top Brand / Architect Block -->
+    <rect x="0" y="0" width="282" height="78" fill="#0f172a"/>
+    <text x="141" y="28" text-anchor="middle" style="font-size:15px;font-weight:800;fill:#f8fafc;letter-spacing:2px;">MASSARO HOUSE · PETRA ISLAND</text>
+    <text x="141" y="48" text-anchor="middle" style="font-size:10px;font-weight:600;fill:#94a3b8;letter-spacing:1.2px;">FRANK LLOYD WRIGHT (1950) · T. HEINZ AIA</text>
+    <text x="141" y="65" text-anchor="middle" style="font-size:9.5px;font-weight:700;fill:#38bdf8;letter-spacing:1px;">ISO 19650 / IFC4 BIM DELIVERABLE SET</text>
+
+    <!-- Project Metadata -->
+    <line x1="0" y1="165" x2="282" y2="165" stroke="#0f172a" stroke-width="1.2"/>
+    <text x="12" y="96" class="tb-lbl">PROJECT / SITE LOCATION</text>
+    <text x="12" y="112" class="tb-val">PETRA ISLAND, LAKE MAHOPAC, NY</text>
+    <text x="12" y="128" style="font-size:10px;fill:#334155;">41.3765° N, 73.7364° W · EXTENTS 134.55 × 129.75m</text>
+    <text x="12" y="146" class="tb-lbl">CLIENT / REPOSITORY</text>
+    <text x="12" y="159" style="font-size:10px;font-weight:700;fill:#0f172a;">github.com/spinorama/MassaroHouse</text>
+
+    <!-- ISO 19650 Information Container Box -->
+    <rect x="0" y="165" width="282" height="24" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.0"/>
+    <text x="141" y="181" text-anchor="middle" class="tb-h2">ISO 19650 METADATA REGISTER</text>
+    <text x="12" y="206" class="tb-lbl">INFORMATION CONTAINER ID (ISO 19650-2)</text>
+    <text x="12" y="222" style="font-size:12px;font-weight:800;fill:#0369a1;">MAS-THH-M1-ZZ-DR-S-0301</text>
+    <text x="12" y="242" class="tb-lbl">STATUS / SUITABILITY CODE</text>
+    <text x="12" y="256" class="tb-val">S4 — SUITABLE FOR STAGE APPROVAL</text>
+    <text x="12" y="276" class="tb-lbl">REVISION</text>
+    <text x="12" y="290" class="tb-val">P02.1 (2026-11-17)</text>
+    <text x="145" y="276" class="tb-lbl">IFC SCHEMA</text>
+    <text x="145" y="290" class="tb-val">IFC4 ADD2 TC1</text>
+    <text x="12" y="310" class="tb-lbl">DISCIPLINE</text>
+    <text x="12" y="324" class="tb-val">STRUCTURAL / ARCHITECTURE</text>
+    <text x="145" y="310" class="tb-lbl">UNITS / DATUM</text>
+    <text x="145" y="324" class="tb-val">METRIC (m) / EL 0.00m</text>
+    <line x1="0" y1="336" x2="282" y2="336" stroke="#0f172a" stroke-width="1.2"/>
+
+    <!-- Revision History Table -->
+    <rect x="0" y="336" width="282" height="22" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.0"/>
+    <text x="141" y="351" text-anchor="middle" class="tb-h2">ISSUE &amp; REVISION SCHEDULE</text>
+    <text x="10" y="372" class="tb-lbl">REV</text>
+    <text x="50" y="372" class="tb-lbl">DATE</text>
+    <text x="125" y="372" class="tb-lbl">DESCRIPTION</text>
+    <line x1="0" y1="378" x2="282" y2="378" stroke="#94a3b8" stroke-width="0.8"/>
+    <text x="10" y="394" style="font-size:10px;font-weight:700;">P01.0</text>
+    <text x="50" y="394" style="font-size:10px;">2026-11-14</text>
+    <text x="125" y="394" style="font-size:10px;">INITIAL 3D / WEBXR ISSUE</text>
+    <text x="10" y="412" style="font-size:10px;font-weight:700;">P02.0</text>
+    <text x="50" y="412" style="font-size:10px;">2026-11-17</text>
+    <text x="125" y="412" style="font-size:10px;">INTERIOR &amp; COTTAGE OVERHAUL</text>
+    <text x="10" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">P02.1</text>
+    <text x="50" y="430" style="font-size:10px;fill:#b91c1c;">2026-11-17</text>
+    <text x="125" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">CONTRACTOR BIM &amp; CD SET</text>
+    <line x1="0" y1="444" x2="282" y2="444" stroke="#0f172a" stroke-width="1.2"/>
+
+    <!-- Key Plan / Mini Silhouette -->
+    <text x="141" y="464" text-anchor="middle" class="tb-lbl">KEY PLAN · PETRA ISLAND EXTENTS</text>
+    <rect x="26" y="474" width="230" height="170" fill="#e0f2fe" stroke="#0f172a" stroke-width="1.0"/>
+    <polygon points="115,474 256,474 256,644 140,644 102,590 95,540" fill="#dcfce7" stroke="#15803d" stroke-width="1.0"/>
+    <polygon points="116,550 148,578 88,602 108,562" fill="#fca5a5" stroke="#991b1b" stroke-width="1.5"/>
+    <polygon points="150,512 162,518 158,534 144,538 142,522" fill="#fde68a" stroke="#92400e" stroke-width="1.2"/>
+    <text x="40" y="634" style="font-size:9px;font-weight:700;fill:#0369a1;">LAKE MAHOPAC</text>
+
+    <!-- North Arrow & Scale Block -->
+    <line x1="0" y1="660" x2="282" y2="660" stroke="#0f172a" stroke-width="1.2"/>
+    <g transform="translate(235, 705)">
+      <circle cx="0" cy="0" r="22" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+      <polygon points="0,-20 -6,8 0,2 6,8" fill="#0f172a"/>
+      <text x="0" y="-25" text-anchor="middle" style="font-size:11px;font-weight:800;">N</text>
+    </g>
+    <text x="14" y="685" class="tb-lbl">DRAWING SCALE</text>
+    <text x="14" y="706" style="font-size:15px;font-weight:800;">1 : 150 (STRUCTURAL CUTS)</text>
+    <text x="14" y="726" style="font-size:9.5px;fill:#475569;">30° / 60° FLW TRIANGULAR MODULE</text>
+
+    <!-- Sheet Title & Sheet Number Box -->
+    <line x1="0" y1="1040" x2="282" y2="1040" stroke="#0f172a" stroke-width="1.5"/>
+    <text x="14" y="1062" class="tb-lbl">SHEET TITLE</text>
+    <text x="14" y="1088" class="tb-h1">BUILDING SECTIONS A–A &amp; B–B</text>
+    <line x1="0" y1="1130" x2="282" y2="1130" stroke="#0f172a" stroke-width="1.5"/>
+    <rect x="0" y="1130" width="282" height="94" fill="#f1f5f9"/>
+    <text x="14" y="1152" class="tb-lbl">SHEET NUMBER</text>
+    <text x="141" y="1198" text-anchor="middle" class="sheet-num">A-301</text>
+    <text x="268" y="1214" text-anchor="end" style="font-size:9.5px;font-weight:700;fill:#475569;">OF 10 SHEETS</text>
+  </g>
+
+
+    <g transform="translate(55, 60)">
+      <!-- SECTION A-A -->
+      <rect x="0" y="0" width="1520" height="550" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+      <rect x="0" y="0" width="1520" height="32" fill="#1e293b"/>
+      <text x="18" y="21" style="font-size:13px;font-weight:800;fill:#ffffff;">1 · LONGITUDINAL SECTION A–A — SW CANTILEVER PROW OVER LAKE MAHOPAC TO EAST MASTER WING (SCALE 1:150)</text>
+      <!-- Water & Bedrock Profile -->
+      <rect x="40" y="430" width="520" height="75" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="180" y="468" style="font-size:13px;font-weight:800;fill:#0369a1;">LAKE MAHOPAC (EL 0.00m)</text>
+      <polygon points="480,505 530,360 1460,342 1460,505" fill="url(#hatch-earth)" stroke="#334155" stroke-width="2.0"/>
+      <!-- Desert-Rubble Cantilever Lake Pier & Anchor Piers -->
+      <rect x="495" y="362" width="58" height="90" fill="url(#hatch-masonry)" stroke="#0f172a" stroke-width="2.2"/>
+      <rect x="650" y="362" width="46" height="75" fill="url(#hatch-masonry)" stroke="#0f172a" stroke-width="2.0"/>
+      <!-- Post-Tensioned Concrete Cantilever Girder (Z = +2.05m to +2.82m) -->
+      <polygon points="240,362 720,362 720,382 260,376" fill="#cbd5e1" stroke="#0f172a" stroke-width="2.0"/>
+      <!-- Lower Cantilever Floor Slab (EL +3.20m) & SW Deck (+3.18m) -->
+      <rect x="210" y="350" width="520" height="12" fill="#dc2626" stroke="#0f172a" stroke-width="2.0"/>
+      <!-- 4 Split-Level Atrium Steps up to Upper Slab (EL +3.80m) -->
+      <polygon points="730,350 765,332 1380,332 1380,346 730,346" fill="#dc2626" stroke="#0f172a" stroke-width="2.0"/>
+      <!-- Double-Sided Fireplace & Chimney Core rising to EL +10.12m -->
+      <rect x="745" y="145" width="82" height="220" fill="url(#hatch-masonry)" stroke="#0f172a" stroke-width="2.5"/>
+      <rect x="758" y="318" width="56" height="32" fill="#f97316" stroke="#0f172a" stroke-width="1.5"/>
+      <!-- Whale Rock & Kitchen Boulder in Section -->
+      <polygon points="845,332 885,252 945,268 970,332" fill="url(#hatch-rock)" stroke="#334155" stroke-width="2.2"/>
+      <!-- Cantilevered Roof Deck, Copper Fascia & 27-Skylight Pyramids (EL +7.48m to +8.54m) -->
+      <rect x="235" y="206" width="1165" height="18" fill="#78350f" stroke="#0f172a" stroke-width="2.2"/>
+      <polygon points="835,206 860,188 885,206 910,188 935,206 960,188 985,206 1010,188 1035,206" fill="#bae6fd" stroke="#0284c7" stroke-width="1.8"/>
+      <!-- Window Mullions -->
+      <line x1="255" y1="224" x2="255" y2="350" stroke="#7c2d12" stroke-width="3.0"/>
+      <line x1="1365" y1="224" x2="1365" y2="332" stroke="#7c2d12" stroke-width="3.0"/>
+      <!-- Callouts -->
+      <text x="345" y="338" class="tag-txt">SW CANTILEVER GREAT ROOM (EL +3.20m)</text>
+      <text x="345" y="405" class="dim-txt">8.53m (28'-0") OVER-WATER CANTILEVER</text>
+      <text x="935" y="176" class="tag-txt">27-SKYLIGHT COFFERED DOME GRID (EL +8.54m)</text>
+      <text x="1160" y="318" class="tag-txt">EAST WING MASTER SUITE (EL +3.80m)</text>
+
+      <!-- SECTION B-B -->
+      <g transform="translate(0, 580)">
+        <rect x="0" y="0" width="1520" height="550" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="0" y="0" width="1520" height="32" fill="#1e293b"/>
+        <text x="18" y="21" style="font-size:13px;font-weight:800;fill:#ffffff;">2 · CROSS SECTION B–B — WHALE ROCK ENTRY, KITCHEN BOULDER, ATRIUM CRANE MURAL &amp; DINING (SCALE 1:150)</text>
+        <polygon points="80,500 180,350 1440,350 1440,500" fill="url(#hatch-earth)" stroke="#334155" stroke-width="2.0"/>
+        <rect x="220" y="336" width="1120" height="14" fill="#dc2626" stroke="#0f172a" stroke-width="2.0"/>
+        <!-- Massive Whale Rock (Left/North) & Tail Rock Kitchen Shelf (Center) -->
+        <polygon points="260,350 310,210 430,198 515,245 555,336" fill="url(#hatch-rock)" stroke="#0f172a" stroke-width="2.5"/>
+        <polygon points="620,336 650,276 745,276 770,336" fill="url(#hatch-rock)" stroke="#0f172a" stroke-width="2.2"/>
+        <!-- 5 Red Le Creuset Pots on Kitchen Boulder Shelf -->
+        <rect x="660" y="264" width="16" height="12" fill="#dc2626"/>
+        <rect x="684" y="260" width="18" height="16" fill="#dc2626"/>
+        <rect x="710" y="262" width="16" height="14" fill="#dc2626"/>
+        <!-- Atrium Japanese Pine & Crane Screen Mural & Banquette -->
+        <rect x="830" y="220" width="240" height="72" fill="#fef08a" stroke="#7c2d12" stroke-width="2.0"/>
+        <rect x="830" y="302" width="240" height="34" fill="#fed7aa" stroke="#7c2d12" stroke-width="1.5"/>
+        <!-- Coffered Skylight Roof -->
+        <rect x="210" y="175" width="1150" height="20" fill="#78350f" stroke="#0f172a" stroke-width="2.2"/>
+        <polygon points="520,175 560,152 600,175 640,152 680,175 720,152 760,175 800,152 840,175 880,152 920,175" fill="#bae6fd" stroke="#0284c7" stroke-width="1.8"/>
+        <text x="395" y="188" class="tag-txt">IN-SITU 'WHALE ROCK' BEDROCK (18m × 3.7m)</text>
+        <text x="695" y="250" class="tag-txt">KITCHEN ROCK SHELF + LE CREUSET POTS</text>
+        <text x="950" y="258" class="tag-txt">4.4m JAPANESE PINE &amp; CRANE MURAL</text>
+      </g>
+    </g>
+    
+</svg>
