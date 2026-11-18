@@ -61,7 +61,7 @@
     <text x="12" y="242" class="tb-lbl">STATUS / SUITABILITY CODE</text>
     <text x="12" y="256" class="tb-val">S4 — SUITABLE FOR STAGE APPROVAL</text>
     <text x="12" y="276" class="tb-lbl">REVISION</text>
-    <text x="12" y="290" class="tb-val">P02.1 (2026-11-17)</text>
+    <text x="12" y="290" style="font-size:11.5px;font-weight:800;fill:#dc2626;">P03.1 Δ3 (2026-11-18 REDLINE)</text>
     <text x="145" y="276" class="tb-lbl">IFC SCHEMA</text>
     <text x="145" y="290" class="tb-val">IFC4 ADD2 TC1</text>
     <text x="12" y="310" class="tb-lbl">DISCIPLINE</text>
@@ -83,10 +83,21 @@
     <text x="10" y="412" style="font-size:10px;font-weight:700;">P02.0</text>
     <text x="50" y="412" style="font-size:10px;">2026-11-17</text>
     <text x="125" y="412" style="font-size:10px;">INTERIOR &amp; COTTAGE OVERHAUL</text>
-    <text x="10" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">P02.1</text>
-    <text x="50" y="430" style="font-size:10px;fill:#b91c1c;">2026-11-17</text>
-    <text x="125" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">CONTRACTOR BIM &amp; CD SET</text>
-    <line x1="0" y1="444" x2="282" y2="444" stroke="#0f172a" stroke-width="1.2"/>
+    <text x="10" y="426" style="font-size:9.5px;font-weight:700;">P02.1</text>
+    <text x="50" y="426" style="font-size:9.5px;">2026-11-18</text>
+    <text x="125" y="426" style="font-size:9.5px;">INITIAL BIM &amp; CD SET (834)</text>
+    <rect x="2" y="431" width="278" height="17" fill="#fee2e2"/>
+    <text x="10" y="443" style="font-size:9.5px;font-weight:800;fill:#dc2626;">P03.1 Δ3</text>
+    <text x="58" y="443" style="font-size:9.5px;font-weight:700;fill:#dc2626;">2026-11-18</text>
+    <text x="122" y="443" style="font-size:9.5px;font-weight:800;fill:#dc2626;">EXTERIOR AS-BUILT REDLINES</text>
+    <line x1="0" y1="450" x2="282" y2="450" stroke="#0f172a" stroke-width="1.2"/>
+    <!-- Angled Contractor Redline Verification Stamp in Title Block -->
+    <g transform="translate(141, 885) rotate(-8)">
+      <rect x="-124" y="-32" width="248" height="64" rx="4" fill="rgba(254,226,226,0.9)" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6,3"/>
+      <text x="0" y="-10" text-anchor="middle" style="font-size:11.5px;font-weight:900;fill:#dc2626;letter-spacing:1px;">▲ REV P03.1 AS-BUILT REDLINE SET</text>
+      <text x="0" y="6" text-anchor="middle" style="font-size:9px;font-weight:800;fill:#991b1b;">EXTERIOR FIELD-VERIFIED TO SITE PHOTOS</text>
+      <text x="0" y="21" text-anchor="middle" style="font-size:8.5px;font-weight:700;fill:#b91c1c;">903 IFC4 ELEMENTS · DELTA Δ3 CORRECTIONS</text>
+    </g>
 
     <!-- Key Plan / Mini Silhouette -->
     <text x="141" y="464" text-anchor="middle" class="tb-lbl">KEY PLAN · PETRA ISLAND EXTENTS</text>
@@ -123,7 +134,7 @@
       <rect x="0" y="0" width="1510" height="130" fill="#0f172a" rx="4"/>
       <text x="35" y="48" style="font-size:28px;font-weight:800;fill:#f8fafc;letter-spacing:2px;">MASSARO HOUSE &amp; 1951 FLW CHAHROUDI GUEST COTTAGE</text>
       <text x="35" y="80" style="font-size:15px;font-weight:600;fill:#38bdf8;letter-spacing:1.5px;">PETRA ISLAND · LAKE MAHOPAC, NEW YORK · CONTRACTOR BIM &amp; CONSTRUCTION DRAWING SET (ISO 19650 / IFC4)</text>
-      <text x="35" y="108" style="font-size:12px;fill:#cbd5e1;">CALIBRATED SITE EXTENTS: 134.55m × 129.75m (441'-5" × 425'-8") · 834 IFC4 MODEL ELEMENTS · 18 CAMERA / WAYPOINT STATIONS</text>
+      <text x="35" y="108" style="font-size:12px;fill:#cbd5e1;">CALIBRATED SITE EXTENTS: 134.55m × 129.75m (441'-5" × 425'-8") · 903 IFC4 MODEL ELEMENTS (REV P03.1 AS-BUILT EXTERIOR REDLINE SET) · 18 CAMERA / WAYPOINT STATIONS</text>
 
       <!-- Sheet Index Table -->
       <rect x="0" y="155" width="920" height="520" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
@@ -141,67 +152,67 @@
 <text x="95" y="252" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-ZZ-ZZ-DR-A-0000</text>
 <text x="315" y="252" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Cover Sheet, ISO 19650 Register, Legends &amp; General Contractor Notes</text>
 <text x="745" y="252" style="font-size:11px;font-weight:700;">NTS</text>
-<text x="835" y="252" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<text x="835" y="252" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P03.1 Δ3</text>
 <rect x="2" y="270" width="916" height="38" fill="#f8fafc"/>
 <text x="18" y="294" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-100</text>
 <text x="95" y="294" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-SITE-00-DR-C-0100</text>
 <text x="315" y="294" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Master Site Plan — Petra Island, Lake Mahopac, Dock &amp; Both Residences</text>
 <text x="745" y="294" style="font-size:11px;font-weight:700;">1:500</text>
-<text x="835" y="294" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<text x="835" y="294" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P03.1 Δ3</text>
 <rect x="2" y="312" width="916" height="38" fill="#ffffff"/>
 <text x="18" y="336" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-101</text>
 <text x="95" y="336" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-M1-L1-DR-A-0101</text>
 <text x="315" y="336" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Main Residence Floor Plan — Cantilever Living (+3.20m) &amp; Split-Level (+3.80m)</text>
 <text x="745" y="336" style="font-size:11px;font-weight:700;">1:150</text>
-<text x="835" y="336" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<text x="835" y="336" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P03.1 Δ3</text>
 <rect x="2" y="354" width="916" height="38" fill="#f8fafc"/>
 <text x="18" y="378" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-102</text>
 <text x="95" y="378" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-M1-L4-DR-A-0102</text>
 <text x="315" y="378" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Main Residence Roof, 27-Skylight Grid, Helipad &amp; Copper Fascia Plan</text>
 <text x="745" y="378" style="font-size:11px;font-weight:700;">1:150</text>
-<text x="835" y="378" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<text x="835" y="378" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P03.1 Δ3</text>
 <rect x="2" y="396" width="916" height="38" fill="#ffffff"/>
 <text x="18" y="420" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-103</text>
 <text x="95" y="420" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-M1-L2-DR-E-0103</text>
 <text x="315" y="420" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Main Residence Reflected Ceiling Plan (RCP), Skylights &amp; LED Cove Lighting</text>
 <text x="745" y="420" style="font-size:11px;font-weight:700;">1:150</text>
-<text x="835" y="420" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<text x="835" y="420" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P03.1 Δ3</text>
 <rect x="2" y="438" width="916" height="38" fill="#f8fafc"/>
 <text x="18" y="462" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-104</text>
 <text x="95" y="462" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-C1-L3-DR-A-0104</text>
 <text x="315" y="462" style="font-size:11.5px;font-weight:600;fill:#0f172a;">1951 FLW Chahroudi Guest Cottage — Floor Plan, Hex Rafters &amp; Elevations</text>
 <text x="745" y="462" style="font-size:11px;font-weight:700;">1:75</text>
-<text x="835" y="462" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<text x="835" y="462" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P03.1 Δ3</text>
 <rect x="2" y="480" width="916" height="38" fill="#ffffff"/>
 <text x="18" y="504" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-201</text>
 <text x="95" y="504" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-M1-ZZ-DR-A-0201</text>
 <text x="315" y="504" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Main Residence Exterior Elevations — West (Lake), South, East &amp; North</text>
 <text x="745" y="504" style="font-size:11px;font-weight:700;">1:200</text>
-<text x="835" y="504" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<text x="835" y="504" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P03.1 Δ3</text>
 <rect x="2" y="522" width="916" height="38" fill="#f8fafc"/>
 <text x="18" y="546" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-301</text>
 <text x="95" y="546" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-M1-ZZ-DR-S-0301</text>
 <text x="315" y="546" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Building Sections A–A (Cantilever Girder &amp; Atrium) &amp; B–B (Whale Rock &amp; Kitchen)</text>
 <text x="745" y="546" style="font-size:11px;font-weight:700;">1:150</text>
-<text x="835" y="546" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<text x="835" y="546" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P03.1 Δ3</text>
 <rect x="2" y="564" width="916" height="38" fill="#ffffff"/>
 <text x="18" y="588" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-401</text>
 <text x="95" y="588" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-M1-L2-DR-A-0401</text>
 <text x="315" y="588" style="font-size:11.5px;font-weight:600;fill:#0f172a;">Enlarged Interior Elevations — Whale Rock Kitchen, Crane Mural, Master &amp; Bath</text>
 <text x="745" y="588" style="font-size:11px;font-weight:700;">1:50</text>
-<text x="835" y="588" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<text x="835" y="588" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P03.1 Δ3</text>
 <rect x="2" y="606" width="916" height="38" fill="#f8fafc"/>
 <text x="18" y="630" style="font-size:13px;font-weight:800;fill:#b91c1c;">A-501</text>
 <text x="95" y="630" style="font-size:11px;font-weight:700;fill:#0369a1;">MAS-THH-ZZ-ZZ-SH-A-0501</text>
 <text x="315" y="630" style="font-size:11.5px;font-weight:600;fill:#0f172a;">BIM Quantity Take-Off (QTO), IFC4 Entity Schedule, CSI Trades &amp; Room Schedule</text>
 <text x="745" y="630" style="font-size:11px;font-weight:700;">TABLE</text>
-<text x="835" y="630" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P02.1</text>
+<text x="835" y="630" style="font-size:11px;font-weight:700;fill:#15803d;">S4 · P03.1 Δ3</text>
 
       <rect x="945" y="155" width="565" height="520" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
       <rect x="945" y="155" width="565" height="34" fill="#1e293b"/>
       <text x="963" y="177" style="font-size:13px;font-weight:800;fill:#ffffff;letter-spacing:1px;">ISO 19650 &amp; GENERAL CONTRACTOR SPECIFICATIONS</text>
       <text x="963" y="212" class="tb-h2">1. COMMON DATA ENVIRONMENT (CDE) &amp; MODEL FEDERATION</text>
-      <text x="963" y="232" class="note-txt">• 3D BIM Asset: massaro_house.glb + massaro_bim_metadata.json (834 elements)</text>
+      <text x="963" y="232" class="note-txt">• 3D BIM Asset: massaro_house.glb + massaro_bim_metadata.json (903 elements)</text>
       <text x="963" y="250" class="note-txt">• Interactive Contractor BIM Viewer: bim.html (IFC4 class tree, CSI trade filters,</text>
       <text x="963" y="268" class="note-txt">  6-plane section box, laser measurement tool, CSV BOQ &amp; IFC4 STEP export).</text>
       <text x="963" y="298" class="tb-h2">2. GEOTECHNICAL &amp; BEDROCK INTEGRATION (CSI DIV 31 / 03)</text>
@@ -250,4 +261,21 @@
 <text x="1028" y="870" style="font-size:11px;fill:#1e293b;">• Terracotta Seawall Apron, 8-Step Arrival Promenade &amp; Sloped Bluestone Island Walkway</text>
 <text x="1028" y="898" style="font-size:11px;fill:#1e293b;">• NE Pyramid-Hipped Utility Shed, Woodland Shed, Boat Trailer &amp; 120-Tree Deciduous Woodland Canopy</text>
     </g>
+<g class="redline-layer">
+<path d="M 942.0 695.0 Q 953.0 686.0 963.9 695.0 Q 974.9 686.0 985.8 695.0 Q 996.8 686.0 1007.8 695.0 Q 1018.7 686.0 1029.7 695.0 Q 1040.7 686.0 1051.6 695.0 Q 1062.6 686.0 1073.5 695.0 Q 1084.5 686.0 1095.5 695.0 Q 1106.4 686.0 1117.4 695.0 Q 1128.3 686.0 1139.3 695.0 Q 1150.3 686.0 1161.2 695.0 Q 1172.2 686.0 1183.2 695.0 Q 1194.1 686.0 1205.1 695.0 Q 1216.0 686.0 1227.0 695.0 Q 1238.0 686.0 1248.9 695.0 Q 1259.9 686.0 1270.8 695.0 Q 1281.8 686.0 1292.8 695.0 Q 1303.7 686.0 1314.7 695.0 Q 1325.7 686.0 1336.6 695.0 Q 1347.6 686.0 1358.5 695.0 Q 1369.5 686.0 1380.5 695.0 Q 1391.4 686.0 1402.4 695.0 Q 1413.3 686.0 1424.3 695.0 Q 1435.3 686.0 1446.2 695.0 Q 1457.2 686.0 1468.2 695.0 Q 1479.1 686.0 1490.1 695.0 Q 1501.0 686.0 1512.0 695.0 Q 1521.0 706.0 1512.0 717.0 Q 1521.0 727.9 1512.0 738.9 Q 1521.0 749.9 1512.0 760.9 Q 1521.0 771.8 1512.0 782.8 Q 1521.0 793.8 1512.0 804.8 Q 1521.0 815.8 1512.0 826.7 Q 1521.0 837.7 1512.0 848.7 Q 1521.0 859.7 1512.0 870.7 Q 1521.0 881.6 1512.0 892.6 Q 1521.0 903.6 1512.0 914.6 Q 1521.0 925.5 1512.0 936.5 Q 1521.0 947.5 1512.0 958.5 Q 1521.0 969.5 1512.0 980.4 Q 1521.0 991.4 1512.0 1002.4 Q 1521.0 1013.4 1512.0 1024.3 Q 1521.0 1035.3 1512.0 1046.3 Q 1521.0 1057.3 1512.0 1068.3 Q 1521.0 1079.2 1512.0 1090.2 Q 1521.0 1101.2 1512.0 1112.2 Q 1521.0 1123.2 1512.0 1134.1 Q 1521.0 1145.1 1512.0 1156.1 Q 1521.0 1167.1 1512.0 1178.0 Q 1521.0 1189.0 1512.0 1200.0 Q 1501.0 1209.0 1490.1 1200.0 Q 1479.1 1209.0 1468.2 1200.0 Q 1457.2 1209.0 1446.2 1200.0 Q 1435.3 1209.0 1424.3 1200.0 Q 1413.3 1209.0 1402.4 1200.0 Q 1391.4 1209.0 1380.5 1200.0 Q 1369.5 1209.0 1358.5 1200.0 Q 1347.6 1209.0 1336.6 1200.0 Q 1325.7 1209.0 1314.7 1200.0 Q 1303.7 1209.0 1292.8 1200.0 Q 1281.8 1209.0 1270.8 1200.0 Q 1259.9 1209.0 1248.9 1200.0 Q 1238.0 1209.0 1227.0 1200.0 Q 1216.0 1209.0 1205.1 1200.0 Q 1194.1 1209.0 1183.2 1200.0 Q 1172.2 1209.0 1161.2 1200.0 Q 1150.3 1209.0 1139.3 1200.0 Q 1128.3 1209.0 1117.4 1200.0 Q 1106.4 1209.0 1095.5 1200.0 Q 1084.5 1209.0 1073.5 1200.0 Q 1062.6 1209.0 1051.6 1200.0 Q 1040.7 1209.0 1029.7 1200.0 Q 1018.7 1209.0 1007.8 1200.0 Q 996.8 1209.0 985.8 1200.0 Q 974.9 1209.0 963.9 1200.0 Q 953.0 1209.0 942.0 1200.0 Q 933.0 1189.0 942.0 1178.0 Q 933.0 1167.1 942.0 1156.1 Q 933.0 1145.1 942.0 1134.1 Q 933.0 1123.2 942.0 1112.2 Q 933.0 1101.2 942.0 1090.2 Q 933.0 1079.2 942.0 1068.3 Q 933.0 1057.3 942.0 1046.3 Q 933.0 1035.3 942.0 1024.3 Q 933.0 1013.4 942.0 1002.4 Q 933.0 991.4 942.0 980.4 Q 933.0 969.5 942.0 958.5 Q 933.0 947.5 942.0 936.5 Q 933.0 925.5 942.0 914.6 Q 933.0 903.6 942.0 892.6 Q 933.0 881.6 942.0 870.7 Q 933.0 859.7 942.0 848.7 Q 933.0 837.7 942.0 826.7 Q 933.0 815.8 942.0 804.8 Q 933.0 793.8 942.0 782.8 Q 933.0 771.8 942.0 760.9 Q 933.0 749.9 942.0 738.9 Q 933.0 727.9 942.0 717.0 Q 933.0 706.0 942.0 695.0 Z" fill="rgba(239, 68, 68, 0.055)" stroke="#dc2626" stroke-width="2.2"/>
+<polygon points="956.0,677.0 944.0,698.0 968.0,698.0" fill="#fef08a" stroke="#dc2626" stroke-width="1.8"/>
+<text x="956.0" y="696.0" text-anchor="middle" style="font-size:9.5px;font-weight:900;fill:#dc2626;">Δ3</text>
+<rect x="972.0" y="679.0" width="402.0" height="19" rx="3" fill="#dc2626"/>
+<text x="980.0" y="692.0" style="font-size:10px;font-weight:800;fill:#ffffff;letter-spacing:0.4px;">REV P03.1 AS-BUILT EXTERIOR REDLINE SUMMARY (RL-01 TO RL-08)</text>
+<circle cx="865.0" cy="250.0" r="6" fill="rgba(220,38,38,0.2)" stroke="#dc2626" stroke-width="2.2"/>
+<line x1="865.0" y1="250.0" x2="480.5" y2="1079.5" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="5,3"/>
+<rect x="48.0" y="1030.0" width="865.0" height="99.0" rx="4" fill="#fff1f2" stroke="#dc2626" stroke-width="2.0"/>
+<rect x="48.0" y="1030.0" width="865.0" height="19" rx="3" fill="#dc2626"/>
+<text x="56.0" y="1043.5" style="font-size:10px;font-weight:900;fill:#ffffff;letter-spacing:0.5px;">▲ REDLINE REGISTER · REV P03.1 AS-BUILT FIELD VERIFICATION</text>
+<text x="56.0" y="1063.0" style="font-size:10px;font-weight:700;fill:#991b1b;">RL-01 (A-100/A-201): Removed unauthentic white boathouse canopy; added NW Rubblestone Bastion &amp; Steep Cherokee-Red Boat Gangway.</text>
+<text x="56.0" y="1078.0" style="font-size:10px;font-weight:700;fill:#991b1b;">RL-02 (A-101/A-201/A-301): Deleted SW Prow glass railing; added Mitered Battered Buff-Stucco Cantilever Parapet (EL +2.86m..+4.75m).</text>
+<text x="56.0" y="1093.0" style="font-size:10px;font-weight:700;fill:#991b1b;">RL-03 (A-101/A-201): Added Hexagonal Desert-Rubblestone Lake Support Pier, Full-Height Mid-NW Stone Wall &amp; 14-Bay Mahogany Ribbon Windows.</text>
+<text x="56.0" y="1108.0" style="font-size:10px;font-weight:700;fill:#991b1b;">RL-04 (A-102/A-301): Added Mitered Battered Standing-Seam Copper Roof Fascia (0.58m O.C. seams), Dark Olive Roof Deck &amp; 4 Stone Chimneys.</text>
+<text x="56.0" y="1123.0" style="font-size:10px;font-weight:700;fill:#991b1b;">RL-05 (A-104): Added Cherokee-Red Eave Fascia, Weathered Grey Shingles &amp; Flush 5-Sided Fieldstone Slabs on 1951 Chahroudi Cottage.</text>
+</g>
 </svg>

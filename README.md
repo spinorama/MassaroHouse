@@ -1,6 +1,6 @@
-# Massaro House & 1951 Chahroudi Cottage (Petra Island, NY) — WebXR, ISO 19650 BIM & Architectural Drawing Set
+# Massaro House & 1951 Chahroudi Cottage (Petra Island, NY) — WebXR, ISO 19650 BIM & Redlined Architectural Drawing Set
 
-Complete digital twin, **4-Mode Interactive WebXR Experience**, **ISO 19650 / IFC4 Contractor BIM Coordination Viewer**, and **10-Sheet Architectural Construction Drawing Set (`A-000` to `A-501`)** of the **Massaro House** and the **1951 Frank Lloyd Wright Chahroudi Guest Cottage** on **Petra Island, Lake Mahopac, New York** (`41.3765° N, 73.7364° W`) — built natively via the **Blender MCP** (`v2.0.0`, calibrated to the exact `134.55 m × 129.75 m` aerial site extents at `0.15 m/px`).
+Complete digital twin, **4-Mode Interactive WebXR Experience**, **ISO 19650 / IFC4 Contractor BIM Coordination Viewer**, and **10-Sheet Redlined Architectural Construction Drawing Set (`A-000` to `A-501`, Rev `P03.1 Δ3`)** of the **Massaro House** and the **1951 Frank Lloyd Wright Chahroudi Guest Cottage** on **Petra Island, Lake Mahopac, New York** (`41.3765° N, 73.7364° W`) — built natively via the **Blender MCP** (`v2.1.0`, `903` IFC4 mesh elements calibrated to the `134.55 m × 129.75 m` aerial site extents at `0.15 m/px`).
 
 ---
 
@@ -9,52 +9,41 @@ Complete digital twin, **4-Mode Interactive WebXR Experience**, **ISO 19650 / IF
 | Deliverable | URL / Path | Standards & Capabilities |
 | :--- | :--- | :--- |
 | **1. 4-Mode WebXR Experience** | [**`index.html`**](https://spinorama.github.io/MassaroHouse/) | `3D View`, `Quest VR`, `1:1 AR Walk`, `Tabletop AR`, `Roof/Context` cutaways, `DIN 1451 / LCARS` telemetry |
-| **2. Contractor BIM Coordination Viewer** | [**`bim.html`**](https://spinorama.github.io/MassaroHouse/bim.html) | `ISO 19650-2 (S4 · Rev P02.1)` · `IFC4 ADD2 TC1` · `834` federated elements · CSI MasterFormat 2020 trade filters · 6-plane Section Box · Laser Tape Measure · `.IFC` & `.CSV` BOQ export |
-| **3. Architectural Construction Drawing Set** | [**`drawings/index.html`**](https://spinorama.github.io/MassaroHouse/drawings/index.html) | 10 contractor-grade Vector SVG CAD sheets (`A-000` through `A-501`) with pan/zoom blueprint binder, 30°/60° FLW grids, sections, details & QTO schedules |
-| **4. Federated BIM Metadata & Assets** | [`massaro_bim_metadata.json`](./massaro_bim_metadata.json) · [`massaro_house.glb`](./massaro_house.glb) · [`massaro_house.blend`](./massaro_house.blend) | `834` mesh elements (`858` total scene nodes including `18` cameras & `18` waypoints) |
-| **5. Verification Renders & Archival Plates** | [`renders/`](./renders/) (`9` renders) · [`reference/`](./reference/) (`21` plates) | Cycles/EEVEE verification renders (`01`–`09`) & historical reference photography (`00`–`20`) |
+| **2. Contractor BIM Coordination Viewer** | [**`bim.html`**](https://spinorama.github.io/MassaroHouse/bim.html) | `ISO 19650-2 (S4 · Rev P03.1 Δ3)` · `IFC4 ADD2 TC1` · `903` federated elements · CSI MasterFormat 2020 trade filters · 6-plane Section Box · Laser Tape Measure · `.IFC` & `.CSV` BOQ export |
+| **3. Redlined Architectural Drawing Set** | [**`drawings/index.html`**](https://spinorama.github.io/MassaroHouse/drawings/index.html) | 10 contractor-grade Vector SVG CAD sheets (`A-000` through `A-501`) with **Rev P03.1 (`Δ3`) As-Built Redline Clouds, Callout Leaders, Superseded Strike-Throughs & 12-Item Redline Verification Log (`RL-01`–`RL-12`)** |
+| **4. Federated BIM Metadata & Assets** | [`massaro_bim_metadata.json`](./massaro_bim_metadata.json) · [`massaro_house.glb`](./massaro_house.glb) · [`massaro_house.blend`](./massaro_house.blend) | `903` mesh elements (`House_Group=467`, `Roof_Group=263`, `Context_Group=173` + `18` cameras + `18` waypoints) |
+| **5. Verification Renders & Archival Plates** | [`renders/`](./renders/) (`11` renders) · [`reference/`](./reference/) (`21` plates) | Exterior & interior verification renders (`01`–`11`) & real-world photography (`00`–`20`) |
 
 ---
 
-## 🏗️ ISO 19650 / IFC4 Contractor BIM Viewer (`bim.html`)
+## 🏛️ v2.1.0 As-Built Exterior Overhaul & Field Verification (`Rev P03.1 Δ3`)
 
-Designed as a Common Data Environment (CDE) deliverable (`MAS-THH-ZZ-ZZ-M3-A-0001`, Suitability `S4 — For Construction Coordination`, Revision `P02.1`):
+Every exterior facade, structural pier, roofline, and shoreline feature has been field-verified against real-world aerial and lakefront photography ([`reference/01`](./reference/01_aerial_island_both_houses.png), [`02`](./reference/02_massaro_exterior_lake_view.png), [`03`](./reference/03_massaro_cantilever_copper_fascia.png), [`13`](./reference/13_massaro_exterior_dusk_whale_rock.png), [`15`](./reference/15_chahroudi_cottage_exterior_terrace.png)) and documented with redlines (`RL-01` through `RL-12`) across the drawing set:
 
-- **IFC4 Spatial Hierarchy (`IfcProject -> IfcSite -> IfcBuilding -> IfcBuildingStorey`):**
-  - `BLDG-01` — Massaro Main Residence (FLW 1949 / Thomas A. Heinz, AIA 2003–2007)
-  - `BLDG-02` — 1951 Frank Lloyd Wright Chahroudi Guest Cottage
-  - `BLDG-03` — Helipad, Timber Boat Dock & Island Outbuildings
-  - `SITE-01` — Petra Island Granite Bedrock, Lake Mahopac & Deciduous Forest
-  - Storeys `L00` (`-4.0m..+1.5m`), `L01` (`+1.5m..+3.1m`), `L02` (`+3.1m..+4.5m`), `L03` (`+4.5m..+6.8m`), `L04` (`+6.8m..+9.0m`)
-- **18 IFC4 Entity Classes:** `IfcWall`, `IfcSlab`, `IfcRoof`, `IfcBeam`, `IfcFooting`, `IfcCurtainWall`, `IfcWindow`, `IfcDoor`, `IfcMember`, `IfcChimney`, `IfcStairFlight`, `IfcRailing`, `IfcFurnishingElement`, `IfcSanitaryTerminal`, `IfcElectricAppliance`, `IfcLightFixture`, `IfcCivilElement`, `IfcGeographicElement`.
-- **CSI MasterFormat 2020 Subcontractor Trade Packages:** One-click isolation and quantity rollups for `Div 03` Concrete, `Div 04` Desert Rubblestone Masonry, `Div 05` Structural Steel, `Div 06` Rough Carpentry & Custom Mahogany/Cherry Architectural Woodwork, `Div 07` Patinated Copper Roofing & 26 Skylights, `Div 08` Mahogany Curtain Wall Glazing, `Div 11` Appliances, `Div 12` Built-in Wrightian Furnishings, `Div 22` Plumbing, `Div 26` Lighting, `Div 31` Granite Bedrock Integration, and `Div 32/35` Marine Docks.
-- **6 Federation Color Modes:** `PBR Realistic`, `By IFC4 Class`, `By CSI Trade`, `By Storey`, `By ISO 19650 Discipline`, and `CAD Wireframe`.
-- **Interactive 6-Plane 3D Section Box & Laser Tape Measure `[M]`:** Live X/Y/Z clipping planes with architectural cut presets (`Plan Cut L02 +4.3m`, `Plan Cut L01 +2.8m`, `Section A-A`, `Section B-B`, `Cottage Cutaway`) and point-to-point 3D laser measurement ($\Delta X, \Delta Y, \Delta Z$ in metric & `ft'-in"`).
-- **Right-Docked IFC4 Property Inspector & Bottom Live BOQ Schedule:** Inspect `Pset_ISO19650_Identification`, `Pset_Classification` (`CSI`, `Uniformat II`, `Uniclass 2015`), and `Qto_ElementBaseQuantities`, and export `.IFC` (ISO 10303-21 STEP) or `.CSV` (Excel BOQ) directly from the browser.
-
----
-
-## 📐 Full Architectural Construction Drawing Set (`drawings/`)
-
-Interactive blueprint sheet binder ([`drawings/index.html`](./drawings/index.html)) containing 10 vector SVG sheets generated directly from the calibrated Blender BIM geometry:
-
-1. **[`A-000_Cover_Index.svg`](./drawings/A-000_Cover_Index.svg)** — Cover Sheet, Drawing Index, ISO 19650 Metadata Matrix, Symbols Legend & CSI Summary
-2. **[`A-100_Master_Site_Plan.svg`](./drawings/A-100_Master_Site_Plan.svg)** — Petra Island Master Site & Roof Plan (`1:500`, `134.55m × 129.75m` extents, grid, contours, Main House, 1951 Cottage, Helipad & Docks)
-3. **[`A-101_Main_Floor_Plan.svg`](./drawings/A-101_Main_Floor_Plan.svg)** — Main Residence Level `L01/L02` Architectural Floor Plan (`1:100`, 30°/60° triangular grid, Whale Rock & Entry Boulder penetrations, 6 stone piers, room schedule & dimensions)
-4. **[`A-102_Roof_Skylight_Plan.svg`](./drawings/A-102_Roof_Skylight_Plan.svg)** — Main Residence Roof Framing, Patinated Copper Fascia & 26-Skylight Matrix Plan (`1:100`)
-5. **[`A-103_Reflected_Ceiling_Plan.svg`](./drawings/A-103_Reflected_Ceiling_Plan.svg)** — Main Residence Reflected Ceiling & Lighting Plan (`1:100`, mahogany soffits, recessed coves & 6 triangular chandeliers)
-6. **[`A-104_Chahroudi_Cottage_Plans.svg`](./drawings/A-104_Chahroudi_Cottage_Plans.svg)** — 1951 FLW Chahroudi Guest Cottage Floor Plan, Cathedral Rafter Framing Plan & Exterior Elevations (`1:50`)
-7. **[`A-201_Exterior_Elevations.svg`](./drawings/A-201_Exterior_Elevations.svg)** — Exterior Building Elevations: South Lakefront, West Prow Cantilever, North Arrival & East Elevation (`1:125`)
-8. **[`A-301_Building_Sections.svg`](./drawings/A-301_Building_Sections.svg)** — Longitudinal Section `A-A` (8.5m SW Cantilever Prow) & Transverse Section `B-B` (Entry Rock Steps & Skylight Wells) (`1:100`)
-9. **[`A-401_Interior_Elevations_Details.svg`](./drawings/A-401_Interior_Elevations_Details.svg)** — Enlarged Interior Architectural Details: Entry Foyer Rock Steps, Great Room Inglenook & Chandeliers, Curved Cherry Kitchen Island, Primary Bath Copper Tub & Bedrock Wall (`1:25`)
-10. **[`A-501_BIM_Schedules_QTO.svg`](./drawings/A-501_BIM_Schedules_QTO.svg)** — ISO 19650 / IFC4 Element Schedules, CSI Division Take-Off & Storey Quantities (`N.T.S.`)
+1. **Mitered 16° Outward-Battered Warm Buff-Stucco Cantilever Parapets (`RL-04`):**
+   - Deleted the unauthentic 2-story glass curtain wall and SW Prow glass railing (`Railing_SW_Glass_*`); installed the continuous **mitered outward-battered warm buff-stucco cantilever parapet (`Cantilever_Buff_Parapet_*` & `Railing_SW_Parapet_1..4`, `EL +2.86m to +4.75m`)** and **14-bay African Mahogany casement ribbon windows (`EL +4.48m to +7.38m`)**.
+2. **Mitered 18° Outward-Battered Standing-Seam Copper Roof Fascia & Dark Olive Deck (`RL-06` & `RL-07`):**
+   - Built a seamless **mitered outward-battered weathered bronze/copper fascia (`Roof_Fascia_Edge_1..18`)** with **3D vertical standing-seam ribs every `0.58 m` (`Roof_Copper_Standing_Seams`)**, a `1.35 m` tongue-and-groove mahogany eave soffit, a **dark charcoal-olive elastomeric roof membrane**, **4 polygonal Desert-Rubblestone chimneys** with bronze caps, and a **raised white-curbed 27-skylight platform (`Roof_Skylight_Curb_Platform`)** with white exterior structural ribs and 3 north vaulted mechanical hoods.
+3. **Hexagonal Lake Support Pier, Mid-NW Rubblestone Wall, Whale Rock Cliff & Red Boat Gangway (`RL-01` & `RL-05`):**
+   - Added the **massive hexagonal Desert-Rubblestone Lake Support Pier (`Pier_Cantilever_Lake_Main`, `EL +0.10m to +2.95m`)** rising from the shoreline boulders beneath the SW cantilever, the **full-height Mid-NW Desert-Rubblestone wall (`Masonry_NW_Lake_Wall`)** with the iconic conical green juniper tree in front of it, the **stratified exterior NW Whale Rock granite cliff & 3 stepped stone entry piers**, and the **battered NW stone bastion wall with its steep Cherokee-Red concrete stair & floating red finger pier** (replacing the unauthentic white boathouse canopy).
+4. **40+ Fractured Shoreline Granite Boulders, SE Rock Peninsula & Upper Lawn Ruin (`RL-02` & `RL-03`):**
+   - Armored the under-cantilever water's edge and South-East rocky peninsula with **40+ faceted granite boulder masses (`Ctx_Shoreline_Granite_Boulders`)**, coastal shrubs, and the historic stone-ringed foundation ruin on the upper lawn clearing.
+5. **1951 FLW Chahroudi Guest Cottage Exterior Overhaul (`RL-08`):**
+   - Updated the Cottage hipped roof to **weathered silver-grey cedar shingles (`Mat_Cottage_Shingle_Grey`)** with a **Cherokee-Red eave fascia trim (`Roof_Cottage_RedFascia_1..6`)**, and replaced protruding round stone knobs with **flush 5-sided angular fieldstone slabs** across the polygonal NW bastion, both tall chimney shafts, and the battered planter wall.
 
 ---
 
-## 🥽 4-Mode Interactive WebXR Experience (`index.html`)
+## 📐 10-Sheet Redlined Architectural Construction Drawing Set ([`drawings/`](./drawings/index.html))
 
-- **🖥️ Mode 1 · 3D View (Desktop & Phone Browser):** Orbit, pan, zoom, and fly (`WASD` + `E/Q`) across 18 curated architectural camera stations.
-- **🥽 Mode 2 · Quest VR (`immersive-vr`):** Controller laser teleportation across all interior decks, roof terraces, and island trails.
-- **📱 Mode 3 · 1:1 AR Walk (`immersive-ar`):** Full-scale 1:1 walkthrough anchored to your physical space.
-- **🏡 Mode 4 · Tabletop AR (`immersive-ar` Dollhouse):** Interactive tabletop scale model of Petra Island with pinch-to-scale and 1-finger rotation.
-- **🎛️ Architectural Toggles:** `🏠 Roof` (`Roof_Group`), `🌳 Context` (`Context_Group`), `✏️ Lines [L]` (Hidden-Line CAD), and `📐 Style [T]` (`DIN 1451` vs `Star Trek LCARS`).
+Interactive blueprint sheet binder ([`drawings/index.html`](./drawings/index.html)) with scalloped redline revision clouds (`Δ3`), leader callouts, strike-throughs, and an interactive **Redline Log (`RL-01`–`RL-12`)**:
+
+1. **[`A-000_Cover_Index.svg`](./drawings/A-000_Cover_Index.svg)** — Cover Sheet, Drawing Index, ISO 19650 Matrix & `Rev P03.1 Δ3` Redline Register
+2. **[`A-100_Master_Site_Plan.svg`](./drawings/A-100_Master_Site_Plan.svg)** — Petra Island Master Site Plan (`1:500`, Redlines `RL-01..03`: NW Bastion, Red Gangway, SE Rock Peninsula & Cottage Path)
+3. **[`A-101_Main_Floor_Plan.svg`](./drawings/A-101_Main_Floor_Plan.svg)** — Main Residence Floor Plan (`1:150`, Redlines `RL-04..06`: Battered Buff Parapet, Glass Railing Deleted, Hex Lake Pier & NW Stone Wall)
+4. **[`A-102_Roof_Skylight_Plan.svg`](./drawings/A-102_Roof_Skylight_Plan.svg)** — Roof Framing & 27-Skylight Plan (`1:150`, Redlines `RL-06..07`: Mitered Battered Copper Fascia, White Skylight Curb & 4 Chimneys)
+5. **[`A-103_Reflected_Ceiling_Plan.svg`](./drawings/A-103_Reflected_Ceiling_Plan.svg)** — Reflected Ceiling & Lighting Plan (`1:150`, Redline `RL-06B`: `1.35m` Mahogany Eave Soffit & Datum Verification)
+6. **[`A-104_Chahroudi_Cottage_Plans.svg`](./drawings/A-104_Chahroudi_Cottage_Plans.svg)** — 1951 Chahroudi Guest Cottage Plans & Elevations (`1:75`, Redline `RL-08`: Grey Shingles, Red Fascia & Flush Fieldstones)
+7. **[`A-201_Exterior_Elevations.svg`](./drawings/A-201_Exterior_Elevations.svg)** — Exterior Building Elevations (`1:200`, Redline `RL-09`: Full West, South, East & North As-Built Projections)
+8. **[`A-301_Building_Sections.svg`](./drawings/A-301_Building_Sections.svg)** — Building Sections `A-A` & `B-B` (`1:150`, Redline `RL-10`: Battered Prow Parapet, Copper Fascia & Lake Pier)
+9. **[`A-401_Interior_Elevations_Details.svg`](./drawings/A-401_Interior_Elevations_Details.svg)** — Enlarged Interior & Envelope Details (`1:50`, Redline `RL-11`: Sill & Soffit Datum Coordination)
+10. **[`A-501_BIM_Schedules_QTO.svg`](./drawings/A-501_BIM_Schedules_QTO.svg)** — BIM Quantity Take-Off & Schedules (`TABLE`, Redline `RL-12`: Updated from `834` to `903` IFC4 Elements)

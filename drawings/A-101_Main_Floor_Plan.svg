@@ -61,7 +61,7 @@
     <text x="12" y="242" class="tb-lbl">STATUS / SUITABILITY CODE</text>
     <text x="12" y="256" class="tb-val">S4 — SUITABLE FOR STAGE APPROVAL</text>
     <text x="12" y="276" class="tb-lbl">REVISION</text>
-    <text x="12" y="290" class="tb-val">P02.1 (2026-11-17)</text>
+    <text x="12" y="290" style="font-size:11.5px;font-weight:800;fill:#dc2626;">P03.1 Δ3 (2026-11-18 REDLINE)</text>
     <text x="145" y="276" class="tb-lbl">IFC SCHEMA</text>
     <text x="145" y="290" class="tb-val">IFC4 ADD2 TC1</text>
     <text x="12" y="310" class="tb-lbl">DISCIPLINE</text>
@@ -83,10 +83,21 @@
     <text x="10" y="412" style="font-size:10px;font-weight:700;">P02.0</text>
     <text x="50" y="412" style="font-size:10px;">2026-11-17</text>
     <text x="125" y="412" style="font-size:10px;">INTERIOR &amp; COTTAGE OVERHAUL</text>
-    <text x="10" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">P02.1</text>
-    <text x="50" y="430" style="font-size:10px;fill:#b91c1c;">2026-11-17</text>
-    <text x="125" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">CONTRACTOR BIM &amp; CD SET</text>
-    <line x1="0" y1="444" x2="282" y2="444" stroke="#0f172a" stroke-width="1.2"/>
+    <text x="10" y="426" style="font-size:9.5px;font-weight:700;">P02.1</text>
+    <text x="50" y="426" style="font-size:9.5px;">2026-11-18</text>
+    <text x="125" y="426" style="font-size:9.5px;">INITIAL BIM &amp; CD SET (834)</text>
+    <rect x="2" y="431" width="278" height="17" fill="#fee2e2"/>
+    <text x="10" y="443" style="font-size:9.5px;font-weight:800;fill:#dc2626;">P03.1 Δ3</text>
+    <text x="58" y="443" style="font-size:9.5px;font-weight:700;fill:#dc2626;">2026-11-18</text>
+    <text x="122" y="443" style="font-size:9.5px;font-weight:800;fill:#dc2626;">EXTERIOR AS-BUILT REDLINES</text>
+    <line x1="0" y1="450" x2="282" y2="450" stroke="#0f172a" stroke-width="1.2"/>
+    <!-- Angled Contractor Redline Verification Stamp in Title Block -->
+    <g transform="translate(141, 885) rotate(-8)">
+      <rect x="-124" y="-32" width="248" height="64" rx="4" fill="rgba(254,226,226,0.9)" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6,3"/>
+      <text x="0" y="-10" text-anchor="middle" style="font-size:11.5px;font-weight:900;fill:#dc2626;letter-spacing:1px;">▲ REV P03.1 AS-BUILT REDLINE SET</text>
+      <text x="0" y="6" text-anchor="middle" style="font-size:9px;font-weight:800;fill:#991b1b;">EXTERIOR FIELD-VERIFIED TO SITE PHOTOS</text>
+      <text x="0" y="21" text-anchor="middle" style="font-size:8.5px;font-weight:700;fill:#b91c1c;">903 IFC4 ELEMENTS · DELTA Δ3 CORRECTIONS</text>
+    </g>
 
     <!-- Key Plan / Mini Silhouette -->
     <text x="141" y="464" text-anchor="middle" class="tb-lbl">KEY PLAN · PETRA ISLAND EXTENTS</text>
@@ -170,7 +181,7 @@
 <circle cx="52" cy="268.0" r="13" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
 <text x="52" y="272.0" class="tag-txt">G</text>
 <polyline points="493.5,174.5 460.5,306.5 417.6,471.5 338.4,653.0 252.6,818.0 295.5,933.5 318.6,1088.6 460.5,1108.4 658.5,1098.5 823.5,1164.5" fill="none" stroke="#0284c7" stroke-width="3.0" stroke-dasharray="10,5"/>
-<polygon points="114.0,1049.0 186.6,1207.4 378.0,1088.6 364.8,1049.0 186.6,1042.4" fill="#fde8e8" stroke="#0f172a" stroke-width="2.0"/>
+<polygon points="94.2,1042.4 173.4,1227.2 391.2,1088.6 364.8,1049.0 186.6,1042.4" fill="#fde8e8" stroke="#0f172a" stroke-width="2.0"/>
 <polygon points="595.8,481.4 675.0,636.5 658.5,818.0 618.9,900.5 569.4,834.5 490.2,900.5 364.8,1049.0 186.6,1042.4 546.3,537.5 516.6,521.0 569.4,468.2" fill="#fef2f2" stroke="#0f172a" stroke-width="2.8"/>
 <polygon points="747.6,257.0 787.2,257.0 958.8,540.8 981.9,468.2 1090.8,672.8 1021.5,752.0 1354.8,943.4 618.9,900.5 658.5,818.0 675.0,636.5 595.8,481.4" fill="#fff7ed" stroke="#0f172a" stroke-width="2.8"/>
 <polygon points="618.9,900.5 569.4,834.5 490.2,900.5 503.4,917.0 609.0,917.0" fill="#fde8e8" stroke="#0f172a" stroke-width="1.8"/>
@@ -241,4 +252,29 @@
 <line x1="360.8" y1="1025.4" x2="368.8" y2="1017.4" stroke="#b91c1c" stroke-width="1.6"/>
 <rect x="185.4" y="1048.7" width="108" height="15" rx="2" fill="#fcfaf5" stroke="#b91c1c" stroke-width="0.6"/>
 <text x="239.4" y="1060.2" class="dim-txt">8.53m (28'-0")</text>
+<g class="redline-layer">
+<path d="M 90.0 745.0 Q 101.3 736.0 112.7 745.0 Q 124.0 736.0 135.3 745.0 Q 146.7 736.0 158.0 745.0 Q 169.3 736.0 180.7 745.0 Q 192.0 736.0 203.3 745.0 Q 214.7 736.0 226.0 745.0 Q 237.3 736.0 248.7 745.0 Q 260.0 736.0 271.3 745.0 Q 282.7 736.0 294.0 745.0 Q 305.3 736.0 316.7 745.0 Q 328.0 736.0 339.3 745.0 Q 350.7 736.0 362.0 745.0 Q 373.3 736.0 384.7 745.0 Q 396.0 736.0 407.3 745.0 Q 418.7 736.0 430.0 745.0 Q 439.0 756.0 430.0 767.1 Q 439.0 778.1 430.0 789.2 Q 439.0 800.2 430.0 811.2 Q 439.0 822.3 430.0 833.3 Q 439.0 844.4 430.0 855.4 Q 439.0 866.5 430.0 877.5 Q 439.0 888.5 430.0 899.6 Q 439.0 910.6 430.0 921.7 Q 439.0 932.7 430.0 943.8 Q 439.0 954.8 430.0 965.8 Q 439.0 976.9 430.0 987.9 Q 439.0 999.0 430.0 1010.0 Q 418.7 1019.0 407.3 1010.0 Q 396.0 1019.0 384.7 1010.0 Q 373.3 1019.0 362.0 1010.0 Q 350.7 1019.0 339.3 1010.0 Q 328.0 1019.0 316.7 1010.0 Q 305.3 1019.0 294.0 1010.0 Q 282.7 1019.0 271.3 1010.0 Q 260.0 1019.0 248.7 1010.0 Q 237.3 1019.0 226.0 1010.0 Q 214.7 1019.0 203.3 1010.0 Q 192.0 1019.0 180.7 1010.0 Q 169.3 1019.0 158.0 1010.0 Q 146.7 1019.0 135.3 1010.0 Q 124.0 1019.0 112.7 1010.0 Q 101.3 1019.0 90.0 1010.0 Q 81.0 999.0 90.0 987.9 Q 81.0 976.9 90.0 965.8 Q 81.0 954.8 90.0 943.8 Q 81.0 932.7 90.0 921.7 Q 81.0 910.6 90.0 899.6 Q 81.0 888.5 90.0 877.5 Q 81.0 866.5 90.0 855.4 Q 81.0 844.4 90.0 833.3 Q 81.0 822.3 90.0 811.2 Q 81.0 800.2 90.0 789.2 Q 81.0 778.1 90.0 767.1 Q 81.0 756.0 90.0 745.0 Z" fill="rgba(239, 68, 68, 0.055)" stroke="#dc2626" stroke-width="2.2"/>
+<polygon points="104.0,727.0 92.0,748.0 116.0,748.0" fill="#fef08a" stroke="#dc2626" stroke-width="1.8"/>
+<text x="104.0" y="746.0" text-anchor="middle" style="font-size:9.5px;font-weight:900;fill:#dc2626;">Δ3</text>
+<rect x="120.0" y="729.0" width="370.0" height="19" rx="3" fill="#dc2626"/>
+<text x="128.0" y="742.0" style="font-size:10px;font-weight:800;fill:#ffffff;letter-spacing:0.4px;">RL-04: SOLID BATTERED BUFF PARAPET (GLASS RAIL DELETED)</text>
+<path d="M 285.0 360.0 Q 296.2 351.0 307.5 360.0 Q 318.8 351.0 330.0 360.0 Q 341.2 351.0 352.5 360.0 Q 363.8 351.0 375.0 360.0 Q 386.2 351.0 397.5 360.0 Q 408.8 351.0 420.0 360.0 Q 431.2 351.0 442.5 360.0 Q 453.8 351.0 465.0 360.0 Q 476.2 351.0 487.5 360.0 Q 498.8 351.0 510.0 360.0 Q 521.2 351.0 532.5 360.0 Q 543.8 351.0 555.0 360.0 Q 566.2 351.0 577.5 360.0 Q 588.8 351.0 600.0 360.0 Q 609.0 371.3 600.0 382.7 Q 609.0 394.0 600.0 405.3 Q 609.0 416.7 600.0 428.0 Q 609.0 439.3 600.0 450.7 Q 609.0 462.0 600.0 473.3 Q 609.0 484.7 600.0 496.0 Q 609.0 507.3 600.0 518.7 Q 609.0 530.0 600.0 541.3 Q 609.0 552.7 600.0 564.0 Q 609.0 575.3 600.0 586.7 Q 609.0 598.0 600.0 609.3 Q 609.0 620.7 600.0 632.0 Q 609.0 643.3 600.0 654.7 Q 609.0 666.0 600.0 677.3 Q 609.0 688.7 600.0 700.0 Q 588.8 709.0 577.5 700.0 Q 566.2 709.0 555.0 700.0 Q 543.8 709.0 532.5 700.0 Q 521.2 709.0 510.0 700.0 Q 498.8 709.0 487.5 700.0 Q 476.2 709.0 465.0 700.0 Q 453.8 709.0 442.5 700.0 Q 431.2 709.0 420.0 700.0 Q 408.8 709.0 397.5 700.0 Q 386.2 709.0 375.0 700.0 Q 363.8 709.0 352.5 700.0 Q 341.2 709.0 330.0 700.0 Q 318.8 709.0 307.5 700.0 Q 296.2 709.0 285.0 700.0 Q 276.0 688.7 285.0 677.3 Q 276.0 666.0 285.0 654.7 Q 276.0 643.3 285.0 632.0 Q 276.0 620.7 285.0 609.3 Q 276.0 598.0 285.0 586.7 Q 276.0 575.3 285.0 564.0 Q 276.0 552.7 285.0 541.3 Q 276.0 530.0 285.0 518.7 Q 276.0 507.3 285.0 496.0 Q 276.0 484.7 285.0 473.3 Q 276.0 462.0 285.0 450.7 Q 276.0 439.3 285.0 428.0 Q 276.0 416.7 285.0 405.3 Q 276.0 394.0 285.0 382.7 Q 276.0 371.3 285.0 360.0 Z" fill="rgba(239, 68, 68, 0.055)" stroke="#dc2626" stroke-width="2.2"/>
+<polygon points="299.0,342.0 287.0,363.0 311.0,363.0" fill="#fef08a" stroke="#dc2626" stroke-width="1.8"/>
+<text x="299.0" y="361.0" text-anchor="middle" style="font-size:9.5px;font-weight:900;fill:#dc2626;">Δ3</text>
+<rect x="315.0" y="344.0" width="389.2" height="19" rx="3" fill="#dc2626"/>
+<text x="323.0" y="357.0" style="font-size:10px;font-weight:800;fill:#ffffff;letter-spacing:0.4px;">RL-05: NW RUBBLESTONE WALL, WHALE ROCK CLIFF &amp; 3 PIERS</text>
+<path d="M 1045.0 670.0 Q 1056.0 661.0 1066.9 670.0 Q 1077.9 661.0 1088.8 670.0 Q 1099.8 661.0 1110.8 670.0 Q 1121.7 661.0 1132.7 670.0 Q 1143.7 661.0 1154.6 670.0 Q 1165.6 661.0 1176.5 670.0 Q 1187.5 661.0 1198.5 670.0 Q 1209.4 661.0 1220.4 670.0 Q 1231.3 661.0 1242.3 670.0 Q 1253.3 661.0 1264.2 670.0 Q 1275.2 661.0 1286.2 670.0 Q 1297.1 661.0 1308.1 670.0 Q 1319.0 661.0 1330.0 670.0 Q 1339.0 680.8 1330.0 691.7 Q 1339.0 702.5 1330.0 713.3 Q 1339.0 724.2 1330.0 735.0 Q 1339.0 745.8 1330.0 756.7 Q 1339.0 767.5 1330.0 778.3 Q 1339.0 789.2 1330.0 800.0 Q 1339.0 810.8 1330.0 821.7 Q 1339.0 832.5 1330.0 843.3 Q 1339.0 854.2 1330.0 865.0 Q 1319.0 874.0 1308.1 865.0 Q 1297.1 874.0 1286.2 865.0 Q 1275.2 874.0 1264.2 865.0 Q 1253.3 874.0 1242.3 865.0 Q 1231.3 874.0 1220.4 865.0 Q 1209.4 874.0 1198.5 865.0 Q 1187.5 874.0 1176.5 865.0 Q 1165.6 874.0 1154.6 865.0 Q 1143.7 874.0 1132.7 865.0 Q 1121.7 874.0 1110.8 865.0 Q 1099.8 874.0 1088.8 865.0 Q 1077.9 874.0 1066.9 865.0 Q 1056.0 874.0 1045.0 865.0 Q 1036.0 854.2 1045.0 843.3 Q 1036.0 832.5 1045.0 821.7 Q 1036.0 810.8 1045.0 800.0 Q 1036.0 789.2 1045.0 778.3 Q 1036.0 767.5 1045.0 756.7 Q 1036.0 745.8 1045.0 735.0 Q 1036.0 724.2 1045.0 713.3 Q 1036.0 702.5 1045.0 691.7 Q 1036.0 680.8 1045.0 670.0 Z" fill="rgba(239, 68, 68, 0.055)" stroke="#dc2626" stroke-width="2.2"/>
+<polygon points="1059.0,652.0 1047.0,673.0 1071.0,673.0" fill="#fef08a" stroke="#dc2626" stroke-width="1.8"/>
+<text x="1059.0" y="671.0" text-anchor="middle" style="font-size:9.5px;font-weight:900;fill:#dc2626;">Δ3</text>
+<rect x="1075.0" y="654.0" width="331.6" height="19" rx="3" fill="#dc2626"/>
+<text x="1083.0" y="667.0" style="font-size:10px;font-weight:800;fill:#ffffff;letter-spacing:0.4px;">RL-06: EAST WING STONE CHIMNEY &amp; BUFF PARAPET</text>
+<circle cx="245.0" cy="865.0" r="6" fill="rgba(220,38,38,0.2)" stroke="#dc2626" stroke-width="2.2"/>
+<line x1="245.0" y1="865.0" x2="458.0" y2="1069.5" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="5,3"/>
+<rect x="88.0" y="1035.0" width="740.0" height="69.0" rx="4" fill="#fff1f2" stroke="#dc2626" stroke-width="2.0"/>
+<rect x="88.0" y="1035.0" width="740.0" height="19" rx="3" fill="#dc2626"/>
+<text x="96.0" y="1048.5" style="font-size:10px;font-weight:900;fill:#ffffff;letter-spacing:0.5px;">▲ REDLINE RL-04..06 · REV P03.1 AS-BUILT FIELD VERIFICATION</text>
+<text x="96.0" y="1068.0" style="font-size:10px;font-weight:700;fill:#991b1b;">STRIKE-THROUGH: Deleted unauthentic Railing_SW_Glass_1..4 &amp; Railing_SW_Cap_1..4 around SW Prow Balcony.</text>
+<text x="96.0" y="1083.0" style="font-size:10px;font-weight:700;fill:#991b1b;">AS-BUILT FIX: Installed continuous Mitered Battered Buff-Stucco Parapet (EL +2.86m to +4.75m) &amp; Hexagonal Lake Pier.</text>
+<text x="96.0" y="1098.0" style="font-size:10px;font-weight:700;fill:#991b1b;">NW FACADE FIX: Added Full-Height Mid-NW Desert-Rubblestone Wall, 14-Bay Mahogany Ribbon Windows &amp; 3 Whale-Rock Piers.</text>
+</g>
 </svg>

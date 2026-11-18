@@ -4,6 +4,20 @@ All progressive Blender MCP construction milestones and WebXR updates are docume
 
 ---
 
+## [v2.1.0] — 2026-11-18 (As-Built Exterior Overhaul & Rev P03.1 Δ3 Redlined Construction Drawing Set — 903 Elements)
+### Added & Field-Verified
+- **As-Built Exterior Reality-Capture Overhaul (`massaro_house.blend`, `massaro_house.glb`, `massaro_bim_metadata.json` — `903` Mesh Elements)**:
+  - **Mitered 16° Outward-Battered Warm Buff-Stucco Cantilever Parapets (`RL-04`)**: Deleted the unauthentic 2-story glass curtain wall and SW Prow glass railing (`Railing_SW_Glass_*`); installed continuous mitered outward-battered warm peach-buff stucco cantilever parapets (`Cantilever_Buff_Parapet_*` & `Railing_SW_Parapet_1..4`, `EL +2.86m to +4.75m`) and 14-bay African Mahogany casement ribbon windows (`EL +4.48m to +7.38m`) matching `reference/02` and `reference/03`.
+  - **Mitered 18° Outward-Battered Standing-Seam Copper Roof Fascia & Dark Olive Deck (`RL-06` & `RL-07`)**: Replaced the flat vertical roof edge with a seamless mitered outward-battered weathered bronze/copper fascia (`Roof_Fascia_Edge_1..18`) with 3D vertical standing seams every `0.58m` (`Roof_Copper_Standing_Seams`), `1.35m` tongue-and-groove mahogany eave soffit, dark charcoal-olive elastomeric roof membrane, 4 polygonal Desert-Rubblestone chimneys with bronze flue caps, and a raised white-curbed 27-skylight platform (`Roof_Skylight_Curb_Platform`) with white exterior structural ribs and 3 north vaulted mechanical hoods (`reference/01`).
+  - **Hexagonal Lake Support Pier, Mid-NW Rubblestone Wall, Whale Rock Cliff & Red Boat Gangway (`RL-01` & `RL-05`)**: Built the massive hexagonal Desert-Rubblestone Lake Support Pier (`Pier_Cantilever_Lake_Main`, `EL +0.10m..+2.95m`) rising from the shoreline boulders beneath the SW cantilever, the full-height Mid-NW Desert-Rubblestone wall (`Masonry_NW_Lake_Wall`) with the iconic conical green juniper tree (`Ctx_Coastal_Conifers_Shrubs`), the stratified exterior NW Whale Rock cliff (`Rock_Whale_NW_Cliff`) & 3 stepped stone entry piers (`Pier_WhaleRock_NW_1..3`), and the battered NW stone bastion wall (`Masonry_NW_Bastion_Wall`) with its steep Cherokee-Red concrete stair & floating red finger pier (replacing the unauthentic white boathouse canopy).
+  - **40+ Fractured Shoreline Granite Boulders, SE Rock Peninsula & Upper Lawn Ruin (`RL-02` & `RL-03`)**: Added `Ctx_Shoreline_Granite_Boulders` across the under-cantilever water's edge and South-East rocky peninsula, plus the historic stone-ringed foundation ruin (`Ctx_Lawn_StoneRuin_1..6`) on the upper lawn clearing.
+  - **1951 FLW Chahroudi Guest Cottage Exterior Overhaul (`RL-08`)**: Updated Cottage hipped roof to weathered silver-grey cedar shingles (`Mat_Cottage_Shingle_Grey`) with Cherokee-Red eave fascia trim (`Roof_Cottage_RedFascia_1..6`), and replaced protruding round stone knobs with flush 5-sided angular fieldstone slabs across the polygonal NW bastion, both tall chimney shafts, and the battered planter wall (`reference/15`).
+  - **New Exterior Verification Renders (`renders/`)**: Added `10_exterior_aerial_island_overview.png`, `11_exterior_lakefront_cantilever.png`, and updated `07_chahroudi_cottage_exterior.png`.
+- **Rev P03.1 (`Δ3`) Redlined Architectural Construction Drawing Set (`drawings/` & `A-000`–`A-501`)**:
+  - Added scalloped CAD redline revision clouds, `Δ3` delta tags, leader callouts, strike-throughs of superseded specs, title-block redline stamps, and an interactive 12-item Redline & Field Verification Log (`RL-01`–`RL-12`) in `drawings/index.html`.
+
+---
+
 ## [v2.0.0] — 2026-11-18 (ISO 19650 / IFC4 Contractor BIM Coordination Viewer & 10-Sheet Construction Drawing Set)
 ### Added
 - **Dedicated Contractor BIM Coordination & Federation Viewer (`bim.html` + `massaro_bim_metadata.json`)**:

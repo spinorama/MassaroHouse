@@ -61,7 +61,7 @@
     <text x="12" y="242" class="tb-lbl">STATUS / SUITABILITY CODE</text>
     <text x="12" y="256" class="tb-val">S4 — SUITABLE FOR STAGE APPROVAL</text>
     <text x="12" y="276" class="tb-lbl">REVISION</text>
-    <text x="12" y="290" class="tb-val">P02.1 (2026-11-17)</text>
+    <text x="12" y="290" style="font-size:11.5px;font-weight:800;fill:#dc2626;">P03.1 Δ3 (2026-11-18 REDLINE)</text>
     <text x="145" y="276" class="tb-lbl">IFC SCHEMA</text>
     <text x="145" y="290" class="tb-val">IFC4 ADD2 TC1</text>
     <text x="12" y="310" class="tb-lbl">DISCIPLINE</text>
@@ -83,10 +83,21 @@
     <text x="10" y="412" style="font-size:10px;font-weight:700;">P02.0</text>
     <text x="50" y="412" style="font-size:10px;">2026-11-17</text>
     <text x="125" y="412" style="font-size:10px;">INTERIOR &amp; COTTAGE OVERHAUL</text>
-    <text x="10" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">P02.1</text>
-    <text x="50" y="430" style="font-size:10px;fill:#b91c1c;">2026-11-17</text>
-    <text x="125" y="430" style="font-size:10px;font-weight:700;fill:#b91c1c;">CONTRACTOR BIM &amp; CD SET</text>
-    <line x1="0" y1="444" x2="282" y2="444" stroke="#0f172a" stroke-width="1.2"/>
+    <text x="10" y="426" style="font-size:9.5px;font-weight:700;">P02.1</text>
+    <text x="50" y="426" style="font-size:9.5px;">2026-11-18</text>
+    <text x="125" y="426" style="font-size:9.5px;">INITIAL BIM &amp; CD SET (834)</text>
+    <rect x="2" y="431" width="278" height="17" fill="#fee2e2"/>
+    <text x="10" y="443" style="font-size:9.5px;font-weight:800;fill:#dc2626;">P03.1 Δ3</text>
+    <text x="58" y="443" style="font-size:9.5px;font-weight:700;fill:#dc2626;">2026-11-18</text>
+    <text x="122" y="443" style="font-size:9.5px;font-weight:800;fill:#dc2626;">EXTERIOR AS-BUILT REDLINES</text>
+    <line x1="0" y1="450" x2="282" y2="450" stroke="#0f172a" stroke-width="1.2"/>
+    <!-- Angled Contractor Redline Verification Stamp in Title Block -->
+    <g transform="translate(141, 885) rotate(-8)">
+      <rect x="-124" y="-32" width="248" height="64" rx="4" fill="rgba(254,226,226,0.9)" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6,3"/>
+      <text x="0" y="-10" text-anchor="middle" style="font-size:11.5px;font-weight:900;fill:#dc2626;letter-spacing:1px;">▲ REV P03.1 AS-BUILT REDLINE SET</text>
+      <text x="0" y="6" text-anchor="middle" style="font-size:9px;font-weight:800;fill:#991b1b;">EXTERIOR FIELD-VERIFIED TO SITE PHOTOS</text>
+      <text x="0" y="21" text-anchor="middle" style="font-size:8.5px;font-weight:700;fill:#b91c1c;">903 IFC4 ELEMENTS · DELTA Δ3 CORRECTIONS</text>
+    </g>
 
     <!-- Key Plan / Mini Silhouette -->
     <text x="141" y="464" text-anchor="middle" class="tb-lbl">KEY PLAN · PETRA ISLAND EXTENTS</text>
@@ -164,4 +175,18 @@
 <text x="1097.4" y="857.6" class="tag-txt">STEPPED MAHOGANY TRAY CEILING + 2700K LED COVE</text>
 <circle cx="879.6" cy="752.0" r="16" fill="#fde68a" stroke="#b45309" stroke-width="2.0"/>
 <text x="879.6" y="780.0" class="tag-txt">CH-01 · FLW BRASS CHANDELIER</text>
+<g class="redline-layer">
+<path d="M 135.0 710.0 Q 145.8 701.0 156.7 710.0 Q 167.5 701.0 178.3 710.0 Q 189.2 701.0 200.0 710.0 Q 210.8 701.0 221.7 710.0 Q 232.5 701.0 243.3 710.0 Q 254.2 701.0 265.0 710.0 Q 275.8 701.0 286.7 710.0 Q 297.5 701.0 308.3 710.0 Q 319.2 701.0 330.0 710.0 Q 340.8 701.0 351.7 710.0 Q 362.5 701.0 373.3 710.0 Q 384.2 701.0 395.0 710.0 Q 405.8 701.0 416.7 710.0 Q 427.5 701.0 438.3 710.0 Q 449.2 701.0 460.0 710.0 Q 470.8 701.0 481.7 710.0 Q 492.5 701.0 503.3 710.0 Q 514.2 701.0 525.0 710.0 Q 534.0 721.0 525.0 732.1 Q 534.0 743.1 525.0 754.2 Q 534.0 765.2 525.0 776.2 Q 534.0 787.3 525.0 798.3 Q 534.0 809.4 525.0 820.4 Q 534.0 831.5 525.0 842.5 Q 534.0 853.5 525.0 864.6 Q 534.0 875.6 525.0 886.7 Q 534.0 897.7 525.0 908.8 Q 534.0 919.8 525.0 930.8 Q 534.0 941.9 525.0 952.9 Q 534.0 964.0 525.0 975.0 Q 514.2 984.0 503.3 975.0 Q 492.5 984.0 481.7 975.0 Q 470.8 984.0 460.0 975.0 Q 449.2 984.0 438.3 975.0 Q 427.5 984.0 416.7 975.0 Q 405.8 984.0 395.0 975.0 Q 384.2 984.0 373.3 975.0 Q 362.5 984.0 351.7 975.0 Q 340.8 984.0 330.0 975.0 Q 319.2 984.0 308.3 975.0 Q 297.5 984.0 286.7 975.0 Q 275.8 984.0 265.0 975.0 Q 254.2 984.0 243.3 975.0 Q 232.5 984.0 221.7 975.0 Q 210.8 984.0 200.0 975.0 Q 189.2 984.0 178.3 975.0 Q 167.5 984.0 156.7 975.0 Q 145.8 984.0 135.0 975.0 Q 126.0 964.0 135.0 952.9 Q 126.0 941.9 135.0 930.8 Q 126.0 919.8 135.0 908.8 Q 126.0 897.7 135.0 886.7 Q 126.0 875.6 135.0 864.6 Q 126.0 853.5 135.0 842.5 Q 126.0 831.5 135.0 820.4 Q 126.0 809.4 135.0 798.3 Q 126.0 787.3 135.0 776.2 Q 126.0 765.2 135.0 754.2 Q 126.0 743.1 135.0 732.1 Q 126.0 721.0 135.0 710.0 Z" fill="rgba(239, 68, 68, 0.055)" stroke="#dc2626" stroke-width="2.2"/>
+<polygon points="149.0,692.0 137.0,713.0 161.0,713.0" fill="#fef08a" stroke="#dc2626" stroke-width="1.8"/>
+<text x="149.0" y="711.0" text-anchor="middle" style="font-size:9.5px;font-weight:900;fill:#dc2626;">Δ3</text>
+<rect x="165.0" y="694.0" width="395.6" height="19" rx="3" fill="#dc2626"/>
+<text x="173.0" y="707.0" style="font-size:10px;font-weight:800;fill:#ffffff;letter-spacing:0.4px;">RL-06B: 1.35m MAHOGANY PLANK EAVE SOFFIT &amp; MITERED PROW</text>
+<circle cx="325.0" cy="825.0" r="6" fill="rgba(220,38,38,0.2)" stroke="#dc2626" stroke-width="2.2"/>
+<line x1="325.0" y1="825.0" x2="458.0" y2="1067.0" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="5,3"/>
+<rect x="88.0" y="1040.0" width="740.0" height="54.0" rx="4" fill="#fff1f2" stroke="#dc2626" stroke-width="2.0"/>
+<rect x="88.0" y="1040.0" width="740.0" height="19" rx="3" fill="#dc2626"/>
+<text x="96.0" y="1053.5" style="font-size:10px;font-weight:900;fill:#ffffff;letter-spacing:0.5px;">▲ REDLINE RL-06B · REV P03.1 AS-BUILT FIELD VERIFICATION</text>
+<text x="96.0" y="1073.0" style="font-size:10px;font-weight:700;fill:#991b1b;">SOFFIT VERIFICATION: Widened perimeter tongue-and-groove African Mahogany eave soffit to 1.35m under battered copper fascia.</text>
+<text x="96.0" y="1088.0" style="font-size:10px;font-weight:700;fill:#991b1b;">CEILING DATUM CHECK: Verified all interior tray ceilings, coves &amp; downlights clear EL +7.38m soffit (zero roof penetrations).</text>
+</g>
 </svg>

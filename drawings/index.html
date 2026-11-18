@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Massaro House — ISO 19650 Architectural Drawing Set (A-000 to A-501)</title>
+  <title>Massaro House — ISO 19650 Architectural Drawing Set &amp; Rev P03.1 Redline Binder (A-000 to A-501)</title>
   <style>
     :root {
       --bg-dark: #070d17;
@@ -14,6 +14,7 @@
       --accent: #38bdf8;
       --accent-gold: #f59e0b;
       --accent-green: #10b981;
+      --accent-red: #ef4444;
       --text-main: #e2e8f0;
       --text-muted: #94a3b8;
       --font-mono: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
@@ -53,7 +54,7 @@
     .brand-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .iso-badge {
@@ -68,26 +69,26 @@
       letter-spacing: 0.5px;
     }
 
-    .suitability-badge {
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid var(--accent-green);
-      color: var(--accent-green);
+    .redline-badge {
+      background: rgba(239, 68, 68, 0.18);
+      border: 1px solid var(--accent-red);
+      color: #fca5a5;
       font-family: var(--font-mono);
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       padding: 4px 8px;
       border-radius: 4px;
     }
 
     .title-block h1 {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       letter-spacing: 0.3px;
       color: #f8fafc;
     }
 
     .title-block p {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--text-muted);
       font-family: var(--font-mono);
     }
@@ -142,6 +143,17 @@
       color: #070d17;
     }
 
+    .btn-red {
+      background: rgba(239, 68, 68, 0.18);
+      border-color: var(--accent-red);
+      color: #fca5a5;
+    }
+
+    .btn-red:hover {
+      background: var(--accent-red);
+      color: #fff;
+    }
+
     /* Main Workspace */
     .workspace {
       display: flex;
@@ -152,7 +164,7 @@
 
     /* Left Sheet Index Sidebar */
     aside.sheet-sidebar {
-      width: 330px;
+      width: 350px;
       background: var(--bg-panel);
       border-right: 1px solid var(--border);
       display: flex;
@@ -169,7 +181,7 @@
     }
 
     .sidebar-header h2 {
-      font-size: 12px;
+      font-size: 11.5px;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       color: var(--text-muted);
@@ -239,19 +251,28 @@
       color: var(--accent);
     }
 
-    .sheet-scale {
+    .delta-pill {
       font-family: var(--font-mono);
       font-size: 10px;
-      color: var(--text-muted);
-      background: rgba(15, 23, 42, 0.7);
-      padding: 2px 6px;
+      font-weight: 700;
+      color: #fca5a5;
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid rgba(239, 68, 68, 0.5);
+      padding: 1px 6px;
       border-radius: 3px;
     }
 
     .sheet-title {
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 600;
       color: #f1f5f9;
+    }
+
+    .sheet-redline-preview {
+      font-size: 10.5px;
+      color: #fca5a5;
+      font-family: var(--font-mono);
+      line-height: 1.35;
     }
 
     .sheet-meta {
@@ -260,12 +281,13 @@
       color: var(--text-muted);
       display: flex;
       justify-content: space-between;
+      margin-top: 2px;
     }
 
     .sidebar-footer {
       padding: 10px 14px;
       border-top: 1px solid var(--border);
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--text-muted);
       font-family: var(--font-mono);
       line-height: 1.5;
@@ -320,6 +342,26 @@
       text-align: center;
     }
 
+    /* Active Sheet Redline Notes Bar */
+    .redline-notes-bar {
+      background: rgba(127, 29, 29, 0.28);
+      border-bottom: 1px solid rgba(239, 68, 68, 0.45);
+      padding: 7px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #fecaca;
+      z-index: 9;
+    }
+
+    .redline-notes-bar strong {
+      color: #fef08a;
+      white-space: nowrap;
+    }
+
     /* Interactive Sheet Canvas Container */
     .canvas-stage {
       flex: 1;
@@ -342,27 +384,27 @@
       transform-origin: center center;
       transition: transform 0.04s linear;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(56, 189, 248, 0.25);
-      background: #0a1424;
+      background: #fcfaf5;
       user-select: none;
     }
 
-    .sheet-transform-layer.paper-mode {
-      filter: invert(0.93) hue-rotate(180deg) contrast(1.08);
+    .sheet-transform-layer.dark-mode {
+      filter: invert(0.92) hue-rotate(180deg) contrast(1.06);
     }
 
     #sheet-img {
       display: block;
       width: 1520px;
-      height: 1020px;
+      height: 1013px;
       max-width: none;
       pointer-events: none;
     }
 
-    /* Reference & Renders Drawer Modal */
+    /* Modals */
     .drawer-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(3, 7, 18, 0.8);
+      background: rgba(3, 7, 18, 0.82);
       backdrop-filter: blur(4px);
       z-index: 50;
       display: none;
@@ -451,8 +493,35 @@
       color: var(--text-main);
     }
 
+    .rl-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+    }
+
+    .rl-table th {
+      background: #1e293b;
+      color: #fef08a;
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rl-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      vertical-align: top;
+      line-height: 1.45;
+    }
+
+    .rl-table tr:hover {
+      background: var(--bg-hover);
+      cursor: pointer;
+    }
+
     @media print {
-      header, aside.sheet-sidebar, .cad-toolbar {
+      header, aside.sheet-sidebar, .cad-toolbar, .redline-notes-bar {
         display: none !important;
       }
       body, .workspace, main.viewport-area, .canvas-stage {
@@ -475,15 +544,18 @@
   <header>
     <div class="brand-group">
       <span class="iso-badge">MAS-THH-ZZ-ZZ-DR-A-0000</span>
-      <span class="suitability-badge">S4 · CONTRACTOR DELIVERABLE</span>
+      <span class="redline-badge">▲ REV P03.1 · Δ3 AS-BUILT REDLINE SET (903 ELEMENTS)</span>
       <div class="title-block">
-        <h1>MASSARO HOUSE &amp; 1951 CHAHROUDI COTTAGE — CONSTRUCTION DRAWING SET</h1>
-        <p>Petra Island, Lake Mahopac, NY · Frank Lloyd Wright (1949–1951) / Thomas A. Heinz, AIA (2003–2007) · Rev P02.1</p>
+        <h1>MASSARO HOUSE &amp; 1951 CHAHROUDI COTTAGE — AS-BUILT REDLINE DRAWING SET</h1>
+        <p>Petra Island, Lake Mahopac, NY · Frank Lloyd Wright (1950) / Thomas A. Heinz, AIA (2007) · Exterior Reality-Capture Verified</p>
       </div>
     </div>
     <div class="header-actions">
+      <button class="btn btn-red" id="btn-open-redlines" title="Open Full Rev P03.1 Δ3 Redline & Field Verification Register">
+        🖍️ Redline Log (RL-01..12)
+      </button>
       <button class="btn" id="btn-open-gallery" title="View Blender Verification Renders & Archival Reference Plates">
-        📸 Renders &amp; Archival Plates (30)
+        📸 Renders &amp; Photos (32)
       </button>
       <a class="btn btn-gold" href="../bim.html" title="Open ISO 19650 / IFC4 3D BIM Coordination Viewer">
         🏗️ 3D BIM Model Viewer
@@ -498,16 +570,16 @@
     <aside class="sheet-sidebar">
       <div class="sidebar-header">
         <h2>
-          <span>Architectural Sheet Index</span>
-          <span style="color: var(--accent);">10 Sheets</span>
+          <span>Redlined Sheet Index (Rev P03.1)</span>
+          <span style="color: #fca5a5;">10 Sheets · Δ3</span>
         </h2>
-        <input type="text" id="sheet-search" class="search-input" placeholder="Filter sheets (e.g. A-101, Roof, Cottage, QTO)..." />
+        <input type="text" id="sheet-search" class="search-input" placeholder="Filter sheets or redlines (e.g. RL-04, Prow, Copper, Cottage)..." />
       </div>
       <div class="sheet-list" id="sheet-list"></div>
       <div class="sidebar-footer">
-        <div>SCHEMA: IFC4 ADD2 TC1 / ISO 19650-2</div>
-        <div>GRID MODULE: 30° / 60° EQUIANGULAR TRIANGLE</div>
-        <div>SITE EXTENTS: 134.55m E-W × 129.75m N-S</div>
+        <div>SCHEMA: IFC4 ADD2 TC1 / ISO 19650-2 (S4)</div>
+        <div>BIM ELEMENTS: 903 (+69 AS-BUILT EXTERIOR ITEMS)</div>
+        <div>REDLINE ISSUE: REV P03.1 Δ3 (2026-11-18)</div>
       </div>
     </aside>
 
@@ -528,7 +600,7 @@
           <button class="btn" id="btn-zoom-in" title="Zoom In">+</button>
           <button class="btn" id="btn-zoom-fit" title="Fit Sheet to Viewport">Fit Sheet</button>
           <button class="btn" id="btn-zoom-100" title="Actual Size (100%)">1:1</button>
-          <button class="btn" id="btn-paper-mode" title="Toggle Dark CAD Blueprint / White Bond Paper">🌓 Paper Mode</button>
+          <button class="btn" id="btn-paper-mode" title="Toggle Archival Bond Paper / Dark CAD Blueprint">🌓 Dark CAD</button>
         </div>
 
         <div class="toolbar-right">
@@ -536,6 +608,11 @@
           <a class="btn" id="btn-download-svg" href="./A-000_Cover_Index.svg" download title="Download Vector SVG Sheet">⬇️ Download SVG</a>
           <button class="btn" onclick="window.print()" title="Print Active Sheet to PDF">🖨️ Print Sheet</button>
         </div>
+      </div>
+
+      <div class="redline-notes-bar" id="redline-notes-bar">
+        <strong id="rl-bar-code">▲ Δ3 REDLINE NOTES (A-000):</strong>
+        <span id="rl-bar-text" style="flex:1;">Updated BIM element register from 834 to 903 elements (+69 field-verified exterior components across Main House, Shoreline &amp; 1951 Chahroudi Cottage).</span>
       </div>
 
       <div class="canvas-stage" id="canvas-stage">
@@ -546,18 +623,44 @@
     </main>
   </div>
 
+  <!-- Redline Register Modal -->
+  <div class="drawer-backdrop" id="redlines-modal">
+    <div class="drawer-modal">
+      <div class="drawer-header">
+        <h3>🖍️ REV P03.1 (Δ3) — AS-BUILT EXTERIOR REDLINE &amp; FIELD VERIFICATION LOG</h3>
+        <button class="btn" id="btn-close-redlines">✕ Close</button>
+      </div>
+      <div class="drawer-body">
+        <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px; line-height:1.5;">
+          All 10 architectural construction sheets (`A-000` through `A-501`) have been redlined (`Δ3 / Rev P03.1`) following field verification against real-world aerial and lakefront photography (`reference/01`–`20`). Click any redline entry below to jump directly to the annotated sheet.
+        </p>
+        <table class="rl-table">
+          <thead>
+            <tr>
+              <th>Redline ID</th>
+              <th>Sheet</th>
+              <th>Superseded Spec (v2.0 / Rev P02.1)</th>
+              <th>As-Built Field-Verified Update (v2.1 / Rev P03.1 Δ3)</th>
+            </tr>
+          </thead>
+          <tbody id="rl-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
   <!-- Verification Renders & Reference Plates Modal -->
   <div class="drawer-backdrop" id="gallery-modal">
     <div class="drawer-modal">
       <div class="drawer-header">
-        <h3>📸 BIM Verification Renders (9) &amp; Archival Reference Plates (21)</h3>
+        <h3>📸 BIM Verification Renders (11) &amp; Archival Reference Plates (21)</h3>
         <button class="btn" id="btn-close-gallery">✕ Close</button>
       </div>
       <div class="drawer-body">
-        <div class="gallery-section-title">Blender 5.2 LTS Cycles/EEVEE Verification Renders (../renders/)</div>
+        <div class="gallery-section-title">Blender 5.2 LTS Verification Renders — Including v2.1 Exterior Overhaul (../renders/)</div>
         <div class="gallery-grid" id="renders-grid"></div>
 
-        <div class="gallery-section-title">Historical &amp; Archival Reference Plates (../reference/)</div>
+        <div class="gallery-section-title">Real-World Aerial &amp; Archival Reference Photography (../reference/)</div>
         <div class="gallery-grid" id="reference-grid"></div>
       </div>
     </div>
@@ -571,130 +674,147 @@
         title: 'COVER SHEET, DRAWING INDEX & ISO 19650 MATRIX',
         scale: 'N.T.S.',
         container: 'MAS-THH-ZZ-ZZ-DR-A-0000',
-        series: '000 General',
-        desc: 'Project directory, ISO 19650 metadata, 10-sheet index, symbols legend, and CSI division summary'
+        delta: 'Δ3 · RL-REGISTER',
+        redlineNote: 'Updated project element register from 834 to 903 IFC4 elements (+69 field-verified exterior & site items); added Rev P03.1 Redline Summary Matrix (RL-01 to RL-12).'
       },
       {
         id: 'A-100',
         file: 'A-100_Master_Site_Plan.svg',
         title: 'PETRA ISLAND MASTER SITE & ROOF PLAN',
         scale: '1:500',
-        container: 'MAS-THH-SITE-ZZ-DR-A-0100',
-        series: '100 Plans',
-        desc: 'Full 134.55m × 129.75m calibrated extents, Main Residence, 1951 Chahroudi Cottage, Helipad & Docks'
+        container: 'MAS-THH-SITE-00-DR-C-0100',
+        delta: 'Δ3 · RL-01..03',
+        redlineNote: 'RL-01..03: Deleted unauthentic white boathouse canopy; added NW Rubblestone Bastion Wall, Steep Cherokee-Red Boat Gangway, 40+ Shoreline Granite Boulders, NW Conical Juniper & Upper Lawn Stone Ruin.'
       },
       {
         id: 'A-101',
         file: 'A-101_Main_Floor_Plan.svg',
         title: 'MAIN RESIDENCE LEVEL L01/L02 FLOOR PLAN',
-        scale: '1:100',
-        container: 'MAS-THH-BLDG01-L02-DR-A-0101',
-        series: '100 Plans',
-        desc: '30°/60° triangular grid, Whale Rock & Entry Boulder penetrations, 6 Desert Rubblestone piers, rooms & furniture'
+        scale: '1:150',
+        container: 'MAS-THH-M1-L1-DR-A-0101',
+        delta: 'Δ3 · RL-04..06',
+        redlineNote: 'RL-04..06: Deleted SW Prow glass railing (Railing_SW_Glass_*); installed Mitered Battered Buff-Stucco Parapet (EL +2.86m..+4.75m), Hexagonal Lake Support Pier, Mid-NW Rubblestone Wall & 3 Whale-Rock Entry Piers.'
       },
       {
         id: 'A-102',
         file: 'A-102_Roof_Skylight_Plan.svg',
-        title: 'MAIN RESIDENCE ROOF FRAMING & 26-SKYLIGHT PLAN',
-        scale: '1:100',
-        container: 'MAS-THH-BLDG01-L03-DR-A-0102',
-        series: '100 Plans',
-        desc: '3-tiered patinated copper fascia shells, 26 triangular/hexagonal skylights, and roof observation deck'
+        title: 'MAIN RESIDENCE ROOF FRAMING & 27-SKYLIGHT PLAN',
+        scale: '1:150',
+        container: 'MAS-THH-M1-L4-DR-A-0102',
+        delta: 'Δ3 · RL-06..07',
+        redlineNote: 'RL-06..07: Replaced vertical roof edge with 18° Outward-Battered Standing-Seam Copper Fascia (0.58m O.C. seams), Dark Charcoal-Olive Roof Deck, 4 Stone Chimneys, White Skylight Curb Platform & 3 Vaulted Hoods.'
       },
       {
         id: 'A-103',
         file: 'A-103_Reflected_Ceiling_Plan.svg',
         title: 'MAIN RESIDENCE REFLECTED CEILING & LIGHTING PLAN',
-        scale: '1:100',
-        container: 'MAS-THH-BLDG01-L02-DR-A-0103',
-        series: '100 Plans',
-        desc: 'Mahogany soffit boards, recessed light coves, 6 triangular mahogany chandeliers, and skylight wells'
+        scale: '1:150',
+        container: 'MAS-THH-M1-L2-DR-E-0103',
+        delta: 'Δ3 · RL-06B',
+        redlineNote: 'RL-06B: Widened perimeter tongue-and-groove African Mahogany eave soffit to 1.35m under battered copper fascia; verified all interior ceilings & lights clear EL +7.38m soffit.'
       },
       {
         id: 'A-104',
         file: 'A-104_Chahroudi_Cottage_Plans.svg',
         title: '1951 FLW CHAHROUDI GUEST COTTAGE — PLAN, ROOF & ELEVATIONS',
-        scale: '1:50',
-        container: 'MAS-THH-BLDG02-L01-DR-A-0104',
-        series: '100 Plans',
-        desc: 'Original 1951 built structure: 120 sq m floor plan, cathedral rafters, stone hearth, built-ins & elevations'
+        scale: '1:75',
+        container: 'MAS-THH-C1-L3-DR-A-0104',
+        delta: 'Δ3 · RL-08',
+        redlineNote: 'RL-08: Updated Cottage roof to Weathered Silver-Grey Cedar Shingles with Cherokee-Red Eave Fascia (Roof_Cottage_RedFascia_1..6); replaced round stone knobs with flush 5-sided fieldstone slabs on NW Bastion & both Chimneys.'
       },
       {
         id: 'A-201',
         file: 'A-201_Exterior_Elevations.svg',
-        title: 'EXTERIOR BUILDING ELEVATIONS (SOUTH, WEST, NORTH, EAST)',
-        scale: '1:125',
-        container: 'MAS-THH-BLDG01-ZZ-DR-A-0201',
-        series: '200 Elevations',
-        desc: 'Orthographic projections across all 4 cardinal orientations with EL +0.00m to EL +8.20m datum lines'
+        title: 'EXTERIOR BUILDING ELEVATIONS (WEST, SOUTH, EAST, NORTH)',
+        scale: '1:200',
+        container: 'MAS-THH-M1-ZZ-DR-A-0201',
+        delta: 'Δ3 · RL-09',
+        redlineNote: 'RL-09: Re-projected all 4 elevations from 903-element model; redlined Battered Buff-Stucco Cantilever Parapet (+2.92..+4.48m), 14-Bay Mahogany Ribbon Windows (+4.48..+7.38m), Battered Copper Fascia & Hexagonal Lake Pier.'
       },
       {
         id: 'A-301',
         file: 'A-301_Building_Sections.svg',
         title: 'LONGITUDINAL & TRANSVERSE BUILDING SECTIONS (A-A & B-B)',
-        scale: '1:100',
-        container: 'MAS-THH-BLDG01-ZZ-DR-A-0301',
-        series: '300 Sections',
-        desc: '8.5m SW structural prow cantilever over Lake Mahopac and natural granite bedrock interlock details'
+        scale: '1:150',
+        container: 'MAS-THH-M1-ZZ-DR-S-0301',
+        delta: 'Δ3 · RL-10',
+        redlineNote: 'RL-10: Section A-A & B-B updated with 16° outward-battered Buff-Stucco Prow Parapet, 18° Battered Copper Roof Fascia, Hexagonal Rubblestone Lake Pier, and White Skylight Curb Platform.'
       },
       {
         id: 'A-401',
         file: 'A-401_Interior_Elevations_Details.svg',
         title: 'ENLARGED INTERIOR ARCHITECTURAL DETAILS & MILLWORK',
-        scale: '1:25',
-        container: 'MAS-THH-BLDG01-L02-DR-A-0401',
-        series: '400 Details',
-        desc: 'Entry Foyer granite steps, Living Room triangular builtin sofa & tables, Curved Cherry Kitchen Island & Bath'
+        scale: '1:50',
+        container: 'MAS-THH-M1-L2-DR-A-0401',
+        delta: 'Δ3 · RL-11',
+        redlineNote: 'RL-11: Coordinated interior banquette sill (+4.16m) with exterior Battered Buff-Stucco Parapet cap (+4.48m) and mahogany casement ribbon window sill.'
       },
       {
         id: 'A-501',
         file: 'A-501_BIM_Schedules_QTO.svg',
         title: 'ISO 19650 / IFC4 ELEMENT SCHEDULES & QUANTITY TAKE-OFF (BOQ)',
-        scale: 'N.T.S.',
+        scale: 'TABLE',
         container: 'MAS-THH-ZZ-ZZ-SH-A-0501',
-        series: '500 Schedules',
-        desc: 'Complete 834-element BIM quantity take-off by IFC4 Entity Class, CSI MasterFormat Division & Building Storey'
+        delta: 'Δ3 · RL-12',
+        redlineNote: 'RL-12: Updated live BIM Quantity Take-Off from 834 to 903 elements (+69 exterior masonry, copper standing-seam, skylight curb, shoreline boulder & Cottage fascia items).'
       }
     ];
 
+    const REDLINE_LOG = [
+      { id: 'RL-01', sheetIdx: 1, sheet: 'A-100', oldSpec: 'Suburban white-roofed boathouse canopy over western wooden dock', newSpec: 'Removed unauthentic white canopy; built Battered NW Desert-Rubblestone Bastion Wall, Steep Cherokee-Red Concrete Stair & Floating Red Finger Pier per aerial photos (reference/01 & 02).' },
+      { id: 'RL-02', sheetIdx: 1, sheet: 'A-100', oldSpec: 'Smooth grey shoreline terrain with only 8 small rock blobs', newSpec: 'Added 40+ Fractured Shoreline Granite Boulders across Under-Cantilever & SE Rocky Peninsula, NW Conical Juniper Conifer, and Upper Lawn Historic Stone Ruin.' },
+      { id: 'RL-03', sheetIdx: 1, sheet: 'A-100', oldSpec: 'Straight bluestone path bypassing Chahroudi Cottage terrace', newSpec: 'Realigned Pea-Gravel Garden Walkway to curve directly into the 3 Cherokee-Red Terrace Risers in front of the 1951 Chahroudi Cottage French doors (reference/15).' },
+      { id: 'RL-04', sheetIdx: 2, sheet: 'A-101', oldSpec: '2-story floor-to-ceiling glass curtain wall on cantilever + glass handrail on SW Prow Balcony', newSpec: 'Deleted glass railing (Railing_SW_Glass_*); installed continuous Mitered 16° Outward-Battered Warm Buff-Stucco Cantilever Parapet (EL +2.86m to +4.75m) & 14-Bay Mahogany Ribbon Windows above.' },
+      { id: 'RL-05', sheetIdx: 2, sheet: 'A-101', oldSpec: 'Small rectangular concrete pier under cantilever; flat glass along NW wall', newSpec: 'Built Massive Hexagonal Desert-Rubblestone Lake Support Pier (Pier_Cantilever_Lake_Main), Full-Height Mid-NW Rubblestone Wall, Exterior Whale Rock Cliff & 3 Stepped Stone Entry Piers.' },
+      { id: 'RL-06', sheetIdx: 3, sheet: 'A-102', oldSpec: 'Flat vertical brown roof edge with V-notches at corners & beige roof deck', newSpec: 'Built Mitered 18° Outward-Battered Weathered Bronze/Copper Fascia with 3D Standing Seams @ 0.58m O.C., Dark Charcoal-Olive Roof Membrane, and 1.35m Mahogany Plank Soffit.' },
+      { id: 'RL-07', sheetIdx: 3, sheet: 'A-102', oldSpec: 'Open hole in roof deck under skylights; only 1 central chimney', newSpec: 'Closed skylight well with Raised White-Curbed Hexagonal Platform, White Exterior Structural Ribs, 3 North Vaulted Mechanical Hoods & all 4 Desert-Rubblestone Chimneys.' },
+      { id: 'RL-08', sheetIdx: 5, sheet: 'A-104', oldSpec: 'Brown cottage roof, plain grey chimneys & protruding round icosphere stone knobs', newSpec: 'Updated 1951 Chahroudi Cottage with Weathered Silver-Grey Cedar Shingles, Cherokee-Red Eave Fascia Trim, and Flush 5-Sided Angular Fieldstone Slabs across NW Bastion, both Chimneys & Planter Wall.' },
+      { id: 'RL-09', sheetIdx: 6, sheet: 'A-201', oldSpec: 'Elevations showed boxy 2-story glass curtain wall & flat roof fascia', newSpec: 'Re-projected West, South, East & North elevations from 903-element v2.1 model with full redline clouds & callouts for Battered Buff Parapet, Ribbon Windows, Copper Prow & Lake Pier.' },
+      { id: 'RL-10', sheetIdx: 7, sheet: 'A-301', oldSpec: 'Sections A-A & B-B showed vertical glass guardrail at SW Prow', newSpec: 'Redlined Sections A-A & B-B with outward-battered Buff-Stucco Prow Parapet, battered Copper Roof Fascia, Hexagonal Lake Pier & White Skylight Curb Platform.' },
+      { id: 'RL-11', sheetIdx: 8, sheet: 'A-401', oldSpec: 'Interior ceiling elements extended above Z=7.38m into roof plane', newSpec: 'Verified all interior tray ceilings, coves & downlights sit cleanly below EL +7.38m roof soffit datum; coordinated banquette sill (+4.16m) with exterior buff parapet (+4.48m).' },
+      { id: 'RL-12', sheetIdx: 9, sheet: 'A-501', oldSpec: '834 BIM elements in Rev P02.1 QTO Schedule', newSpec: 'Updated IFC4 & CSI MasterFormat Quantity Take-Off to 903 federated elements (+69 as-built exterior masonry, copper seam, skylight curb, shoreline boulder & Cottage fascia items).' }
+    ];
+
     const RENDERS = [
-      { file: '../renders/01_living_room_cantilever.png', title: '01 — Great Room SW Prow Cantilever, Triangular Tables & Chandeliers' },
-      { file: '../renders/02_entry_foyer_rock_steps.png', title: '02 — Entry Foyer Natural Granite Outcrop, Cast Steps & Skylight Grid' },
-      { file: '../renders/03_kitchen_dining_island.png', title: '03 — Kitchen & Dining Wing: Curved Cherry Island, Stone Pier & 10-Seat Table' },
-      { file: '../renders/04_primary_bedroom_study_rock.png', title: '04 — Primary Suite & Study: Granite Boulder Piercing Glass Curtain Wall' },
-      { file: '../renders/05_primary_bath_rock_tub.png', title: '05 — Primary Bath: Copper Soaking Tub Against Natural Petra Island Granite' },
-      { file: '../renders/06_cottage_exterior.png', title: '06 — 1951 FLW Chahroudi Guest Cottage Exterior & Redwood Clapboard Siding' },
-      { file: '../renders/07_cottage_interior_hearth.png', title: '07 — 1951 Chahroudi Cottage Interior: Exposed Rafters, Clerestory & Hearth' },
-      { file: '../renders/08_exterior_aerial_overview.png', title: '08 — Master Aerial Overview: Massaro House, Helipad, Docks & Cottage' },
-      { file: '../renders/09_dollhouse_cutaway_both_houses.png', title: '09 — Dollhouse Architectural Cutaway: Interior Layout of Both Houses' }
+      { file: '../renders/11_exterior_lakefront_cantilever.png', title: '11 (v2.1 NEW) — Lakefront Cantilever Profile: Battered Buff Parapet, 14 Ribbon Windows, Mitered Copper Prow & Hex Stone Pier' },
+      { file: '../renders/10_exterior_aerial_island_overview.png', title: '10 (v2.1 NEW) — Aerial Island Overview: Dark Olive Roof, 4 Stone Chimneys, White Skylight Grid, Whale Rock & 1951 Cottage' },
+      { file: '../renders/07_chahroudi_cottage_exterior.png', title: '07 (v2.1 UPDATED) — 1951 Chahroudi Cottage: Grey Shingle Roof, Cherokee-Red Fascia & Flush Fieldstone Bastion/Chimneys' },
+      { file: '../renders/01_living_room_cantilever.png', title: '01 — Great Room SW Prow Cantilever, Hexagonal Rugs & Recessed Triangular Downlights' },
+      { file: '../renders/02_atrium_whale_rock_mural.png', title: '02 — 27-Skylight Atrium: Stepped Whale Rock, Japanese Pine & Crane Mural & Banquette' },
+      { file: '../renders/03_kitchen_whale_rock_lecreuset.png', title: '03 — Whale-Rock Kitchen: Scribed Bluestone Counter, 5 Red Le Creuset Pots & Red Tile Backsplash' },
+      { file: '../renders/04_dining_alcove_fireplace.png', title: '04 — Dining Room & Double-Sided Hearth: Boat Table & 8 Tall Slatted FLW Chairs' },
+      { file: '../renders/05_master_suite_stone_hearth.png', title: '05 — Master Suite: Corner Fieldstone Hearth, LED Headboard Cove & Diagonal Tray Ceiling' },
+      { file: '../renders/06_bathroom_rock_shower_motif.png', title: '06 — Rock-Wall En-Suite Bath: Stepped Granite Cascade & Frosted FLW Chevron Glass' },
+      { file: '../renders/08_chahroudi_cottage_interior_rafters.png', title: '08 — 1951 Chahroudi Cottage Interior: 30+ Exposed Hexagonal Rafters, Battered Hood & Cord Chairs' },
+      { file: '../renders/09_dollhouse_cutaway_both_houses.png', title: '09 — Dual-House Dollhouse Cutaway (Roof_Group OFF)' }
     ];
 
     const REFERENCES = [
       { file: '../reference/00_site_satellite_extents.jpg', title: '00 — Calibrated Satellite Site Extents (134.55m × 129.75m)' },
-      { file: '../reference/01_exterior_lake_cantilever.jpg', title: '01 — Exterior SW Cantilever Prow Over Lake Mahopac' },
-      { file: '../reference/02_living_room_prow_cantilever.jpg', title: '02 — Great Room Prow & Built-in Triangular Seating' },
-      { file: '../reference/03_entry_rock_stairs_skylight.jpg', title: '03 — Entry Foyer Rock Stairs & Triangular Skylight Grid' },
-      { file: '../reference/04_dining_kitchen_stone_pier.jpg', title: '04 — Dining Room & Desert Rubblestone Structural Pier' },
-      { file: '../reference/05_bathroom_rock_wall_tub.jpg', title: '05 — Primary Bathroom Natural Bedrock Wall & Tub' },
-      { file: '../reference/06_aerial_island_overview.jpg', title: '06 — Petra Island Aerial Photography' },
-      { file: '../reference/07_bedroom_rock_outcrop.jpg', title: '07 — Bedroom Granite Outcrop Integration' },
-      { file: '../reference/08_floor_plan_diagram.jpg', title: '08 — Architectural Floor Plan Diagram' },
-      { file: '../reference/09_exterior_copper_roof_fascia.jpg', title: '09 — Patinated Copper Roof Fascia & Clerestory' },
-      { file: '../reference/10_kitchen_curved_island_skylights.jpg', title: '10 — Kitchen Curved Cherry Island & Skylight Matrix' },
-      { file: '../reference/11_chahroudi_cottage_exterior.jpg', title: '11 — 1951 FLW Chahroudi Guest Cottage Exterior' },
-      { file: '../reference/12_chahroudi_cottage_interior.jpg', title: '12 — 1951 Chahroudi Cottage Living Area & Clerestory' },
-      { file: '../reference/13_chahroudi_cottage_plan_sketch.jpg', title: '13 — 1951 Chahroudi Cottage Historical Plan Sketch' },
-      { file: '../reference/14_massaro_fireplace_inglenook.jpg', title: '14 — Great Room Fireplace Inglenook & Stone Chimney' },
-      { file: '../reference/15_massaro_roof_deck_skylights.jpg', title: '15 — Upper Observation Roof Deck & Skylights' },
-      { file: '../reference/16_chahroudi_cottage_interior_hearth.png', title: '16 — Chahroudi Cottage Hearth & Cathedral Rafters' },
-      { file: '../reference/17_chahroudi_cottage_exterior_trees.png', title: '17 — Chahroudi Cottage in Woodland Clearing' },
-      { file: '../reference/18_massaro_kitchen_curved_island.png', title: '18 — Massaro Kitchen Cabinetry & Curved Counter' },
-      { file: '../reference/19_massaro_living_room_chandeliers.png', title: '19 — Great Room Triangular Wood Chandeliers & Coffee Tables' },
-      { file: '../reference/20_massaro_study_window_boulder.png', title: '20 — Study Window Glass Fitted Directly to Granite Boulder' }
+      { file: '../reference/01_aerial_island_both_houses.png', title: '01 — Real-World Aerial Overview: Both Houses, Dark Roof, 4 Chimneys & Red Gangway' },
+      { file: '../reference/02_massaro_exterior_lake_view.png', title: '02 — Real-World Lakefront Profile: Buff Cantilever Parapet, Stone Wall, Whale Rock & Red Ramp' },
+      { file: '../reference/03_massaro_cantilever_copper_fascia.png', title: '03 — Real-World SW Cantilever Close-Up: Battered Copper Standing-Seam Fascia & Hex Lake Pier' },
+      { file: '../reference/04_massaro_atrium_whale_rock_mural_banquette.png', title: '04 — Atrium Whale Rock, Crane Screen Mural & Skylight Coffer Grid' },
+      { file: '../reference/05_massaro_entry_whale_rock_skylights.png', title: '05 — Entry Foyer Granite Outcrop & Skylights' },
+      { file: '../reference/06_massaro_living_room_cantilever_prow.png', title: '06 — Great Room Cantilever Prow & Fireplace Inglenook' },
+      { file: '../reference/07_massaro_kitchen_whale_rock_counter.png', title: '07 — Kitchen Whale Rock Ledge & Red Cookware' },
+      { file: '../reference/08_massaro_master_bedroom_stone_hearth.png', title: '08 — Master Suite Fieldstone Wall & Corner Fireplace' },
+      { file: '../reference/09_massaro_master_bedroom_daylight.png', title: '09 — Master Suite Daylight & Mahogany Deck Doors' },
+      { file: '../reference/10_massaro_guest_bedroom_study_boulder.png', title: '10 — Study / Guest Room Granite Boulder Outcrop' },
+      { file: '../reference/11_massaro_bathroom_shower_boulder_motif.png', title: '11 — En-Suite Shower Granite Cascade & Frosted Glass Motif' },
+      { file: '../reference/12_massaro_flw_original_floorplan_section.png', title: '12 — Frank Lloyd Wright Original 1950 Floor Plan & Section Drawing' },
+      { file: '../reference/13_massaro_exterior_dusk_whale_rock.png', title: '13 — Exterior Dusk View: Whale Rock Cliff, 3 Stone Piers & Glowing Mahogany Soffit' },
+      { file: '../reference/14_massaro_dining_room_fireplace.png', title: '14 — Dining Room Tall Slatted Wright Chairs & Stone Hearth' },
+      { file: '../reference/15_chahroudi_cottage_exterior_terrace.png', title: '15 — 1951 Chahroudi Cottage Exterior: Grey Shingles, Red Fascia, Bastion & French Doors' },
+      { file: '../reference/16_chahroudi_cottage_interior_living_rafters.png', title: '16 — 1951 Chahroudi Cottage Interior: Exposed Rafters, Battered Hood & Cord Chairs' },
+      { file: '../reference/17_chahroudi_cottage_interior_hearth_alcove.png', title: '17 — 1951 Chahroudi Cottage Hearth & Bedroom Alcove' },
+      { file: '../reference/18_chahroudi_cottage_kitchen_stained_glass.png', title: '18 — 1951 Chahroudi Cottage Galley Kitchen & Hexagonal Stained-Glass Window' },
+      { file: '../reference/19_chahroudi_cottage_french_doors_terrace.png', title: '19 — 1951 Chahroudi Cottage French Doors Looking to Terrace & Pool' },
+      { file: '../reference/20_massaro_study_window_boulder.png', title: '20 — Study Window Mullion Scribed Directly to Granite Boulder' }
     ];
 
     let activeIndex = 0;
-    let scale = 0.75;
+    let scale = 0.72;
     let panX = 0;
     let panY = 0;
     let isDragging = false;
@@ -710,6 +830,8 @@
     const bannerTitle = document.getElementById('banner-title');
     const btnRawSvg = document.getElementById('btn-raw-svg');
     const btnDownloadSvg = document.getElementById('btn-download-svg');
+    const rlBarCode = document.getElementById('rl-bar-code');
+    const rlBarText = document.getElementById('rl-bar-text');
 
     function updateTransform() {
       transformLayer.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
@@ -718,9 +840,9 @@
 
     function fitSheetToViewport() {
       const stageRect = canvasStage.getBoundingClientRect();
-      const pad = 48;
+      const pad = 40;
       const scaleX = (stageRect.width - pad) / 1520;
-      const scaleY = (stageRect.height - pad) / 1020;
+      const scaleY = (stageRect.height - pad) / 1013;
       scale = Math.max(0.25, Math.min(1.5, Math.min(scaleX, scaleY)));
       panX = 0;
       panY = 0;
@@ -737,6 +859,8 @@
       bannerTitle.textContent = s.title;
       btnRawSvg.href = `./${s.file}`;
       btnDownloadSvg.href = `./${s.file}`;
+      rlBarCode.textContent = `▲ ${s.delta} (${s.id}):`;
+      rlBarText.textContent = s.redlineNote;
 
       document.querySelectorAll('.sheet-item').forEach((el, i) => {
         el.classList.toggle('active', i === activeIndex);
@@ -747,7 +871,7 @@
       const q = filterText.trim().toLowerCase();
       sheetListEl.innerHTML = '';
       SHEETS.forEach((s, idx) => {
-        if (q && !(s.id.toLowerCase().includes(q) || s.title.toLowerCase().includes(q) || s.desc.toLowerCase().includes(q) || s.container.toLowerCase().includes(q))) {
+        if (q && !(s.id.toLowerCase().includes(q) || s.title.toLowerCase().includes(q) || s.redlineNote.toLowerCase().includes(q) || s.delta.toLowerCase().includes(q))) {
           return;
         }
         const item = document.createElement('div');
@@ -755,12 +879,13 @@
         item.innerHTML = `
           <div class="sheet-top">
             <span class="sheet-id">${s.id}</span>
-            <span class="sheet-scale">SCALE ${s.scale}</span>
+            <span class="delta-pill">${s.delta}</span>
           </div>
           <div class="sheet-title">${s.title}</div>
+          <div class="sheet-redline-preview">🖍️ ${s.redlineNote.slice(0, 92)}...</div>
           <div class="sheet-meta">
             <span>${s.container}</span>
-            <span>REV P02.1</span>
+            <span>SCALE ${s.scale}</span>
           </div>
         `;
         item.addEventListener('click', () => selectSheet(idx));
@@ -794,7 +919,7 @@
     });
 
     document.getElementById('btn-paper-mode').addEventListener('click', () => {
-      transformLayer.classList.toggle('paper-mode');
+      transformLayer.classList.toggle('dark-mode');
     });
 
     // Pan & Zoom on Stage
@@ -824,13 +949,34 @@
       updateTransform();
     }, { passive: false });
 
-    // Keyboard navigation
     window.addEventListener('keydown', (e) => {
       if (e.target.tagName === 'INPUT') return;
       if (e.key === 'ArrowRight') selectSheet(activeIndex + 1);
       if (e.key === 'ArrowLeft') selectSheet(activeIndex - 1);
       if (e.key === 'f' || e.key === 'F') fitSheetToViewport();
     });
+
+    // Populate Redlines Modal
+    const rlTbody = document.getElementById('rl-tbody');
+    const redlinesModal = document.getElementById('redlines-modal');
+    REDLINE_LOG.forEach((r) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="color:#fca5a5; font-weight:800; white-space:nowrap;">▲ ${r.id} (Δ3)</td>
+        <td style="color:var(--accent); font-weight:800; white-space:nowrap;">${r.sheet}</td>
+        <td style="color:var(--text-muted); text-decoration:line-through;">${r.oldSpec}</td>
+        <td style="color:#f8fafc; font-weight:600;">${r.newSpec}</td>
+      `;
+      tr.addEventListener('click', () => {
+        selectSheet(r.sheetIdx);
+        redlinesModal.classList.remove('open');
+      });
+      rlTbody.appendChild(tr);
+    });
+
+    document.getElementById('btn-open-redlines').addEventListener('click', () => redlinesModal.classList.add('open'));
+    document.getElementById('btn-close-redlines').addEventListener('click', () => redlinesModal.classList.remove('open'));
+    redlinesModal.addEventListener('click', (e) => { if (e.target === redlinesModal) redlinesModal.classList.remove('open'); });
 
     // Populate Gallery Modal
     const rendersGrid = document.getElementById('renders-grid');
@@ -856,17 +1002,10 @@
     });
 
     const galleryModal = document.getElementById('gallery-modal');
-    document.getElementById('btn-open-gallery').addEventListener('click', () => {
-      galleryModal.classList.add('open');
-    });
-    document.getElementById('btn-close-gallery').addEventListener('click', () => {
-      galleryModal.classList.remove('open');
-    });
-    galleryModal.addEventListener('click', (e) => {
-      if (e.target === galleryModal) galleryModal.classList.remove('open');
-    });
+    document.getElementById('btn-open-gallery').addEventListener('click', () => galleryModal.classList.add('open'));
+    document.getElementById('btn-close-gallery').addEventListener('click', () => galleryModal.classList.remove('open'));
+    galleryModal.addEventListener('click', (e) => { if (e.target === galleryModal) galleryModal.classList.remove('open'); });
 
-    // Deep-link sheet via URL hash (#A-101 etc.)
     function checkHash() {
       const h = window.location.hash.replace('#', '').toUpperCase();
       if (h) {
@@ -876,6 +1015,7 @@
     }
 
     renderSheetList();
+    selectSheet(0);
     fitSheetToViewport();
     checkHash();
     window.addEventListener('resize', fitSheetToViewport);
